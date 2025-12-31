@@ -663,6 +663,15 @@ export class BetterMinimalisticAreaCardEditor extends LitElement implements Love
     const newConfig = { ...this.config };
     const parts = configPath.split('.');
 
+    // Guard against prototype pollution - check all parts
+    const dangerousKeys = ['__proto__', 'constructor', 'prototype'];
+    for (const part of parts) {
+      if (dangerousKeys.includes(part)) {
+        console.error('Attempted to set dangerous property:', configPath);
+        return;
+      }
+    }
+
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let current: any = newConfig;
 
@@ -672,22 +681,31 @@ export class BetterMinimalisticAreaCardEditor extends LitElement implements Love
       // Handle array indices
       if (part.match(/^\d+$/)) {
         const index = parseInt(part);
-        if (!current[index]) {
+        if (!Object.prototype.hasOwnProperty.call(current, index)) {
           current[index] = {};
         }
         current = current[index];
       } else {
-        if (!current[part]) {
-          current[part] = {};
+        if (!Object.prototype.hasOwnProperty.call(current, part)) {
+          // Create a plain object, not one that could affect prototypes
+          current[part] = Object.create(null);
+          Object.setPrototypeOf(current[part], Object.prototype);
         }
         current = current[part];
       }
     }
 
     const lastPart = parts[parts.length - 1];
+    // Final guard before setting
+    if (dangerousKeys.includes(lastPart)) {
+      console.error('Attempted to set dangerous property:', configPath);
+      return;
+    }
+
     if (value === undefined || value === '') {
       delete current[lastPart];
     } else {
+      // Direct assignment is safe here since we've validated the key
       current[lastPart] = value;
     }
 
