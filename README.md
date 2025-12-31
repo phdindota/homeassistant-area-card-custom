@@ -2,9 +2,20 @@
 
 [![GitHub Release][releases-shield]][releases]
 [![License][license-shield]](LICENSE.md)
-[![hacs_badge](https://img.shields.io/badge/HACS-Default-orange.svg?style=for-the-badge)](https://github.com/custom-components/hacs)
+[![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg?style=for-the-badge)](https://github.com/custom-components/hacs)
 
-A minimalistic area card **Lovelace custom card** for Home Assistant to have a control panel of your house on your dashboard. This card will show numeric sensors with its value, and binary sensors with only the icon. Switches and lights will have their own button that you can tap/click to toggle, or tap/click and hold to see detailed information.
+A **Home Assistant Lovelace custom card** that displays area information with sensors and controllable entities in a clean, minimalistic design. Perfect for creating beautiful control panels for rooms and zones in your Home Assistant dashboard.
+
+## Features
+
+- 🏠 **Area-based organization**: Automatically pulls entities from Home Assistant areas or define your own
+- 📊 **Smart entity display**: Shows numeric sensors with values, binary sensors with icons
+- 🎛️ **Interactive controls**: Toggle switches and lights with tap/hold for more details
+- 🎨 **Highly customizable**: Configure colors, icons, backgrounds, camera feeds, and layout alignment
+- 📱 **Touch-friendly**: Optimized button sizes for mobile and tablet interfaces
+- 🌈 **State-based styling**: Dynamic colors and icons based on entity states
+- 🔧 **Visual editor**: User-friendly GUI configuration in addition to YAML
+- 🖼️ **Background options**: Support for static images or live camera feeds
 
 ![Sample preview](docs/sample.png)
 
@@ -12,204 +23,445 @@ A minimalistic area card **Lovelace custom card** for Home Assistant to have a c
 
 ### HACS (Recommended)
 
-Better Minimalistic Area Card is available in [HACS][hacs] (Home Assistant Community Store) as a **custom Lovelace card**.
+This card is distributed via [HACS][hacs] (Home Assistant Community Store) as a **custom repository**.
 
 #### Installation Steps
 
-1. Install HACS if you don't have it already
-2. Open HACS in Home Assistant
-3. Click the 3-dot menu in the top right corner
-4. Select "Custom repositories"
-5. Add the repository URL: [https://github.com/phdindota/homeassistant-area-card-custom](https://github.com/phdindota/homeassistant-area-card-custom)
-6. For the category, select:
-   - **"Plugin"** (if available - this is the correct category for custom Lovelace cards)
-   - **"Lovelace"** or **"Frontend"** (if your HACS version shows these options)
-   
-   > **Note:** The exact category name may vary by HACS version. Choose the option that corresponds to custom cards/frontend plugins.
+1. **Install HACS** if you don't have it already (see [hacs.xyz](https://hacs.xyz))
+2. **Open HACS** in Home Assistant (sidebar menu)
+3. Click the **3-dot menu** in the top right corner
+4. Select **"Custom repositories"**
+5. In the "Add custom repository" dialog:
+   - **Repository URL**: `https://github.com/phdindota/homeassistant-area-card-custom`
+   - **Category**: Select **"Plugin"** (this is the correct category for custom Lovelace cards)
+     
+     > **Note:** Depending on your HACS version, the category might be labeled "Plugin", "Lovelace", or "Frontend". All refer to custom dashboard cards. Select the one available for Lovelace cards.
 
-7. Click "Add"
-8. Navigate to the Frontend/Plugins section in HACS and search for "Better Minimalistic Area Card"
-9. Click the download button ⬇️
+6. Click **"Add"**
+7. Navigate to **Frontend** section in HACS (or **Plugins**)
+8. Search for **"Better Minimalistic Area Card"**
+9. Click **Download** and confirm
 
-After installation via HACS, the card will be available at `/hacsfiles/homeassistant-area-card-custom/dist/better-minimalistic-area-card.js` and HACS will automatically add it as a Lovelace resource.
+#### Lovelace Resource Configuration
 
-#### Adding as a Lovelace Resource
+After installing via HACS, the card JavaScript file will be available at:
+```
+/hacsfiles/homeassistant-area-card-custom/dist/better-minimalistic-area-card.js
+```
 
-If you need to manually add the resource (though HACS usually does this automatically):
+HACS should automatically register this as a Lovelace resource. If you need to add it manually:
 
+**Using UI:**
+1. Go to _Settings_ → _Dashboards_ → _⋮ Menu_ → _Resources_
+2. Click _Add Resource_
+3. Set URL: `/hacsfiles/homeassistant-area-card-custom/dist/better-minimalistic-area-card.js`
+4. Set Resource type: `JavaScript Module`
+
+**Using YAML:**
 ```yaml
 resources:
   - url: /hacsfiles/homeassistant-area-card-custom/dist/better-minimalistic-area-card.js
     type: module
 ```
 
-### Manual
+> **Note:** If you don't see the Resources menu in the UI, enable _Advanced Mode_ in your User Profile settings.
 
-1. Download `better-minimalistic-area-card.js` file from the [latest release][release-url].
-2. Put `better-minimalistic-area-card.js` file into your `config/www` folder.
-3. Add reference to `better-minimalistic-area-card.js` in Dashboard. There's two way to do that:
-   - **Using UI:** _Settings_ → _Dashboards_ → _More Options icon_ → _Resources_ → _Add Resource_ → Set _Url_ as `/local/better-minimalistic-area-card.js` → Set _Resource type_ as `JavaScript Module`.
-     **Note:** If you do not see the Resources menu, you will need to enable _Advanced Mode_ in your _User Profile_
-   - **Using YAML:** Add following code to `lovelace` section.
+### Manual Installation
 
-     ```yaml
-     resources:
-       - url: /local/better-minimalistic-area-card.js
-         type: module
-     ```
+If you prefer not to use HACS:
 
-This is a fork of [LesTR/homeassistant-minimalistic-area-card](https://github.com/LesTR/homeassistant-minimalistic-area-card) (which itself is a fork of [junalmeida/homeassistant-minimalistic-area-card](https://github.com/junalmeida/homeassistant-minimalistic-area-card)), and we would like to thank the original authors.
+1. **Download** the `better-minimalistic-area-card.js` file from the [latest release][release-url]
+2. **Copy** the file to your Home Assistant `config/www/` folder (create the folder if it doesn't exist)
+3. **Add the resource** to your Lovelace configuration:
 
-## Migration from the original card
+   **Using UI:**
+   - Go to _Settings_ → _Dashboards_ → _⋮ Menu_ → _Resources_
+   - Click _Add Resource_
+   - Set URL: `/local/better-minimalistic-area-card.js`
+   - Set Resource type: `JavaScript Module`
 
-- replace type from `custom:minimalistic-area-card` by `custom:better-minimalistic-area-card`.
+   **Using YAML:**
+   ```yaml
+   resources:
+     - url: /local/better-minimalistic-area-card.js
+       type: module
+   ```
 
-## Options
+4. **Refresh** your browser (clear cache if necessary)
 
-For entity options, see <https://www.home-assistant.io/dashboards/entities/#options-for-entities>.
+## About This Project
 
-For `tap_action` options, see <https://www.home-assistant.io/dashboards/actions/>.
+This is a fork of [LesTR/homeassistant-minimalistic-area-card](https://github.com/LesTR/homeassistant-minimalistic-area-card) (which itself is a fork of [junalmeida/homeassistant-minimalistic-area-card](https://github.com/junalmeida/homeassistant-minimalistic-area-card)). We extend our thanks to the original authors for their foundational work.
 
-```yaml
-- type: custom:better-minimalistic-area-card
-  title: Living Room
-  image: /local/img/living-room.jpg #any image file on /config/www or an absolute image url. optional, it uses area image if area is specified. (optional)
-  area: living_room # area id of an existing area defined in HA. (optional)
-  camera_image: camera.living_room # a camera entity to use as background (optional)
-  camera_view: 'auto' # auto, live (optional)
-  icon: mdi:sofa #(optional) Override the area icon.
-  show_area_icon: true # boolean (optional), default false. Show the are icon in the title. The top-level option icon can override the icon defined in the area.
-  shadow: true # Draws a drop shadow on icons (optional)
-  hide_unavailable: false # Hide unavailable entities (optional, default false)
-  state_color: true # enable or disable HA colors for all entities
-  shadow: true # enable a drop shadow on entity icons to contrast with the background
-  darken_image: true # reduce brightness of the background image to constrast with entities
-  force_dialog: false # the default value for force_dialog on entities (optinal). Default: false
-  style:
-    color: red # Override the color for text and icons (optional)
-    sensors_color: blue #Override the color for sensors (optional)
-    sensors_icon_size: 18px #Override size for the icons in sensors area (optional, default 18px)
-    sensors_button_size: 32px #Override the clickable area on icons in sensors area (optional, default 32px)
-    buttons_color: blue #Override the color for buttons (optional)
-    buttons_icon_size: 24px #Override size for the icons in buttons area (optional, default 24px)
-    buttons_button_size: 48px #Override the clickable area on icons in buttons area (optional, default 48px)
-    background_color: yellow # a color name, rgb hex or rgba function when an image is not provided (optional)
-    shadow_color: grey # a color name, rgb hex or rgba function for shadow when enabled
-  align:
-    title: left # text align, values: left, right, center (optional)
-    sensors: left # text align, values: left, right, center (optional)
-    buttons: right # text align, values: left, right, center (optional)
-    title_entities: right # text align, values: left, right (optional)
-  tap_action:
-    action: navigate
-    navigation_path: /lovelace/living-room
-  entities: #optional, lists area entities automatically if ommited.
-    - entity: media_player.living_room_tv
-      state_color: false # enable or disable HA colors for this entity
-      hide: false # show/hide entity (optional), default false
-      force_dialog: false # force dialog for buttons instead of calling toogle
-      show_state: true #show/hide state for sensors (binary_sensors are hidden by default) (optional, default true)
-      section: auto # define the section where to show given entity (optional), default 'auto', possible values: auto, sensors, buttons, title. Sensors means the first line, buttons the second one, title op.
-      unit_of_measurement: "my unit" # overrides the units of entity. (optional, default empty). Useful when entity don't have attribute with units.
-      hide_unavailable: false #Hide unavailable entities (optional, default false)
-      title: "Overrided title for this entity" # overrides entity title. (optional)
-    - entity: switch.fireplace_on_off
-    - entity: cover.window_covering
-      tap_action:
-        action: toggle
-    - entity: media_player.speaker
-    - entity: light.living_room_lamp
-    - entity: sensor.hallway_humidity
-    - entity: sensor.hallway_temperature
-      color: blue
-    - entity: binary_sensor.main_door_opening
-      icon: mdi:door
-      state_color: true
-      state:
-        - value: 'on'
-          color: green
-          icon: mdi:door-open
-        - value: 'off'
-          color: red
-          icon: mdi:door-closed
-```
+## Migration from the Original Card
 
-## State based overrides
+If you're upgrading from the original `minimalistic-area-card`:
 
-Example:
+- Change the card type from `custom:minimalistic-area-card` to `custom:better-minimalistic-area-card`
+- All other configuration options remain the same
+
+## Usage
+
+After installation and adding the resource, you can add the card to your dashboard:
+
+### Basic Example
 
 ```yaml
-state: # array of values
-  - value: value # state value to match
-    operator: '==' # optinal(default ==) - See state operators for details
-    icon: mdi:my-icon" # entity icon used when state match
-    color: color # color used when state match
-    hide: false # Default false, conditionally hide the entity when state match given value
-    hide_unavailable: false #Hide unavailable entities (optional, default false)
+type: custom:better-minimalistic-area-card
+title: Living Room
+area: living_room
 ```
 
-### State operators
+This minimal configuration will automatically display all entities assigned to the "living_room" area in Home Assistant.
 
-The order of your elements in the `state` object matters. The first one which is `true` will match. This copied the functionality from [button-card](https://github.com/custom-cards/button-card).
+### Advanced Example
 
-|  Operator  | `value` example | Description                                                                                                                                                                           |
-| :--------: | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|    `<`     | `5`             | Current state is inferior to `value`                                                                                                                                                  |
-|    `<=`    | `4`             | Current state is inferior or equal to `value`                                                                                                                                         |
-|    `==`    | `42` or `'on'`  | **This is the default if no operator is specified.** Current state is equal (`==` javascript) to `value`                                                                              |
-|    `>=`    | `32`            | Current state is superior or equal to `value`                                                                                                                                         |
-|    `>`     | `12`            | Current state is superior to `value`                                                                                                                                                  |
-|    `!=`    | `'normal'`      | Current state is not equal (`!=` javascript) to `value`                                                                                                                               |
-|  `regex`   | `'^norm.*$'`    | `value` regex applied to current state does match                                                                                                                                     |
-| `template` |                 | See [templates](#experimental-templating-support) for examples. `value` needs to be a javascript expression which returns a boolean. If the boolean is true, it will match this state |
-| `default`  | N/A             | If nothing matches, this is used                                                                                                                                                      |
+```yaml
+type: custom:better-minimalistic-area-card
+title: Living Room
+image: /local/img/living-room.jpg
+area: living_room
+icon: mdi:sofa
+show_area_icon: true
+shadow: true
+state_color: true
+darken_image: true
+tap_action:
+  action: navigate
+  navigation_path: /lovelace/living-room
+entities:
+  - entity: light.living_room_lamp
+  - entity: switch.fireplace_on_off
+  - entity: sensor.living_room_temperature
+    show_state: true
+  - entity: sensor.living_room_humidity
+  - entity: binary_sensor.living_room_motion
+    state_color: true
+  - entity: media_player.living_room_tv
+```
 
-## Experimental Templating support
+### Camera Background Example
 
-You can use experimental support for templating that allows you to create a dynamic value based on the state or other attribute of any entity.
-Everything inside `${}` is now evaluated as a template.
+```yaml
+type: custom:better-minimalistic-area-card
+title: Front Door
+camera_image: camera.front_door
+camera_view: live
+area: entrance
+entities:
+  - entity: binary_sensor.front_door
+    icon: mdi:door
+    state_color: true
+  - entity: lock.front_door
+```
 
-Example:
+## Configuration Options
+
+### Card Options
+
+| Name | Type | Default | Description |
+|------|------|---------|-------------|
+| `type` | string | **Required** | Must be `custom:better-minimalistic-area-card` |
+| `title` | string | optional | Card title text |
+| `area` | string | optional | Area ID from Home Assistant (auto-populates entities) |
+| `image` | string | optional | Background image URL (e.g., `/local/img/room.jpg`) |
+| `camera_image` | string | optional | Camera entity ID for live background |
+| `camera_view` | string | `auto` | Camera view mode: `auto` or `live` |
+| `icon` | string | optional | Override area icon (e.g., `mdi:sofa`) |
+| `show_area_icon` | boolean | `false` | Show area icon in title |
+| `shadow` | boolean | `false` | Add drop shadow to icons for better contrast |
+| `hide_unavailable` | boolean | `false` | Hide unavailable entities |
+| `state_color` | boolean | `true` | Enable Home Assistant colors for entity states |
+| `darken_image` | boolean | `false` | Reduce background image brightness |
+| `force_dialog` | boolean | `false` | Force more-info dialog instead of toggle for buttons |
+| `tap_action` | object | optional | Action configuration for card tap (see [Actions](#actions)) |
+| `entities` | list | optional | List of entities (if omitted, shows all area entities) |
+| `style` | object | optional | Custom styling options (see [Style Options](#style-options)) |
+| `align` | object | optional | Text alignment options (see [Alignment](#alignment)) |
+
+### Style Options
+
+Configure colors and sizes within the `style:` section:
+
+| Name | Type | Default | Description |
+|------|------|---------|-------------|
+| `color` | string | inherited | Main text and icon color |
+| `background_color` | string | `transparent` | Card background color (when no image) |
+| `shadow_color` | string | `grey` | Shadow color when `shadow: true` |
+| `sensors_color` | string | inherited | Color for sensor area |
+| `sensors_icon_size` | string | `18px` | Icon size in sensor area |
+| `sensors_button_size` | string | `32px` | Clickable area size in sensor area |
+| `buttons_color` | string | inherited | Color for button area |
+| `buttons_icon_size` | string | `24px` | Icon size in button area |
+| `buttons_button_size` | string | `48px` | Clickable area size in button area |
+
+### Alignment
+
+Configure text alignment within the `align:` section:
+
+| Name | Type | Default | Options |
+|------|------|---------|---------|
+| `title` | string | `left` | `left`, `center`, `right` |
+| `sensors` | string | `left` | `left`, `center`, `right` |
+| `buttons` | string | `right` | `left`, `center`, `right` |
+| `title_entities` | string | `right` | `left`, `right` |
+
+### Actions
+
+Card-level and entity-level actions follow the standard [Home Assistant tap_action format](https://www.home-assistant.io/dashboards/actions/):
+
+```yaml
+tap_action:
+  action: navigate
+  navigation_path: /lovelace/living-room
+```
+
+Available actions: `more-info`, `toggle`, `call-service`, `navigate`, `url`, `none`
+
+### Entity Options
+
+Each entity in the `entities` list supports:
+
+| Name | Type | Default | Description |
+|------|------|---------|-------------|
+| `entity` | string | **Required** | Entity ID |
+| `hide` | boolean | `false` | Hide this entity |
+| `hide_unavailable` | boolean | `false` | Hide when unavailable |
+| `show_state` | boolean | `true` | Show state text for sensors |
+| `state_color` | boolean | inherited | Enable state-based coloring |
+| `force_dialog` | boolean | `false` | Force more-info dialog for this entity |
+| `section` | string | `auto` | Placement: `auto`, `sensors`, `buttons`, `title` |
+| `title` | string | optional | Override entity display name |
+| `icon` | string | optional | Override entity icon |
+| `color` | string | optional | Custom color for this entity |
+| `unit_of_measurement` | string | optional | Override unit of measurement |
+| `tap_action` | object | optional | Custom tap action for this entity |
+| `state` | list | optional | State-based overrides (see [State Overrides](#state-based-overrides)) |
+
+For additional entity options, see the [Home Assistant entities documentation](https://www.home-assistant.io/dashboards/entities/#options-for-entities).
+
+## State Based Overrides
+
+You can configure dynamic styling based on entity state values. This is useful for changing icons or colors based on conditions.
+
+### Configuration
 
 ```yaml
 entities:
-  - entity: climate.bedroom_thermostat_thermostat
+  - entity: binary_sensor.main_door
+    icon: mdi:door
+    state_color: true
+    state:
+      - value: 'on'
+        operator: '=='  # optional, default is '=='
+        color: green
+        icon: mdi:door-open
+        hide: false
+      - value: 'off'
+        color: red
+        icon: mdi:door-closed
+```
+
+### State Operators
+
+The order of elements in the `state` array matters - the first match wins. Operators are borrowed from [button-card](https://github.com/custom-cards/button-card).
+
+| Operator | Example Value | Description |
+|----------|---------------|-------------|
+| `<` | `5` | Current state is less than value |
+| `<=` | `4` | Current state is less than or equal to value |
+| `==` | `42` or `'on'` | **Default operator**. Current state equals value |
+| `>=` | `32` | Current state is greater than or equal to value |
+| `>` | `12` | Current state is greater than value |
+| `!=` | `'normal'` | Current state is not equal to value |
+| `regex` | `'^norm.*$'` | Value regex applied to current state matches |
+| `template` | (see below) | JavaScript expression that returns boolean |
+| `default` | N/A | Fallback if nothing else matches |
+
+### State Override Options
+
+| Name | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | string/number | **Required** | State value to match |
+| `operator` | string | `==` | Comparison operator (see table above) |
+| `icon` | string | optional | Icon to use when state matches |
+| `color` | string | optional | Color to use when state matches |
+| `hide` | boolean | `false` | Hide entity when state matches |
+| `hide_unavailable` | boolean | `false` | Hide when unavailable and state matches |
+
+## Experimental Templating Support
+
+You can use JavaScript templates for dynamic values based on entity state or attributes. Templates are evaluated within `${}`.
+
+### Template Examples
+
+```yaml
+entities:
+  # Hide entity based on another entity's state
+  - entity: climate.bedroom_thermostat
     hide: ${hass.states['input_boolean.heating_season'].state === 'off'}
-  - entity: binary_sensor.washing_machine_water_leakage_sensor_moisture
+  
+  # Hide binary sensor when it's off
+  - entity: binary_sensor.washing_machine_leak
     hide: ${state == "off"}
+  
+  # Conditional icon based on battery level
+  - entity: sensor.phone_battery
+    icon: ${state < 20 ? 'mdi:battery-low' : 'mdi:battery'}
 ```
 
-### Variables and types exposes in templates
+### Template Variables
 
+The following variables are available within templates:
+
+| Variable | Type | Description |
+|----------|------|-------------|
+| `hass` | `HomeAssistant` | Home Assistant object with full state access |
+| `state` | `any` | Current state value of the entity (or `null`) |
+| `user` | `CurrentUser` | Currently logged-in user information |
+| `helpers` | `object` | Helper functions (see [Template Helpers](#template-helpers)) |
+
+### Template Helpers
+
+Helper functions for common template operations. See `test/utils.test.ts` for detailed examples.
+
+| Helper | Example | Description |
+|--------|---------|-------------|
+| `helpers.states(entity_id)` | `${helpers.states('binary_sensor.night')}` | Returns state string of entity, `unknown` if doesn't exist, `unavailable` if not available |
+| `helpers.state_attr(entity_id, attr)` | `${helpers.state_attr('switch.light', 'brightness')}` | Returns attribute value or `null` if doesn't exist |
+| `helpers.is_state(entity_id, state)` | `${helpers.is_state('switch.light', 'off')}` | Tests if entity matches state or any state in list. Returns boolean |
+| `helpers.is_state_attr(attr, value)` | `${helpers.is_state_attr('brightness', ['10','20'])}` | Tests if attribute matches value or any value in list |
+| `helpers.has_value(entity_id)` | `${helpers.has_value('switch.light')}` | Tests if entity is not `unknown` or `unavailable` |
+
+### Template Example in State Overrides
+
+```yaml
+entities:
+  - entity: sensor.temperature
+    state:
+      - operator: template
+        value: ${state > 25}  # Returns boolean
+        color: red
+        icon: mdi:thermometer-alert
+      - operator: default
+        color: blue
+        icon: mdi:thermometer
 ```
-hass : HomeAssistant - homeassistant object
-state : any - state value of given entity or null
-user : CurrentUser - structure represents the currently logged user
-helpers: object - functions exposed to be used in the templates - see bellow
+## CSS Variables
+
+For advanced theming, you can override these CSS variables in your Home Assistant theme:
+
+- `--ha-better-minimalistic-area-card-color` - Main color for text, sensors, buttons and state values
+- `--ha-better-minimalistic-area-card-sensors-color` - Color for sensors and state values in the sensors area
+- `--ha-better-minimalistic-area-card-sensors-icon-size` - Icon size in sensors area (default: 18px)
+- `--ha-better-minimalistic-area-card-sensors-button-size` - Clickable area size in sensors area (default: 32px)
+- `--ha-better-minimalistic-area-card-buttons-icon-size` - Icon size in buttons area (default: 24px)
+- `--ha-better-minimalistic-area-card-buttons-button-size` - Clickable area size in buttons area (default: 48px)
+- `--ha-better-minimalistic-area-card-buttons-color` - Color for buttons and state values in the buttons area
+- `--ha-better-minimalistic-area-card-shadow-color` - Shadow color when shadow is enabled
+
+## Development
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (v14 or higher)
+- [Yarn](https://yarnpkg.com/) or npm
+
+### Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/phdindota/homeassistant-area-card-custom.git
+cd homeassistant-area-card-custom
+
+# Install dependencies
+yarn install
+# or
+npm install
 ```
 
-### Helpers
+### Building
 
-Templates supports a cople of function which can be used in templates. For concreate examples, please see `test/utils.test.ts`.
+```bash
+# Build the card (output goes to dist/)
+yarn run build
+# or
+npm run build
 
-| Helper                | Example                                                     | Description                                                                                                                                                                                                                                                                                                        |
-| --------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| helpers.states        | `${helpers.states('binary_sensor.night')}`                  | Returns the state string (not the state object) of the given entity, `unknown` if it doesn’t exist, and `unavailable` if the object exists but is not available.                                                                                                                                                   |
-| helpers.state_attr    | `${helpers.state_attr('switch.light','another_attribute')}` | will return the value of the attribute or `null` if it doesn’t exist.                                                                                                                                                                                                                                              |
-| helpers.is_state      | `${helpers.is_state('switch.light','off')}"`                | compares an entity’s state with a specified state or list of states and returns True or False. is_state('device_tracker.paulus', 'home') will test if the given entity is the specified state. is_state('device_tracker.paulus', ['home', 'work']) will test if the given entity is any of the states in the list. |
-| helpers.is_state_attr | `${helpers.is_state_attr('some_attribute',['10','20'])}"`   | will test if the given entity attribute is the specified state or in the list of given values                                                                                                                                                                                                                      |
-| helpers.has_value     | `${helpers.has_value('switch.light')}"`                     | will test if the given entity is not unknown or unavailable.                                                                                                                                                                                                                                                       |
+# For development with auto-rebuild and local server
+yarn start
+# or
+npm start
+```
 
-### CSS variables
+The build process:
+- Compiles TypeScript source files from `src/`
+- Bundles all dependencies
+- Outputs the final JavaScript file to `dist/better-minimalistic-area-card.js`
 
-- `--ha-better-minimalistic-area-card-color` - configure color for text, sensors, buttons and state values
-- `--ha-better-minimalistic-area-card-sensors-color` - configure color for sensors and state values in the sensors area
-- `--ha-better-minimalistic-area-card-sensors-icon-size` - configure size for the icons in the sensors area (default 18px)
-- `--ha-better-minimalistic-area-card-sensors-button-size` - configure clickable size on icons in the sensors area (default 32px)
-- `--ha-better-minimalistic-area-card-buttons-icon-size` - configure size for the icons in the buttons area (default 24px)
-- `--ha-better-minimalistic-area-card-buttons-button-size` - configure clickable size on icons in the buttons area (default 48px)
-- `--ha-better-minimalistic-area-card-buttons-color` - configure color for buttons and state values in the buttons area
-- `--ha-better-minimalistic-area-card-shadow-color` - configure color of shadow (when enabled)
+### Testing
+
+```bash
+# Run tests
+yarn test
+# or
+npm test
+
+# Run tests with coverage
+yarn coverage
+# or
+npm run coverage
+```
+
+### Linting
+
+```bash
+# Check code style
+yarn lint
+# or
+npm run lint
+```
+
+### Development Server
+
+When running `yarn start`, the card is served at `http://localhost:6000/better-minimalistic-area-card.js`. You can configure Home Assistant to load the card from this URL during development:
+
+```yaml
+resources:
+  - url: http://localhost:6000/better-minimalistic-area-card.js
+    type: module
+```
+
+## HACS Configuration
+
+This repository is configured for HACS distribution with the following settings in `hacs.json`:
+
+```json
+{
+  "name": "Better Minimalistic Area Card",
+  "category": "plugin",
+  "render_readme": true,
+  "filename": "dist/better-minimalistic-area-card.js"
+}
+```
+
+- **category**: `"plugin"` - Indicates this is a Lovelace custom card (frontend plugin)
+- **filename**: Points to the built JavaScript bundle in the `dist/` directory
+- **render_readme**: Displays this README in HACS
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Credits
+
+This is a fork of [LesTR/homeassistant-minimalistic-area-card](https://github.com/LesTR/homeassistant-minimalistic-area-card), which itself is a fork of [junalmeida/homeassistant-minimalistic-area-card](https://github.com/junalmeida/homeassistant-minimalistic-area-card). Thanks to all contributors!
+
+## Support
+
+- 🐛 [Report a bug](https://github.com/phdindota/homeassistant-area-card-custom/issues)
+- 💡 [Request a feature](https://github.com/phdindota/homeassistant-area-card-custom/issues)
+- 📖 [Read the documentation](https://github.com/phdindota/homeassistant-area-card-custom)
 
 <!-- Badges -->
 
