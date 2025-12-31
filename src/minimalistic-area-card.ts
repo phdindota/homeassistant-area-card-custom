@@ -926,6 +926,9 @@ export class MinimalisticAreaCard extends LitElement implements LovelaceCard {
 export class AreaOverviewCard extends MinimalisticAreaCard {}
 
 // Register backwards-compatible alias for existing users
+// Note: 'better-minimalistic-area-card' uses AreaOverviewCard (no deprecation warning)
+// while 'minimalistic-area-card' uses DeprecatedMinimalisticAreaCard (with warning)
+// to distinguish between the more recent tag and the very old tag
 if (!customElements.get('better-minimalistic-area-card')) {
   customElements.define('better-minimalistic-area-card', AreaOverviewCard);
 }
@@ -935,7 +938,7 @@ if (!customElements.get('better-minimalistic-area-card')) {
 export class DeprecatedMinimalisticAreaCard extends MinimalisticAreaCard {
   constructor() {
     deprecatedWarning(
-      "You are using deprecated card name 'custom:minimalistic-area-card', please update type to 'custom:area-overview-card'. The old name will be removed in future versions.",
+      "You are using deprecated card name 'custom:minimalistic-area-card', please update type to 'custom:area-overview-card'. This deprecated tag will be removed in version 2.0.0.",
     );
     super();
   }

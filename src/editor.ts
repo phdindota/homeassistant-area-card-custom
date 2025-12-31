@@ -814,6 +814,7 @@ export class AreaOverviewCardEditor extends LitElement implements LovelaceCardEd
 }
 
 // Register backwards-compatible editor aliases
+// Using manual registration after decorator to ensure primary tag is registered first
 if (!customElements.get('better-minimalistic-area-card-editor')) {
   customElements.define('better-minimalistic-area-card-editor', AreaOverviewCardEditor);
 }
