@@ -43,7 +43,7 @@ import { buildCssVariables, colorValueToCSS, deprecatedWarning, filterStateConfi
 
 /* eslint no-console: 0 */
 console.info(
-  `%c  Better Minimalistic Area Card  %c ${pkgVersion} `,
+  `%c  Area Overview Card  %c ${pkgVersion} `,
   'color: orange; font-weight: bold; background: black',
   'color: white; font-weight: bold; background: dimgray',
 );
@@ -229,7 +229,7 @@ export class MinimalisticAreaCard extends LitElement implements LovelaceCard {
 
   public static async getConfigElement() {
     await import('./editor');
-    return document.createElement('better-minimalistic-area-card-editor');
+    return document.createElement('area-overview-card-editor');
   }
 
   // The user supplied configuration. Throw an exception and Home Assistant
@@ -921,12 +921,24 @@ export class MinimalisticAreaCard extends LitElement implements LovelaceCard {
   }
 }
 
-/** @deprecated replaced by  MinimalisticAreaCard */
+// Register the new primary custom element tag
+@customElement('area-overview-card')
+export class AreaOverviewCard extends MinimalisticAreaCard {}
+
+// Register backwards-compatible alias for existing users
+// Note: 'better-minimalistic-area-card' uses AreaOverviewCard (no deprecation warning)
+// while 'minimalistic-area-card' uses DeprecatedMinimalisticAreaCard (with warning)
+// to distinguish between the more recent tag and the very old tag
+if (!customElements.get('better-minimalistic-area-card')) {
+  customElements.define('better-minimalistic-area-card', AreaOverviewCard);
+}
+
+/** @deprecated replaced by AreaOverviewCard */
 @customElement('minimalistic-area-card')
 export class DeprecatedMinimalisticAreaCard extends MinimalisticAreaCard {
   constructor() {
     deprecatedWarning(
-      "You are using deprecated card name 'custom:minimalistic-area-card', please update type to 'custom:better-minimalistic-area-card'. The old name will be removed in 1.3.0",
+      "You are using deprecated card name 'custom:minimalistic-area-card', please update type to 'custom:area-overview-card'. This deprecated tag will be removed in version 2.0.0.",
     );
     super();
   }
@@ -934,15 +946,16 @@ export class DeprecatedMinimalisticAreaCard extends MinimalisticAreaCard {
 
 declare global {
   interface HTMLElementTagNameMap {
+    'area-overview-card': AreaOverviewCard;
+    'better-minimalistic-area-card': AreaOverviewCard;
     'minimalistic-area-card': DeprecatedMinimalisticAreaCard;
-    'better-minimalistic-area-card': MinimalisticAreaCard;
   }
 }
 
 (window as any).customCards = (window as any).customCards || [];
 (window as any).customCards.push({
-  type: cardType,
-  name: 'Better minimalistic area card',
+  type: 'area-overview-card',
+  name: 'Area Overview Card',
   preview: true,
-  description: 'Better Minimalistic Area Card',
+  description: 'Area Overview Card for Home Assistant',
 });

@@ -150,8 +150,10 @@ describe('Card test', () => {
 
   test('verify the card is registered in custom cards', () => {
     expect(window['customCards']).toBeInstanceOf(Array);
-    const card = window['customCards'].find((c) => c.type == cardType);
-    expect(card.type).toBe(cardType);
+    const card = window['customCards'].find((c) => c.type == 'area-overview-card');
+    expect(card).toBeDefined();
+    expect(card.type).toBe('area-overview-card');
+    expect(card.name).toBe('Area Overview Card');
   });
 
   test('verify entities are in the correct sections', () => {
