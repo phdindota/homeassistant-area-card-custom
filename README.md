@@ -20,7 +20,7 @@ Better Minimalistic Area Card is available in [HACS][hacs] (Home Assistant Commu
 2. Open HACS in Home Assistant
 3. Click the 3-dot menu in the top right corner
 4. Select "Custom repositories"
-5. Add the repository URL: `https://github.com/phdindota/homeassistant-area-card-custom`
+5. Add the repository URL: [https://github.com/phdindota/homeassistant-area-card-custom](https://github.com/phdindota/homeassistant-area-card-custom)
 6. For the category, select:
    - **"Plugin"** (if available - this is the correct category for custom Lovelace cards)
    - **"Lovelace"** or **"Frontend"** (if your HACS version shows these options)
@@ -28,7 +28,7 @@ Better Minimalistic Area Card is available in [HACS][hacs] (Home Assistant Commu
    > **Note:** The exact category name may vary by HACS version. Choose the option that corresponds to custom cards/frontend plugins.
 
 7. Click "Add"
-8. Search for "Better Minimalistic Area Card" in HACS
+8. Navigate to the Frontend/Plugins section in HACS and search for "Better Minimalistic Area Card"
 9. Click the download button ⬇️
 
 After installation via HACS, the card will be available at `/hacsfiles/homeassistant-area-card-custom/dist/better-minimalistic-area-card.js` and HACS will automatically add it as a Lovelace resource.
