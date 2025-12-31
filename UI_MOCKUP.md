@@ -1,10 +1,10 @@
 # Visual Editor UI Description
 
-This document describes the visual editor interface for the **Better Minimalistic Area Card** - a custom Lovelace card for Home Assistant dashboards.
+This document describes the visual editor interface for the **Area Overview Card** - a custom Lovelace card for Home Assistant dashboards.
 
 ## About This Card
 
-The Better Minimalistic Area Card is a **custom card** that can be placed in any Home Assistant dashboard. It displays area information with sensors and controllable entities in a clean, minimalistic design. This is **not** a dashboard template or full dashboard replacement - it's a card component you add to your existing dashboards.
+The Area Overview Card is a **custom card** that can be placed in any Home Assistant dashboard. It displays area information with sensors and controllable entities in a clean, minimalistic design. This is **not** a dashboard template or full dashboard replacement - it's a card component you add to your existing dashboards.
 
 ## Editor Layout
 
@@ -161,11 +161,11 @@ When switching to YAML editor, the view changes to:
 │  [Visual Editor] [YAML Editor]              │
 └─────────────────────────────────────────────┘
 
-For instructions, visit the Better Minimalistic Area
-Card documentation on GitHub.
+For instructions, visit the Area Overview Card
+documentation on GitHub.
 
 ┌─────────────────────────────────────────────┐
-│ type: custom:better-minimalistic-area-card  │
+│ type: custom:area-overview-card             │
 │ title: Kitchen                              │
 │ area: kitchen                               │
 │ style:                                      │

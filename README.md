@@ -1,10 +1,10 @@
-# Better Minimalistic Area Card
+# Area Overview Card (Home Assistant Lovelace Card)
 
 [![GitHub Release][releases-shield]][releases]
 [![License][license-shield]](LICENSE.md)
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg?style=for-the-badge)](https://github.com/custom-components/hacs)
 
-A **Home Assistant Lovelace custom card** that displays area information with sensors and controllable entities in a clean, minimalistic design. Perfect for creating beautiful control panels for rooms and zones in your Home Assistant dashboard.
+A **Home Assistant Lovelace custom card** named "Area Overview Card" that displays area information with sensors and controllable entities in a clean, minimalistic design. Perfect for creating beautiful control panels for rooms and zones in your Home Assistant dashboard.
 
 ## Features
 
@@ -39,7 +39,7 @@ This card is distributed via [HACS][hacs] (Home Assistant Community Store) as a 
 
 6. Click **"Add"**
 7. Navigate to **Frontend** section in HACS (or **Plugins**)
-8. Search for **"Better Minimalistic Area Card"**
+8. Search for **"Area Overview Card"**
 9. Click **Download** and confirm
 
 #### Lovelace Resource Configuration
@@ -48,6 +48,8 @@ After installing via HACS, the card JavaScript file will be available at:
 ```
 /hacsfiles/homeassistant-area-card-custom/dist/better-minimalistic-area-card.js
 ```
+
+> **Note:** The JavaScript filename remains `better-minimalistic-area-card.js` to maintain compatibility with existing installations.
 
 HACS should automatically register this as a Lovelace resource. If you need to add it manually:
 
@@ -93,21 +95,22 @@ If you prefer not to use HACS:
 
 This is a fork of [LesTR/homeassistant-minimalistic-area-card](https://github.com/LesTR/homeassistant-minimalistic-area-card) (which itself is a fork of [junalmeida/homeassistant-minimalistic-area-card](https://github.com/junalmeida/homeassistant-minimalistic-area-card)). We extend our thanks to the original authors for their foundational work.
 
-## Migration from the Original Card
+## Migration from Previous Versions
 
-If you're upgrading from the original `minimalistic-area-card`:
+If you're upgrading from a previous version of this card:
 
-- Change the card type from `custom:minimalistic-area-card` to `custom:better-minimalistic-area-card`
-- All other configuration options remain the same
+- **New tag (recommended)**: Use `custom:area-overview-card` for new configurations
+- **Old tags still work**: Existing configurations using `custom:better-minimalistic-area-card` or `custom:minimalistic-area-card` will continue to work without any changes
+- All configuration options remain the same
 
 ## Usage
 
-After installation and adding the resource, you can add the card to your dashboard:
+After installation and adding the resource, you can add the card to your dashboard.
 
 ### Basic Example
 
 ```yaml
-type: custom:better-minimalistic-area-card
+type: custom:area-overview-card
 title: Living Room
 area: living_room
 ```
@@ -117,7 +120,7 @@ This minimal configuration will automatically display all entities assigned to t
 ### Advanced Example
 
 ```yaml
-type: custom:better-minimalistic-area-card
+type: custom:area-overview-card
 title: Living Room
 image: /local/img/living-room.jpg
 area: living_room
@@ -143,7 +146,7 @@ entities:
 ### Camera Background Example
 
 ```yaml
-type: custom:better-minimalistic-area-card
+type: custom:area-overview-card
 title: Front Door
 camera_image: camera.front_door
 camera_view: live
@@ -155,13 +158,15 @@ entities:
   - entity: lock.front_door
 ```
 
+> **Backwards Compatibility Note:** The old card tags `custom:better-minimalistic-area-card` and `custom:minimalistic-area-card` are still supported for existing configurations.
+
 ## Configuration Options
 
 ### Card Options
 
 | Name | Type | Default | Description |
 |------|------|---------|-------------|
-| `type` | string | **Required** | Must be `custom:better-minimalistic-area-card` |
+| `type` | string | **Required** | Must be `custom:area-overview-card` (or `custom:better-minimalistic-area-card` for backwards compatibility) |
 | `title` | string | optional | Card title text |
 | `area` | string | optional | Area ID from Home Assistant (auto-populates entities) |
 | `image` | string | optional | Background image URL (e.g., `/local/img/room.jpg`) |
@@ -438,15 +443,16 @@ This repository is configured for HACS distribution with the following settings 
 
 ```json
 {
-  "name": "Better Minimalistic Area Card",
+  "name": "Area Overview Card",
   "category": "plugin",
   "render_readme": true,
   "filename": "dist/better-minimalistic-area-card.js"
 }
 ```
 
+- **name**: "Area Overview Card" - The display name shown in HACS
 - **category**: `"plugin"` - Indicates this is a Lovelace custom card (frontend plugin)
-- **filename**: Points to the built JavaScript bundle in the `dist/` directory
+- **filename**: Points to the built JavaScript bundle in the `dist/` directory (kept as `better-minimalistic-area-card.js` for backwards compatibility)
 - **render_readme**: Displays this README in HACS
 
 ## License

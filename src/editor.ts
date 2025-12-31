@@ -4,8 +4,8 @@ import { MinimalisticAreaCardConfig, Alignment, EntitySection, ColorValue } from
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { cssToRGB } from './utils';
 
-@customElement('better-minimalistic-area-card-editor')
-export class BetterMinimalisticAreaCardEditor extends LitElement implements LovelaceCardEditor {
+@customElement('area-overview-card-editor')
+export class AreaOverviewCardEditor extends LitElement implements LovelaceCardEditor {
   @property({ attribute: false }) public hass?: HomeAssistant | undefined;
   @state() private config!: MinimalisticAreaCardConfig;
   @state() private showVisualEditor = true;
@@ -47,8 +47,8 @@ export class BetterMinimalisticAreaCardEditor extends LitElement implements Love
     return html`
       <div class="instructions">
         For instructions, visit the
-        <a href="https://github.com/LesTR/homeassistant-minimalistic-area-card" target="_blank"
-          >Better Minimalistic Area Card Examples and Docs</a
+        <a href="https://github.com/phdindota/homeassistant-area-card-custom" target="_blank"
+          >Area Overview Card Examples and Docs</a
         >.
       </div>
       <div class="yaml-editor">
@@ -811,4 +811,12 @@ export class BetterMinimalisticAreaCardEditor extends LitElement implements Love
       width: 100%;
     }
   `;
+}
+
+// Register backwards-compatible editor aliases
+if (!customElements.get('better-minimalistic-area-card-editor')) {
+  customElements.define('better-minimalistic-area-card-editor', AreaOverviewCardEditor);
+}
+if (!customElements.get('minimalistic-area-card-editor')) {
+  customElements.define('minimalistic-area-card-editor', AreaOverviewCardEditor);
 }

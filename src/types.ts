@@ -11,6 +11,8 @@ import {
 import { name } from '../package.json';
 declare global {
   interface HTMLElementTagNameMap {
+    'area-overview-card-editor': LovelaceCardEditor;
+    'better-minimalistic-area-card-editor': LovelaceCardEditor;
     'minimalistic-area-card-editor': LovelaceCardEditor;
     'hui-error-card': LovelaceCard;
   }
