@@ -55,16 +55,18 @@ export interface MinimalisticAreaCardConfig extends LovelaceCardConfig {
   grid_options?: LovelaceCardGridOptions;
 }
 
+export type ColorValue = string | { r: number; g: number; b: number };
+
 export interface StyleOptions {
-  color?: string;
-  background_color?: string;
-  shadow_color?: string;
-  sensors_color?: string;
+  color?: ColorValue;
+  background_color?: ColorValue;
+  shadow_color?: ColorValue;
+  sensors_color?: ColorValue;
   sensors_icon_size?: string;
   sensors_button_size?: string;
   buttons_icon_size?: string;
   buttons_button_size?: string;
-  buttons_color?: string;
+  buttons_color?: ColorValue;
 }
 
 export interface LovelaceCardGridOptions {
@@ -95,7 +97,7 @@ export type ExtendedEntityConfig = EntitiesCardEntityConfig & {
   force_dialog?: boolean;
   hide?: boolean;
   attribute?: string;
-  color?: string;
+  color?: ColorValue;
   state?: EntityStateConfig[];
   section?: EntitySection;
   unit_of_measurement?: string;
@@ -107,7 +109,7 @@ export type EntityStateConfig = {
   operator?: '<' | '<=' | '==' | '>=' | '>' | '!=' | 'regex' | 'template' | 'default';
   value: string;
   icon?: string;
-  color?: string;
+  color?: ColorValue;
   hide?: boolean;
   hide_unavailable?: boolean;
 };

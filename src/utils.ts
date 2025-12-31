@@ -1,5 +1,12 @@
 import { html } from 'lit';
-import { cardType, cssCardVariablesPrefix, EntityStateConfig, HomeAssistantExt, StyleOptions } from './types';
+import {
+  cardType,
+  cssCardVariablesPrefix,
+  ColorValue,
+  EntityStateConfig,
+  HomeAssistantExt,
+  StyleOptions,
+} from './types';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function evalTemplate(entity: string | null | undefined, template: string, hass: HomeAssistantExt): any {
@@ -201,10 +208,78 @@ export function buildCssVariables(
     if (cfg[m.key]) {
       const value = getOrDefault(entityId, cfg[m.key], hass, undefined);
       if (value !== undefined) {
-        result[m.ccs] = value;
+        result[m.ccs] = colorValueToCSS(value);
       }
     }
   });
 
   return result;
+}
+
+/**
+ * Convert a ColorValue (RGB object or string) to a CSS color string
+ */
+export function colorValueToCSS(color: ColorValue | undefined): string | undefined {
+  if (!color) {
+    return undefined;
+  }
+
+  if (typeof color === 'string') {
+    return color;
+  }
+
+  // Convert RGB object to rgba string
+  return `rgb(${color.r}, ${color.g}, ${color.b})`;
+}
+
+/**
+ * Convert a CSS color string to an RGB object
+ * Handles hex, rgb, rgba formats
+ */
+export function cssToRGB(color: string | undefined): { r: number; g: number; b: number } | undefined {
+  if (!color) {
+    return undefined;
+  }
+
+  // Remove whitespace
+  const trimmed = color.trim();
+
+  // Handle hex format (#RGB or #RRGGBB)
+  if (trimmed.startsWith('#')) {
+    const hex = trimmed.substring(1);
+    let r, g, b;
+
+    if (hex.length === 3) {
+      // #RGB format
+      r = parseInt(hex[0] + hex[0], 16);
+      g = parseInt(hex[1] + hex[1], 16);
+      b = parseInt(hex[2] + hex[2], 16);
+    } else if (hex.length === 6) {
+      // #RRGGBB format
+      r = parseInt(hex.substring(0, 2), 16);
+      g = parseInt(hex.substring(2, 4), 16);
+      b = parseInt(hex.substring(4, 6), 16);
+    } else {
+      return undefined;
+    }
+
+    // Validate that we got valid numbers
+    if (isNaN(r) || isNaN(g) || isNaN(b)) {
+      return undefined;
+    }
+
+    return { r, g, b };
+  }
+
+  // Handle rgb() or rgba() format
+  const rgbMatch = trimmed.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+  if (rgbMatch) {
+    return {
+      r: parseInt(rgbMatch[1]),
+      g: parseInt(rgbMatch[2]),
+      b: parseInt(rgbMatch[3]),
+    };
+  }
+
+  return undefined;
 }
