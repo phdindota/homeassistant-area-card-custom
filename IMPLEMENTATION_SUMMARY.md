@@ -1,7 +1,40 @@
 # Visual GUI Editor - Implementation Summary
 
 ## Overview
-This implementation adds a comprehensive visual GUI editor to the Better Minimalistic Area Card, replacing the YAML-only configuration interface with a user-friendly form-based editor while maintaining full backward compatibility.
+
+This document describes the implementation of a comprehensive visual GUI editor for the **Better Minimalistic Area Card** - a Home Assistant Lovelace custom card (frontend-only, no backend integration).
+
+### What This Project Is
+
+- **A Lovelace custom card** that displays area information with sensors and controllable entities
+- **Frontend-only implementation** - no backend integration, no server-side component
+- **Distributed via HACS** as a plugin (custom card category)
+- **Built bundle** located in `dist/better-minimalistic-area-card.js`
+
+### What This Project Is Not
+
+- ❌ Not a full dashboard template
+- ❌ Not a Home Assistant integration (no custom component)
+- ❌ Not a theme
+- ❌ Not a standalone dashboard
+
+### Architecture
+
+```
+Source Code (src/)
+    ↓ (TypeScript compilation & bundling via Rollup)
+Built Bundle (dist/better-minimalistic-area-card.js)
+    ↓ (Distributed via HACS using hacs.json configuration)
+Installed in Home Assistant
+    ↓ (Loaded as Lovelace resource)
+Available as custom card in dashboards
+```
+
+The card is registered as `custom:better-minimalistic-area-card` and can be added to any Lovelace dashboard.
+
+## Visual Editor Implementation
+
+The visual editor replaces the YAML-only configuration interface with a user-friendly form-based editor while maintaining full backward compatibility.
 
 ## Key Features Implemented
 
