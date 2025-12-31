@@ -10,24 +10,38 @@ A minimalistic area card **Lovelace custom card** for Home Assistant to have a c
 
 ## Installation
 
-### HACS
+### HACS (Recommended)
 
-Better Minimalistic Area Card is available in [HACS][hacs] (Home Assistant Community Store) as a **Frontend plugin**.
+Better Minimalistic Area Card is available in [HACS][hacs] (Home Assistant Community Store) as a **custom Lovelace card**.
 
-Use this link to directly go to the repository in HACS
-
-[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=LesTR&repository=homeassistant-minimalistic-area-card)
-
-_or_
+#### Installation Steps
 
 1. Install HACS if you don't have it already
 2. Open HACS in Home Assistant
-3. Go to "Frontend" section
-4. Click the "+ Explore & Download Repositories" button
-5. Search for "Better Minimalistic Area Card"
-6. Click the download button. ⬇️
+3. Click the 3-dot menu in the top right corner
+4. Select "Custom repositories"
+5. Add the repository URL: [https://github.com/phdindota/homeassistant-area-card-custom](https://github.com/phdindota/homeassistant-area-card-custom)
+6. For the category, select:
+   - **"Plugin"** (if available - this is the correct category for custom Lovelace cards)
+   - **"Lovelace"** or **"Frontend"** (if your HACS version shows these options)
+   
+   > **Note:** The exact category name may vary by HACS version. Choose the option that corresponds to custom cards/frontend plugins.
 
-After installation via HACS, the card will be available at `/hacsfiles/homeassistant-minimalistic-area-card/dist/better-minimalistic-area-card.js` and HACS will automatically add it as a Lovelace resource.
+7. Click "Add"
+8. Navigate to the Frontend/Plugins section in HACS and search for "Better Minimalistic Area Card"
+9. Click the download button ⬇️
+
+After installation via HACS, the card will be available at `/hacsfiles/homeassistant-area-card-custom/dist/better-minimalistic-area-card.js` and HACS will automatically add it as a Lovelace resource.
+
+#### Adding as a Lovelace Resource
+
+If you need to manually add the resource (though HACS usually does this automatically):
+
+```yaml
+resources:
+  - url: /hacsfiles/homeassistant-area-card-custom/dist/better-minimalistic-area-card.js
+    type: module
+```
 
 ### Manual
 
@@ -44,7 +58,7 @@ After installation via HACS, the card will be available at `/hacsfiles/homeassis
          type: module
      ```
 
-This is a fork of [junalmeida/homeassistant-minimalistic-area-card](https://github.com/junalmeida/homeassistant-minimalistic-area-card), and I would like to thank the original author. The reason for renaming can be found in [issue 128](https://github.com/LesTR/homeassistant-minimalistic-area-card/issues/128).
+This is a fork of [LesTR/homeassistant-minimalistic-area-card](https://github.com/LesTR/homeassistant-minimalistic-area-card) (which itself is a fork of [junalmeida/homeassistant-minimalistic-area-card](https://github.com/junalmeida/homeassistant-minimalistic-area-card)), and we would like to thank the original authors.
 
 ## Migration from the original card
 
@@ -199,11 +213,11 @@ Templates supports a cople of function which can be used in templates. For concr
 
 <!-- Badges -->
 
-[license-shield]: https://img.shields.io/github/license/lestr/homeassistant-minimalistic-area-card.svg?style=for-the-badge
-[releases-shield]: https://img.shields.io/github/release/lestr/homeassistant-minimalistic-area-card.svg?style=for-the-badge
-[releases]: https://github.com/lestr/homeassistant-minimalistic-area-card/releases
+[license-shield]: https://img.shields.io/github/license/phdindota/homeassistant-area-card-custom.svg?style=for-the-badge
+[releases-shield]: https://img.shields.io/github/release/phdindota/homeassistant-area-card-custom.svg?style=for-the-badge
+[releases]: https://github.com/phdindota/homeassistant-area-card-custom/releases
 
 <!-- References -->
 
 [hacs]: https://hacs.xyz
-[release-url]: https://github.com/LesTR/homeassistant-minimalistic-area-card/releases
+[release-url]: https://github.com/phdindota/homeassistant-area-card-custom/releases
