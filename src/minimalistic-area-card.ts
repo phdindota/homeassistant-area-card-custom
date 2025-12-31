@@ -39,7 +39,7 @@ import {
 import { HassEntity } from 'home-assistant-js-websocket/dist';
 import { version as pkgVersion } from '../package.json';
 import { customElement } from 'lit/decorators.js';
-import { buildCssVariables, deprecatedWarning, filterStateConfigs, getOrDefault } from './utils';
+import { buildCssVariables, colorValueToCSS, deprecatedWarning, filterStateConfigs, getOrDefault } from './utils';
 
 /* eslint no-console: 0 */
 console.info(
@@ -478,7 +478,7 @@ export class MinimalisticAreaCard extends LitElement implements LovelaceCard {
               : this.config.state_color !== undefined
                 ? this.config.state_color
                 : true}
-            .color=${color}
+            .color=${colorValueToCSS(color) || color}
           ></state-badge>
         </ha-icon-button>
         ${isSensor && entityConf.show_state
