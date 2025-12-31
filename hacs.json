@@ -1,5 +1,6 @@
 {
   "name": "Better Minimalistic Area Card",
+  "category": "plugin",
   "render_readme": true,
-  "filename": "better-minimalistic-area-card.js"
+  "filename": "dist/better-minimalistic-area-card.js"
 }
