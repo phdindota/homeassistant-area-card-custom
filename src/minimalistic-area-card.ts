@@ -926,15 +926,19 @@ export class MinimalisticAreaCard extends LitElement implements LovelaceCard {
 export class AreaOverviewCard extends MinimalisticAreaCard {}
 
 // Register backwards-compatible aliases for existing users
-// Note: 'homeassistant-area-card-custom' and 'better-minimalistic-area-card' use AreaOverviewCard (no deprecation warning)
+// Each alias needs its own class to avoid "constructor already registered" errors
+// Note: 'homeassistant-area-card-custom' and 'better-minimalistic-area-card' don't show deprecation warnings
 // while 'minimalistic-area-card' uses DeprecatedMinimalisticAreaCard (with warning)
 // to distinguish between the more recent tags and the very old tag
+
 if (!customElements.get('homeassistant-area-card-custom')) {
-  customElements.define('homeassistant-area-card-custom', AreaOverviewCard);
+  class HomeAssistantAreaCardCustom extends AreaOverviewCard {}
+  customElements.define('homeassistant-area-card-custom', HomeAssistantAreaCardCustom);
 }
 
 if (!customElements.get('better-minimalistic-area-card')) {
-  customElements.define('better-minimalistic-area-card', AreaOverviewCard);
+  class BetterMinimalisticAreaCard extends AreaOverviewCard {}
+  customElements.define('better-minimalistic-area-card', BetterMinimalisticAreaCard);
 }
 
 /** @deprecated replaced by AreaOverviewCard */

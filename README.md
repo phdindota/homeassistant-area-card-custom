@@ -180,25 +180,25 @@ entities:
 
 ### Card Options
 
-| Name               | Type    | Default      | Description                                                                                                                                                |
-| ------------------ | ------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Name               | Type    | Default      | Description                                                                                                                                              |
+| ------------------ | ------- | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `type`             | string  | **Required** | Must be `custom:area-overview-card` (also supports `custom:homeassistant-area-card-custom` and `custom:better-minimalistic-area-card` for compatibility) |
-| `title`            | string  | optional     | Card title text                                                                                             |
-| `area`             | string  | optional     | Area ID from Home Assistant (auto-populates entities)                                                       |
-| `image`            | string  | optional     | Background image URL (e.g., `/local/img/room.jpg`)                                                          |
-| `camera_image`     | string  | optional     | Camera entity ID for live background                                                                        |
-| `camera_view`      | string  | `auto`       | Camera view mode: `auto` or `live`                                                                          |
-| `icon`             | string  | optional     | Override area icon (e.g., `mdi:sofa`)                                                                       |
-| `show_area_icon`   | boolean | `false`      | Show area icon in title                                                                                     |
-| `shadow`           | boolean | `false`      | Add drop shadow to icons for better contrast                                                                |
-| `hide_unavailable` | boolean | `false`      | Hide unavailable entities                                                                                   |
-| `state_color`      | boolean | `true`       | Enable Home Assistant colors for entity states                                                              |
-| `darken_image`     | boolean | `false`      | Reduce background image brightness                                                                          |
-| `force_dialog`     | boolean | `false`      | Force more-info dialog instead of toggle for buttons                                                        |
-| `tap_action`       | object  | optional     | Action configuration for card tap (see [Actions](#actions))                                                 |
-| `entities`         | list    | optional     | List of entities (if omitted, shows all area entities)                                                      |
-| `style`            | object  | optional     | Custom styling options (see [Style Options](#style-options))                                                |
-| `align`            | object  | optional     | Text alignment options (see [Alignment](#alignment))                                                        |
+| `title`            | string  | optional     | Card title text                                                                                                                                          |
+| `area`             | string  | optional     | Area ID from Home Assistant (auto-populates entities)                                                                                                    |
+| `image`            | string  | optional     | Background image URL (e.g., `/local/img/room.jpg`)                                                                                                       |
+| `camera_image`     | string  | optional     | Camera entity ID for live background                                                                                                                     |
+| `camera_view`      | string  | `auto`       | Camera view mode: `auto` or `live`                                                                                                                       |
+| `icon`             | string  | optional     | Override area icon (e.g., `mdi:sofa`)                                                                                                                    |
+| `show_area_icon`   | boolean | `false`      | Show area icon in title                                                                                                                                  |
+| `shadow`           | boolean | `false`      | Add drop shadow to icons for better contrast                                                                                                             |
+| `hide_unavailable` | boolean | `false`      | Hide unavailable entities                                                                                                                                |
+| `state_color`      | boolean | `true`       | Enable Home Assistant colors for entity states                                                                                                           |
+| `darken_image`     | boolean | `false`      | Reduce background image brightness                                                                                                                       |
+| `force_dialog`     | boolean | `false`      | Force more-info dialog instead of toggle for buttons                                                                                                     |
+| `tap_action`       | object  | optional     | Action configuration for card tap (see [Actions](#actions))                                                                                              |
+| `entities`         | list    | optional     | List of entities (if omitted, shows all area entities)                                                                                                   |
+| `style`            | object  | optional     | Custom styling options (see [Style Options](#style-options))                                                                                             |
+| `align`            | object  | optional     | Text alignment options (see [Alignment](#alignment))                                                                                                     |
 
 ### Style Options
 
