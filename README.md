@@ -4,7 +4,7 @@
 [![License][license-shield]](LICENSE.md)
 [![hacs_badge](https://img.shields.io/badge/HACS-Default-orange.svg?style=for-the-badge)](https://github.com/custom-components/hacs)
 
-A minimalistic area card to have a control panel of your house on your dashboard. This card will show numeric sensors with its value, and binary sensors with only the icon. Switches and lights will have their own button that you can tap/click to toggle, or tap/click and hold to see detailed information.
+A minimalistic area card **Lovelace custom card** for Home Assistant to have a control panel of your house on your dashboard. This card will show numeric sensors with its value, and binary sensors with only the icon. Switches and lights will have their own button that you can tap/click to toggle, or tap/click and hold to see detailed information.
 
 ![Sample preview](docs/sample.png)
 
@@ -12,7 +12,7 @@ A minimalistic area card to have a control panel of your house on your dashboard
 
 ### HACS
 
-Better Minimalistic Area Card is available in [HACS][hacs] (Home Assistant Community Store).
+Better Minimalistic Area Card is available in [HACS][hacs] (Home Assistant Community Store) as a **Frontend plugin**.
 
 Use this link to directly go to the repository in HACS
 
@@ -22,8 +22,12 @@ _or_
 
 1. Install HACS if you don't have it already
 2. Open HACS in Home Assistant
-3. Search for "Better Minimalistic Area Card"
-4. Click the download button. ⬇️
+3. Go to "Frontend" section
+4. Click the "+ Explore & Download Repositories" button
+5. Search for "Better Minimalistic Area Card"
+6. Click the download button. ⬇️
+
+After installation via HACS, the card will be available at `/hacsfiles/homeassistant-minimalistic-area-card/dist/better-minimalistic-area-card.js` and HACS will automatically add it as a Lovelace resource.
 
 ### Manual
 
