@@ -1,6 +1,6 @@
 import { fireEvent, HomeAssistant, LovelaceCardConfig, LovelaceCardEditor } from '@dermotduffy/custom-card-helpers';
 import { css, html, LitElement, TemplateResult } from 'lit';
-import { MinimalisticAreaCardConfig, Alignment, EntitySection } from './types';
+import { MinimalisticAreaCardConfig, Alignment, EntitySection, ColorValue } from './types';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { cssToRGB } from './utils';
 
