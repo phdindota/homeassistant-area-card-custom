@@ -9,7 +9,7 @@ This document describes the implementation of a comprehensive visual GUI editor 
 - **A Lovelace custom card** named "Area Overview Card" that displays area information with sensors and controllable entities
 - **Frontend-only implementation** - no backend integration, no server-side component
 - **Distributed via HACS** as a plugin (custom card category)
-- **Built bundle** located in `dist/better-minimalistic-area-card.js` (filename kept for backwards compatibility)
+- **Built bundle** located in `dist/homeassistant-area-card-custom.js`
 
 ### What This Project Is Not
 
@@ -23,14 +23,14 @@ This document describes the implementation of a comprehensive visual GUI editor 
 ```
 Source Code (src/)
     ↓ (TypeScript compilation & bundling via Rollup)
-Built Bundle (dist/better-minimalistic-area-card.js)
+Built Bundle (dist/homeassistant-area-card-custom.js)
     ↓ (Distributed via HACS using hacs.json configuration)
 Installed in Home Assistant
     ↓ (Loaded as Lovelace resource)
 Available as custom card in dashboards
 ```
 
-The card is registered as `custom:area-overview-card` (primary tag) with backwards-compatible aliases `custom:better-minimalistic-area-card` and `custom:minimalistic-area-card`, and can be added to any Lovelace dashboard.
+The card is registered as `custom:area-overview-card` (primary tag) with backwards-compatible aliases `custom:homeassistant-area-card-custom`, `custom:better-minimalistic-area-card`, and `custom:minimalistic-area-card`, and can be added to any Lovelace dashboard.
 
 ## Visual Editor Implementation
 

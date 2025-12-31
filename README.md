@@ -47,10 +47,8 @@ This card is distributed via [HACS][hacs] (Home Assistant Community Store) as a 
 After installing via HACS, the card JavaScript file will be available at:
 
 ```
-/hacsfiles/homeassistant-area-card-custom/dist/better-minimalistic-area-card.js
+/hacsfiles/homeassistant-area-card-custom/homeassistant-area-card-custom.js
 ```
-
-> **Note:** The JavaScript filename remains `better-minimalistic-area-card.js` to maintain compatibility with existing installations.
 
 HACS should automatically register this as a Lovelace resource. If you need to add it manually:
 
@@ -58,38 +56,40 @@ HACS should automatically register this as a Lovelace resource. If you need to a
 
 1. Go to _Settings_ → _Dashboards_ → _⋮ Menu_ → _Resources_
 2. Click _Add Resource_
-3. Set URL: `/hacsfiles/homeassistant-area-card-custom/dist/better-minimalistic-area-card.js`
+3. Set URL: `/hacsfiles/homeassistant-area-card-custom/homeassistant-area-card-custom.js`
 4. Set Resource type: `JavaScript Module`
 
 **Using YAML:**
 
 ```yaml
 resources:
-  - url: /hacsfiles/homeassistant-area-card-custom/dist/better-minimalistic-area-card.js
+  - url: /hacsfiles/homeassistant-area-card-custom/homeassistant-area-card-custom.js
     type: module
 ```
 
 > **Note:** If you don't see the Resources menu in the UI, enable _Advanced Mode_ in your User Profile settings.
+>
+> **Migration Note:** If you previously installed this card, you may need to update your resource URL from `/hacsfiles/homeassistant-area-card-custom/dist/better-minimalistic-area-card.js` to the new path above.
 
 ### Manual Installation
 
 If you prefer not to use HACS:
 
-1. **Download** the `better-minimalistic-area-card.js` file from the [latest release][release-url]
+1. **Download** the `homeassistant-area-card-custom.js` file from the [latest release][release-url]
 2. **Copy** the file to your Home Assistant `config/www/` folder (create the folder if it doesn't exist)
 3. **Add the resource** to your Lovelace configuration:
 
    **Using UI:**
    - Go to _Settings_ → _Dashboards_ → _⋮ Menu_ → _Resources_
    - Click _Add Resource_
-   - Set URL: `/local/better-minimalistic-area-card.js`
+   - Set URL: `/local/homeassistant-area-card-custom.js`
    - Set Resource type: `JavaScript Module`
 
    **Using YAML:**
 
    ```yaml
    resources:
-     - url: /local/better-minimalistic-area-card.js
+     - url: /local/homeassistant-area-card-custom.js
        type: module
    ```
 
@@ -103,9 +103,21 @@ This is a fork of [LesTR/homeassistant-minimalistic-area-card](https://github.co
 
 If you're upgrading from a previous version of this card:
 
-- **New tag (recommended)**: Use `custom:area-overview-card` for new configurations
-- **Old tags still work**: Existing configurations using `custom:better-minimalistic-area-card` or `custom:minimalistic-area-card` will continue to work without any changes
-- All configuration options remain the same
+### Resource URL Update Required
+
+**Important:** The resource URL has changed. After updating via HACS, update your resource configuration:
+
+- **Old URL:** `/hacsfiles/homeassistant-area-card-custom/dist/better-minimalistic-area-card.js`
+- **New URL:** `/hacsfiles/homeassistant-area-card-custom/homeassistant-area-card-custom.js`
+
+Go to _Settings_ → _Dashboards_ → _⋮ Menu_ → _Resources_ and update the URL for this card.
+
+### Card Type Tags
+
+- **Recommended tag:** `custom:area-overview-card` (primary tag for new configurations)
+- **Also supported:** `custom:homeassistant-area-card-custom` (matches the new filename)
+- **Legacy tags still work:** `custom:better-minimalistic-area-card` and `custom:minimalistic-area-card` will continue to work
+- All configuration options remain the same across all tags
 
 ## Usage
 
@@ -162,15 +174,15 @@ entities:
   - entity: lock.front_door
 ```
 
-> **Backwards Compatibility Note:** The old card tags `custom:better-minimalistic-area-card` and `custom:minimalistic-area-card` are still supported for existing configurations.
+> **Backwards Compatibility Note:** The card tags `custom:homeassistant-area-card-custom`, `custom:better-minimalistic-area-card`, and `custom:minimalistic-area-card` are all supported for existing configurations, though `custom:area-overview-card` is recommended for new setups.
 
 ## Configuration Options
 
 ### Card Options
 
-| Name               | Type    | Default      | Description                                                                                                 |
-| ------------------ | ------- | ------------ | ----------------------------------------------------------------------------------------------------------- |
-| `type`             | string  | **Required** | Must be `custom:area-overview-card` (or `custom:better-minimalistic-area-card` for backwards compatibility) |
+| Name               | Type    | Default      | Description                                                                                                                                                |
+| ------------------ | ------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `type`             | string  | **Required** | Must be `custom:area-overview-card` (also supports `custom:homeassistant-area-card-custom` and `custom:better-minimalistic-area-card` for compatibility) |
 | `title`            | string  | optional     | Card title text                                                                                             |
 | `area`             | string  | optional     | Area ID from Home Assistant (auto-populates entities)                                                       |
 | `image`            | string  | optional     | Background image URL (e.g., `/local/img/room.jpg`)                                                          |
