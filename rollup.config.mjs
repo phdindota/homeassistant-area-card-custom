@@ -39,7 +39,7 @@ export default [
     strictDeprecations: true,
     output: {
       format: 'es',
-      file: 'dist/better-minimalistic-area-card.js',
+      file: 'dist/homeassistant-area-card-custom.js',
       inlineDynamicImports: true,
     },
     plugins: [...plugins],

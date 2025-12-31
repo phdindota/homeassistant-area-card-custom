@@ -2,5 +2,5 @@
   "name": "Area Overview Card",
   "category": "plugin",
   "render_readme": true,
-  "filename": "dist/better-minimalistic-area-card.js"
+  "filename": "dist/homeassistant-area-card-custom.js"
 }

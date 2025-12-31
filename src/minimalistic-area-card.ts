@@ -925,12 +925,20 @@ export class MinimalisticAreaCard extends LitElement implements LovelaceCard {
 @customElement('area-overview-card')
 export class AreaOverviewCard extends MinimalisticAreaCard {}
 
-// Register backwards-compatible alias for existing users
-// Note: 'better-minimalistic-area-card' uses AreaOverviewCard (no deprecation warning)
+// Register backwards-compatible aliases for existing users
+// Each alias needs its own class to avoid "constructor already registered" errors
+// Note: 'homeassistant-area-card-custom' and 'better-minimalistic-area-card' don't show deprecation warnings
 // while 'minimalistic-area-card' uses DeprecatedMinimalisticAreaCard (with warning)
-// to distinguish between the more recent tag and the very old tag
+// to distinguish between the more recent tags and the very old tag
+
+if (!customElements.get('homeassistant-area-card-custom')) {
+  class HomeAssistantAreaCardCustom extends AreaOverviewCard {}
+  customElements.define('homeassistant-area-card-custom', HomeAssistantAreaCardCustom);
+}
+
 if (!customElements.get('better-minimalistic-area-card')) {
-  customElements.define('better-minimalistic-area-card', AreaOverviewCard);
+  class BetterMinimalisticAreaCard extends AreaOverviewCard {}
+  customElements.define('better-minimalistic-area-card', BetterMinimalisticAreaCard);
 }
 
 /** @deprecated replaced by AreaOverviewCard */
@@ -947,6 +955,7 @@ export class DeprecatedMinimalisticAreaCard extends MinimalisticAreaCard {
 declare global {
   interface HTMLElementTagNameMap {
     'area-overview-card': AreaOverviewCard;
+    'homeassistant-area-card-custom': AreaOverviewCard;
     'better-minimalistic-area-card': AreaOverviewCard;
     'minimalistic-area-card': DeprecatedMinimalisticAreaCard;
   }
