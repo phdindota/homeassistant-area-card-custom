@@ -11,6 +11,7 @@ The Area Overview Card is a **custom card** that can be placed in any Home Assis
 When a user opens the card editor in Home Assistant, they will see:
 
 ### Top Section: Editor Mode Toggle
+
 ```
 ┌─────────────────────────────────────────────┐
 │  [Visual Editor] [YAML Editor]              │
@@ -20,6 +21,7 @@ When a user opens the card editor in Home Assistant, they will see:
 ### Expandable Sections (when Visual Editor is selected)
 
 #### 1. General Settings (expandable panel)
+
 ```
 ┌─────────────────────────────────────────────┐
 │ ⚙ General Settings                      [v] │
@@ -41,6 +43,7 @@ When a user opens the card editor in Home Assistant, they will see:
 ```
 
 #### 2. Style Settings (expandable panel with RGB Color Pickers)
+
 ```
 ┌─────────────────────────────────────────────┐
 │ 🎨 Style                                 [v] │
@@ -62,6 +65,7 @@ When a user opens the card editor in Home Assistant, they will see:
 ```
 
 When clicking on any color field (🎨), a color picker dialog appears:
+
 ```
 ┌─────────────────────┐
 │  Color Picker       │
@@ -79,6 +83,7 @@ When clicking on any color field (🎨), a color picker dialog appears:
 ```
 
 #### 3. Alignment Settings (expandable panel)
+
 ```
 ┌─────────────────────────────────────────────┐
 │ ⚙ Alignment                              [v] │
@@ -91,6 +96,7 @@ When clicking on any color field (🎨), a color picker dialog appears:
 ```
 
 #### 4. Actions Settings (expandable panel)
+
 ```
 ┌─────────────────────────────────────────────┐
 │ 👆 Actions                               [v] │
@@ -105,6 +111,7 @@ When clicking on any color field (🎨), a color picker dialog appears:
 ```
 
 #### 5. Entities Settings (expandable panel)
+
 ```
 ┌─────────────────────────────────────────────┐
 │ 📦 Entities                              [v] │
@@ -134,6 +141,7 @@ When clicking on any color field (🎨), a color picker dialog appears:
 ## Key Visual Features
 
 ### Color Picker Integration
+
 - Each color field shows a small color swatch preview
 - Clicking opens Home Assistant's native RGB color picker
 - Color picker shows:
@@ -143,19 +151,23 @@ When clicking on any color field (🎨), a color picker dialog appears:
   - Support for millions of colors
 
 ### Responsive Design
+
 - All sections collapse/expand for better space management
 - Form fields are full-width for easy input
 - Helper text appears below fields when needed
 - Error states shown inline with fields
 
 ### Entity Management
+
 - Each entity gets its own card within the list
 - Delete button (🗑) on each entity
 - Entity details expand when an entity is selected
 - Add button at bottom to add new entities
 
 ### Toggle Switch (Top)
+
 When switching to YAML editor, the view changes to:
+
 ```
 ┌─────────────────────────────────────────────┐
 │  [Visual Editor] [YAML Editor]              │
@@ -200,6 +212,7 @@ documentation on GitHub.
 ## Advantages Over YAML-Only Editor
 
 ### Before (YAML only):
+
 - User must know exact property names
 - Must understand YAML syntax
 - Color values need to be typed as hex codes or color names
@@ -208,6 +221,7 @@ documentation on GitHub.
 - No visual feedback
 
 ### After (Visual Editor):
+
 - Point-and-click interface
 - Organized sections with clear labels
 - Visual color picker for all colors

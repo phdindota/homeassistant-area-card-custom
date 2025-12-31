@@ -43,6 +43,7 @@ The visual editor replaces the YAML-only configuration interface with a user-fri
 The editor is organized into five expandable sections for better usability:
 
 #### **General Settings**
+
 - Title input field
 - Image URL input (with helper text)
 - Area dropdown (auto-populated from Home Assistant areas)
@@ -57,7 +58,9 @@ The editor is organized into five expandable sections for better usability:
   - State Color
 
 #### **Style Settings**
+
 All style options now feature RGB color pickers:
+
 - Color (main text and icon color) - RGB picker
 - Background Color - RGB picker
 - Shadow Color - RGB picker
@@ -69,20 +72,26 @@ All style options now feature RGB color pickers:
 - Buttons Button Size - Text input (default: 48px)
 
 #### **Alignment Settings**
+
 Dropdown selectors for:
+
 - Title Alignment (left/center/right)
 - Sensors Alignment (left/center/right)
 - Buttons Alignment (left/center/right)
 - Title Entities Alignment (left/right)
 
 #### **Actions Settings**
+
 Action selectors for:
+
 - Tap Action
 - Hold Action
 - Double Tap Action
 
 #### **Entities Settings**
+
 Full entity list management:
+
 - Add/Remove entity buttons
 - For each entity:
   - Entity picker
@@ -95,6 +104,7 @@ Full entity list management:
 ### 2. RGB Color Picker Integration
 
 The implementation uses Home Assistant's native `color_rgb` selector which provides:
+
 - Visual color wheel for intuitive color selection
 - Support for millions of colors
 - RGB value display
@@ -110,6 +120,7 @@ The implementation uses Home Assistant's native `color_rgb` selector which provi
 ### 4. Backward Compatibility
 
 The implementation maintains full backward compatibility:
+
 - Existing YAML configurations work without modification
 - String-based colors (hex, rgb, rgba, named colors) continue to work
 - New RGB object format (`{r: number, g: number, b: number}`) is also supported
@@ -120,6 +131,7 @@ The implementation maintains full backward compatibility:
 ### Type System Updates
 
 **ColorValue Type:**
+
 ```typescript
 export type ColorValue = string | { r: number; g: number; b: number };
 ```
@@ -131,11 +143,13 @@ All color properties in `StyleOptions`, `ExtendedEntityConfig`, and `EntityState
 Two new utility functions handle color format conversions:
 
 **colorValueToCSS()**
+
 - Converts RGB objects or strings to CSS color strings
 - Used when applying styles to the card
 - Handles both input formats transparently
 
 **cssToRGB()**
+
 - Converts CSS color strings to RGB objects
 - Supports hex (#RGB, #RRGGBB), rgb(), and rgba() formats
 - Used when loading existing configurations into the color picker
@@ -143,6 +157,7 @@ Two new utility functions handle color format conversions:
 ### Security Enhancements
 
 The `_updateConfigValue` function includes comprehensive protection against prototype pollution:
+
 - Guards against dangerous property names (`__proto__`, `constructor`, `prototype`)
 - Uses safe property access with `Object.prototype.hasOwnProperty.call()`
 - Validates all property paths before assignment
@@ -151,6 +166,7 @@ The `_updateConfigValue` function includes comprehensive protection against prot
 ### Test Coverage
 
 Added comprehensive test suite for color conversion utilities:
+
 - RGB to CSS conversion tests
 - CSS to RGB conversion tests (hex, rgb, rgba formats)
 - Round-trip conversion tests
@@ -171,6 +187,7 @@ Added comprehensive test suite for color conversion utilities:
 ### For Developers
 
 The editor is implemented in `src/editor.ts`:
+
 - Uses Lit Element for reactive rendering
 - Leverages Home Assistant's built-in form components
 - Handles config updates through `_updateConfigValue`
@@ -189,6 +206,7 @@ The editor is implemented in `src/editor.ts`:
 ## Future Enhancements (Optional)
 
 Potential future improvements:
+
 - Preview pane showing live card preview
 - Configuration templates/presets
 - Import/export configuration
