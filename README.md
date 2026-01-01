@@ -174,6 +174,26 @@ entities:
   - entity: lock.front_door
 ```
 
+### Mushroom-style Look (Optional)
+
+Enable Mushroom-inspired visuals for a modern, polished appearance with rounded corners, subtle borders, and theme-aware backgrounds. This mode is inspired by the popular [Mushroom cards](https://github.com/piitaya/lovelace-mushroom).
+
+```yaml
+type: custom:area-overview-card
+title: Bathroom
+area: bathroom
+mushroom_style: true
+```
+
+**What it does:**
+
+- Applies 16px border radius for softer corners (similar to Mushroom cards)
+- Adds a subtle border with low opacity for depth
+- Sets a theme-aware background color that adapts to your Home Assistant theme
+- Adjusts default icon and button sizes to match Mushroom's visual language
+
+**Important:** When `mushroom_style: true`, all your existing `style.*` options still work and take precedence over the Mushroom defaults. This means you can enable Mushroom mode and still customize colors, sizes, and other style properties as needed.
+
 > **Backwards Compatibility Note:** The card tags `custom:homeassistant-area-card-custom`, `custom:better-minimalistic-area-card`, and `custom:minimalistic-area-card` are all supported for existing configurations, though `custom:area-overview-card` is recommended for new setups.
 
 ## Configuration Options
@@ -194,6 +214,7 @@ entities:
 | `hide_unavailable` | boolean | `false`      | Hide unavailable entities                                                                                                                                |
 | `state_color`      | boolean | `true`       | Enable Home Assistant colors for entity states                                                                                                           |
 | `darken_image`     | boolean | `false`      | Reduce background image brightness                                                                                                                       |
+| `mushroom_style`   | boolean | `false`      | Apply Mushroom-inspired visuals (rounded corners, subtle border, theme-aware background)                                                                 |
 | `force_dialog`     | boolean | `false`      | Force more-info dialog instead of toggle for buttons                                                                                                     |
 | `tap_action`       | object  | optional     | Action configuration for card tap (see [Actions](#actions))                                                                                              |
 | `entities`         | list    | optional     | List of entities (if omitted, shows all area entities)                                                                                                   |

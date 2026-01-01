@@ -202,3 +202,48 @@ describe('entities configuration', () => {
     }
   });
 });
+
+describe('mushroom_style configuration', () => {
+  const hass: HomeAssistantExt = {
+    connected: true,
+    areas: {
+      bathroom: {
+        area_id: 'bathroom',
+        name: 'Bathroom',
+      },
+    },
+  } as unknown as HomeAssistantExt;
+
+  beforeEach(() => {
+    card.hass = hass;
+  });
+
+  test('mushroom_style flag is recognized when true', () => {
+    const conf: MinimalisticAreaCardConfig = {
+      area: 'bathroom',
+      mushroom_style: true,
+    } as MinimalisticAreaCardConfig;
+
+    card.setConfig(conf);
+    expect(card.config.mushroom_style).toBe(true);
+  });
+
+  test('mushroom_style defaults to false when not set', () => {
+    const conf: MinimalisticAreaCardConfig = {
+      area: 'bathroom',
+    } as MinimalisticAreaCardConfig;
+
+    card.setConfig(conf);
+    expect(card.config.mushroom_style).toBeUndefined();
+  });
+
+  test('mushroom_style can be explicitly set to false', () => {
+    const conf: MinimalisticAreaCardConfig = {
+      area: 'bathroom',
+      mushroom_style: false,
+    } as MinimalisticAreaCardConfig;
+
+    card.setConfig(conf);
+    expect(card.config.mushroom_style).toBe(false);
+  });
+});
