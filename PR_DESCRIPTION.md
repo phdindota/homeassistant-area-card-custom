@@ -9,6 +9,7 @@ This PR adds an optional **Mushroom-style visual mode** to the Area Overview Car
 ![Mushroom Style Mode - Visual Comparison](https://github.com/user-attachments/assets/3fa3ca3d-b781-4af5-ac0e-d0b9221e888c)
 
 The screenshot above shows the key differences between default and Mushroom-style modes:
+
 - **Left:** Default card appearance with standard styling
 - **Right:** Mushroom-style mode with enhanced visuals
 
@@ -17,20 +18,20 @@ The screenshot above shows the key differences between default and Mushroom-styl
 ### New Configuration Option
 
 ```yaml
-mushroom_style: true  # Optional, defaults to false
+mushroom_style: true # Optional, defaults to false
 ```
 
 ### Visual Enhancements (When Enabled)
 
-| Feature | Default | Mushroom Style | Change |
-|---------|---------|----------------|--------|
-| **Border Radius** | 12px | 16px | +4px (softer corners) |
-| **Border** | None | 1px solid rgba(255,255,255,0.06) | Subtle depth |
-| **Background** | transparent | rgba(var(--rgb-card-background-color), 0.96) | Theme-aware |
-| **Sensor Icons** | 18px | 20px | +2px |
-| **Sensor Buttons** | 32px | 36px | +4px |
-| **Control Icons** | 24px | 22px | -2px (consistency) |
-| **Control Buttons** | 48px | 44px | -4px |
+| Feature             | Default     | Mushroom Style                               | Change                |
+| ------------------- | ----------- | -------------------------------------------- | --------------------- |
+| **Border Radius**   | 12px        | 16px                                         | +4px (softer corners) |
+| **Border**          | None        | 1px solid rgba(255,255,255,0.06)             | Subtle depth          |
+| **Background**      | transparent | rgba(var(--rgb-card-background-color), 0.96) | Theme-aware           |
+| **Sensor Icons**    | 18px        | 20px                                         | +2px                  |
+| **Sensor Buttons**  | 32px        | 36px                                         | +4px                  |
+| **Control Icons**   | 24px        | 22px                                         | -2px (consistency)    |
+| **Control Buttons** | 48px        | 44px                                         | -4px                  |
 
 ## 🎯 Key Features
 
@@ -59,8 +60,8 @@ title: Kitchen
 area: kitchen
 mushroom_style: true
 style:
-  background_color: "rgba(50, 50, 50, 0.9)"  # Overrides Mushroom default
-  sensors_icon_size: "24px"                  # Overrides Mushroom default
+  background_color: 'rgba(50, 50, 50, 0.9)' # Overrides Mushroom default
+  sensors_icon_size: '24px' # Overrides Mushroom default
 ```
 
 ### Without Mushroom Style (Default)
@@ -88,6 +89,7 @@ area: bedroom
 ### New Tests
 
 Added 6 comprehensive tests covering:
+
 - ✅ Configuration flag recognition (true, false, undefined)
 - ✅ CSS class application based on flag state
 - ✅ Backwards compatibility verification
@@ -102,12 +104,14 @@ Added 6 comprehensive tests covering:
 
 ✅ All linting checks pass
 ✅ All code review feedback addressed:
-  - Renamed `mushroomStyle` → `isMushroomStyle` for clarity
-  - Extracted magic RGB values to named constant `MUSHROOM_DARK_THEME_FALLBACK`
+
+- Renamed `mushroomStyle` → `isMushroomStyle` for clarity
+- Extracted magic RGB values to named constant `MUSHROOM_DARK_THEME_FALLBACK`
 
 ## 🎨 Design Inspiration
 
 This feature draws from Mushroom card design patterns:
+
 - **Rounded corners** (~16px) for a modern, friendly appearance
 - **Subtle borders** with low opacity for visual depth
 - **Theme-aware backgrounds** using CSS variables like `--rgb-card-background-color`
@@ -115,6 +119,7 @@ This feature draws from Mushroom card design patterns:
 - **Home Assistant theme integration** for seamless dashboard cohesion
 
 References:
+
 - [Mushroom Cards Repository](https://github.com/piitaya/lovelace-mushroom)
 - [Mushroom Themes](https://github.com/piitaya/lovelace-mushroom-themes)
 
@@ -142,31 +147,37 @@ The visual editor now includes a toggle for "Mushroom-style visuals" in the Gene
 ## 🧪 Testing Instructions
 
 1. **Build the card:**
+
    ```bash
    yarn install
    yarn build
    ```
 
 2. **Copy to Home Assistant:**
+
    ```bash
    cp dist/homeassistant-area-card-custom.js /path/to/homeassistant/www/
    ```
 
 3. **Test default behavior:**
+
    ```yaml
    type: custom:area-overview-card
    title: Test Default
    area: living_room
    ```
+
    Should render exactly as current version (no visual changes)
 
 4. **Test Mushroom style:**
+
    ```yaml
    type: custom:area-overview-card
    title: Test Mushroom
    area: living_room
    mushroom_style: true
    ```
+
    Should show enhanced visuals with rounded corners and subtle border
 
 5. **Test with custom styles:**
@@ -176,7 +187,7 @@ The visual editor now includes a toggle for "Mushroom-style visuals" in the Gene
    area: living_room
    mushroom_style: true
    style:
-     background_color: "rgba(100, 50, 50, 0.9)"
+     background_color: 'rgba(100, 50, 50, 0.9)'
    ```
    Custom background should override Mushroom default
 
@@ -195,6 +206,7 @@ The visual editor now includes a toggle for "Mushroom-style visuals" in the Gene
 ## 🚀 Next Steps
 
 After merge:
+
 1. Tag new release version
 2. Update HACS repository listing
 3. Consider creating example dashboard configurations
