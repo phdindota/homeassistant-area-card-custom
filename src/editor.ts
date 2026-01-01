@@ -502,6 +502,20 @@ export class AreaOverviewCardEditor extends LitElement implements LovelaceCardEd
     return color;
   }
 
+  /**
+   * Normalize color value from ha-selector to match ColorValue type.
+   * Modern HA color_rgb selectors may return { r, g, b, a } with alpha channel.
+   * We extract only r, g, b to match our ColorValue type.
+   */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _normalizeColorValue(value: any): ColorValue | undefined {
+    if (value && typeof value === 'object' && 'r' in value && 'g' in value && 'b' in value) {
+      // Extract only r, g, b - discard alpha if present
+      return { r: value.r, g: value.g, b: value.b };
+    }
+    return value;
+  }
+
   private _toggleEditorMode(ev: CustomEvent): void {
     this.showVisualEditor = ev.detail.value === 'visual';
   }
@@ -595,15 +609,7 @@ export class AreaOverviewCardEditor extends LitElement implements LovelaceCardEd
       return;
     }
 
-    let value = ev.detail?.value;
-
-    // Normalize color value from ha-selector
-    // Modern HA color_rgb selectors may return { r, g, b, a } with alpha
-    // We need to normalize to { r, g, b } to match our ColorValue type
-    if (value && typeof value === 'object' && 'r' in value && 'g' in value && 'b' in value) {
-      // Extract only r, g, b - discard alpha if present
-      value = { r: value.r, g: value.g, b: value.b };
-    }
+    const value = this._normalizeColorValue(ev.detail?.value);
 
     // Store as RGB object for visual editor, will be converted to CSS when used
     this._updateConfigValue(configValue, value);
@@ -658,15 +664,7 @@ export class AreaOverviewCardEditor extends LitElement implements LovelaceCardEd
       return;
     }
 
-    let value = ev.detail?.value;
-
-    // Normalize color value from ha-selector
-    // Modern HA color_rgb selectors may return { r, g, b, a } with alpha
-    // We need to normalize to { r, g, b } to match our ColorValue type
-    if (value && typeof value === 'object' && 'r' in value && 'g' in value && 'b' in value) {
-      // Extract only r, g, b - discard alpha if present
-      value = { r: value.r, g: value.g, b: value.b };
-    }
+    const value = this._normalizeColorValue(ev.detail?.value);
 
     this._updateConfigValue(configValue, value);
   }

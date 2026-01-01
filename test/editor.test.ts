@@ -5,6 +5,12 @@
  * and other configuration updates through the visual editor.
  */
 
+// Helper function to check if a value matches the RGB object pattern
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function isRgbObject(value: any): boolean {
+  return value && typeof value === 'object' && 'r' in value && 'g' in value && 'b' in value;
+}
+
 describe('AreaOverviewCardEditor - Color Change Fix', () => {
   describe('Event target handling', () => {
     test('should use currentTarget instead of target for reliable property access', () => {
@@ -121,7 +127,7 @@ describe('AreaOverviewCardEditor - Color Change Fix', () => {
 
       // Simulating the normalization logic - string values should not match the object check
       const value: any = stringColor;
-      const isObject = value && typeof value === 'object' && 'r' in value && 'g' in value && 'b' in value;
+      const isObject = isRgbObject(value);
 
       expect(isObject).toBe(false);
 
@@ -135,7 +141,7 @@ describe('AreaOverviewCardEditor - Color Change Fix', () => {
       const testValues = [undefined, null];
 
       testValues.forEach((value) => {
-        const isObject = value && typeof value === 'object' && 'r' in (value as any) && 'g' in (value as any) && 'b' in (value as any);
+        const isObject = isRgbObject(value);
         // For undefined/null, the && chain short-circuits and returns the falsy value
         expect(isObject).toBeFalsy();
       });

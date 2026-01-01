@@ -154,6 +154,16 @@ Two new utility functions handle color format conversions:
 - Supports hex (#RGB, #RRGGBB), rgb(), and rgba() formats
 - Used when loading existing configurations into the color picker
 
+### Color Value Normalization
+
+The editor normalizes color values from Home Assistant's `color_rgb` selector:
+
+- Modern Home Assistant versions may return `{ r, g, b, a }` with alpha channel
+- The editor automatically strips the alpha channel to match the `ColorValue` type (`{ r, g, b }`)
+- This ensures consistent color storage across different Home Assistant versions
+- String colors (hex, named colors) pass through unchanged
+- Normalization happens in `_colorChanged` and `_entityColorChanged` handlers
+
 ### Security Enhancements
 
 The `_updateConfigValue` function includes comprehensive protection against prototype pollution:
