@@ -595,7 +595,16 @@ export class AreaOverviewCardEditor extends LitElement implements LovelaceCardEd
       return;
     }
 
-    const value = ev.detail?.value;
+    let value = ev.detail?.value;
+
+    // Normalize color value from ha-selector
+    // Modern HA color_rgb selectors may return { r, g, b, a } with alpha
+    // We need to normalize to { r, g, b } to match our ColorValue type
+    if (value && typeof value === 'object' && 'r' in value && 'g' in value && 'b' in value) {
+      // Extract only r, g, b - discard alpha if present
+      value = { r: value.r, g: value.g, b: value.b };
+    }
+
     // Store as RGB object for visual editor, will be converted to CSS when used
     this._updateConfigValue(configValue, value);
   }
@@ -649,7 +658,16 @@ export class AreaOverviewCardEditor extends LitElement implements LovelaceCardEd
       return;
     }
 
-    const value = ev.detail?.value;
+    let value = ev.detail?.value;
+
+    // Normalize color value from ha-selector
+    // Modern HA color_rgb selectors may return { r, g, b, a } with alpha
+    // We need to normalize to { r, g, b } to match our ColorValue type
+    if (value && typeof value === 'object' && 'r' in value && 'g' in value && 'b' in value) {
+      // Extract only r, g, b - discard alpha if present
+      value = { r: value.r, g: value.g, b: value.b };
+    }
+
     this._updateConfigValue(configValue, value);
   }
 

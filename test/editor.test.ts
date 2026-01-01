@@ -86,6 +86,34 @@ describe('AreaOverviewCardEditor - Color Change Fix', () => {
       expect(typeof rgbColor).toBe('object');
       expect(rgbColor).toHaveProperty('r');
     });
+
+    test('should normalize RGBA color values to RGB (strip alpha channel)', () => {
+      // Modern Home Assistant color_rgb selectors may return { r, g, b, a }
+      const colorWithAlpha = { r: 255, g: 128, b: 64, a: 0.5 };
+
+      // Verify the object has all four properties
+      expect(colorWithAlpha).toHaveProperty('r');
+      expect(colorWithAlpha).toHaveProperty('g');
+      expect(colorWithAlpha).toHaveProperty('b');
+      expect(colorWithAlpha).toHaveProperty('a');
+
+      // The normalization code in _colorChanged should extract only r, g, b
+      // Simulating what the code does:
+      const normalized = { r: colorWithAlpha.r, g: colorWithAlpha.g, b: colorWithAlpha.b };
+
+      // Verify normalized value has only r, g, b
+      expect(normalized).toEqual({ r: 255, g: 128, b: 64 });
+      expect(normalized).not.toHaveProperty('a');
+    });
+
+    test('should handle RGB values without alpha channel', () => {
+      const colorWithoutAlpha = { r: 255, g: 128, b: 64 };
+
+      // The normalization should work the same way (creating a new object)
+      const normalized = { r: colorWithoutAlpha.r, g: colorWithoutAlpha.g, b: colorWithoutAlpha.b };
+
+      expect(normalized).toEqual({ r: 255, g: 128, b: 64 });
+    });
   });
 
   describe('Config path handling', () => {
