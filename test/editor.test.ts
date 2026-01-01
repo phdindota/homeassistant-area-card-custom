@@ -114,6 +114,32 @@ describe('AreaOverviewCardEditor - Color Change Fix', () => {
 
       expect(normalized).toEqual({ r: 255, g: 128, b: 64 });
     });
+
+    test('should not normalize string color values', () => {
+      // String colors should pass through unchanged
+      const stringColor = '#ff8040';
+
+      // Simulating the normalization logic - string values should not match the object check
+      const value: any = stringColor;
+      const isObject = value && typeof value === 'object' && 'r' in value && 'g' in value && 'b' in value;
+
+      expect(isObject).toBe(false);
+
+      // String value should remain unchanged
+      expect(value).toBe('#ff8040');
+      expect(typeof value).toBe('string');
+    });
+
+    test('should not normalize undefined or null values', () => {
+      // Undefined/null values should not be normalized
+      const testValues = [undefined, null];
+
+      testValues.forEach((value) => {
+        const isObject = value && typeof value === 'object' && 'r' in (value as any) && 'g' in (value as any) && 'b' in (value as any);
+        // For undefined/null, the && chain short-circuits and returns the falsy value
+        expect(isObject).toBeFalsy();
+      });
+    });
   });
 
   describe('Config path handling', () => {
