@@ -1,6 +1,5 @@
 {
   "name": "Area Overview Card",
-  "category": "plugin",
   "render_readme": true,
   "filename": "dist/homeassistant-area-card-custom.js"
 }
