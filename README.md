@@ -108,7 +108,7 @@ If you're upgrading from a previous version of this card:
 **Important:** The resource URL has changed. After updating via HACS, update your resource configuration:
 
 - **Old URL:** `/hacsfiles/homeassistant-area-card-custom/dist/better-minimalistic-area-card.js`
-- **New URL:** `/hacsfiles/homeassistant-area-card-custom/homeassistant-area-card-custom.js`
+- **New URL:** `/hacsfiles/homeassistant-area-card-custom/dist/homeassistant-area-card-custom.js`
 
 Go to _Settings_ → _Dashboards_ → _⋮ Menu_ → _Resources_ and update the URL for this card.
 
