@@ -24,6 +24,7 @@ After installation via HACS, add the card as a resource in your Lovelace configu
 ```
 
 Or add it through the UI:
+
 - Settings → Dashboards → Resources → Add Resource
 - URL: `/hacsfiles/homeassistant-area-card-custom/dist/homeassistant-area-card-custom.js`
 - Resource type: `JavaScript Module`
