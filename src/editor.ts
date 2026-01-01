@@ -6,7 +6,7 @@ import { cssToRGB } from './utils';
 
 @customElement('area-overview-card-editor')
 export class AreaOverviewCardEditor extends LitElement implements LovelaceCardEditor {
-  @property({ attribute: false }) public hass?: HomeAssistantExt | undefined;
+  @property({ attribute: false }) public hass?: HomeAssistantExt;
   @state() private config!: MinimalisticAreaCardConfig;
   @state() private showVisualEditor = true;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -525,8 +525,9 @@ export class AreaOverviewCardEditor extends LitElement implements LovelaceCardEd
     if (!this.config || !this.hass) {
       return;
     }
-    const target = ev.target;
-    const configValue = target.configValue;
+    // Use currentTarget to get the element where the listener is attached
+    const target = ev.currentTarget;
+    const configValue = target.configValue as string | undefined;
 
     if (!configValue) {
       return;
@@ -550,8 +551,9 @@ export class AreaOverviewCardEditor extends LitElement implements LovelaceCardEd
     if (!this.config || !this.hass) {
       return;
     }
-    const target = ev.target;
-    const configValue = target.configValue;
+    // Use currentTarget to get the element where the listener is attached
+    const target = ev.currentTarget;
+    const configValue = target.configValue as string | undefined;
 
     if (!configValue) {
       return;
@@ -621,8 +623,9 @@ export class AreaOverviewCardEditor extends LitElement implements LovelaceCardEd
     if (!this.config || !this.hass) {
       return;
     }
-    const target = ev.target;
-    const configValue = target.configValue;
+    // Use currentTarget to get the element where the listener is attached
+    const target = ev.currentTarget;
+    const configValue = target.configValue as string | undefined;
 
     if (!configValue) {
       return;
