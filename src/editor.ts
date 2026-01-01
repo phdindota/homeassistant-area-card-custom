@@ -1,12 +1,12 @@
-import { fireEvent, HomeAssistant, LovelaceCardConfig, LovelaceCardEditor } from '@dermotduffy/custom-card-helpers';
+import { fireEvent, LovelaceCardConfig, LovelaceCardEditor } from '@dermotduffy/custom-card-helpers';
 import { css, html, LitElement, TemplateResult } from 'lit';
-import { MinimalisticAreaCardConfig, Alignment, EntitySection, ColorValue } from './types';
+import { MinimalisticAreaCardConfig, Alignment, EntitySection, ColorValue, HomeAssistantExt } from './types';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { cssToRGB } from './utils';
 
 @customElement('area-overview-card-editor')
 export class AreaOverviewCardEditor extends LitElement implements LovelaceCardEditor {
-  @property({ attribute: false }) public hass?: HomeAssistant | undefined;
+  @property({ attribute: false }) public hass?: HomeAssistantExt | undefined;
   @state() private config!: MinimalisticAreaCardConfig;
   @state() private showVisualEditor = true;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
