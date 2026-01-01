@@ -12,7 +12,7 @@ export default {
   strictDeprecations: true,
   output: {
     format: 'es',
-    file: 'dist/homeassistant-area-card-custom.js',
+    file: 'dist/area-card-custom.js',
     sourcemap: true,
     inlineDynamicImports: true,
   },

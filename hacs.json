@@ -1,5 +1,5 @@
 {
   "name": "Area Overview Card",
   "render_readme": true,
-  "filename": "dist/homeassistant-area-card-custom.js"
+  "filename": "dist/area-card-custom.js"
 }

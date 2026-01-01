@@ -47,7 +47,7 @@ This card is distributed via [HACS][hacs] (Home Assistant Community Store) as a 
 After installing via HACS, the card JavaScript file will be available at:
 
 ```
-/hacsfiles/homeassistant-area-card-custom/homeassistant-area-card-custom.js
+/hacsfiles/homeassistant-area-card-custom/dist/area-card-custom.js
 ```
 
 HACS should automatically register this as a Lovelace resource. If you need to add it manually:
@@ -56,14 +56,14 @@ HACS should automatically register this as a Lovelace resource. If you need to a
 
 1. Go to _Settings_ → _Dashboards_ → _⋮ Menu_ → _Resources_
 2. Click _Add Resource_
-3. Set URL: `/hacsfiles/homeassistant-area-card-custom/homeassistant-area-card-custom.js`
+3. Set URL: `/hacsfiles/homeassistant-area-card-custom/dist/area-card-custom.js`
 4. Set Resource type: `JavaScript Module`
 
 **Using YAML:**
 
 ```yaml
 resources:
-  - url: /hacsfiles/homeassistant-area-card-custom/homeassistant-area-card-custom.js
+  - url: /hacsfiles/homeassistant-area-card-custom/dist/area-card-custom.js
     type: module
 ```
 
@@ -75,21 +75,21 @@ resources:
 
 If you prefer not to use HACS:
 
-1. **Download** the `homeassistant-area-card-custom.js` file from the [latest release][release-url]
+1. **Download** the `area-card-custom.js` file from the [latest release][release-url]
 2. **Copy** the file to your Home Assistant `config/www/` folder (create the folder if it doesn't exist)
 3. **Add the resource** to your Lovelace configuration:
 
    **Using UI:**
    - Go to _Settings_ → _Dashboards_ → _⋮ Menu_ → _Resources_
    - Click _Add Resource_
-   - Set URL: `/local/homeassistant-area-card-custom.js`
+   - Set URL: `/local/area-card-custom.js`
    - Set Resource type: `JavaScript Module`
 
    **Using YAML:**
 
    ```yaml
    resources:
-     - url: /local/homeassistant-area-card-custom.js
+     - url: /local/area-card-custom.js
        type: module
    ```
 
