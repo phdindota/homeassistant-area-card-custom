@@ -1,5 +1,7 @@
 {
   "name": "Area Overview Card",
+  "content_in_root": false,
+  "filename": "dist/homeassistant-area-card-custom.js",
   "render_readme": true,
-  "filename": "dist/homeassistant-area-card-custom.js"
+  "homeassistant": "2021.3.0"
 }
