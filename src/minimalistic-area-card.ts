@@ -921,8 +921,9 @@ export class MinimalisticAreaCard extends LitElement implements LovelaceCard {
   }
 }
 
-// Register the new primary custom element tag
-@customElement('area-overview-card')
+// Register the primary custom element tag
+// The @customElement(cardType) decorator on line 60 registers this class
+// with the name from package.json (currently "area-overview-card")
 export class AreaOverviewCard extends MinimalisticAreaCard {}
 
 // Register backwards-compatible aliases for existing users
