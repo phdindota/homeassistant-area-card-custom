@@ -47,7 +47,7 @@ This card is distributed via [HACS][hacs] (Home Assistant Community Store) as a 
 After installing via HACS, the card JavaScript file will be available at:
 
 ```
-/hacsfiles/homeassistant-area-card-custom/dist/area-card-custom.js
+/hacsfiles/homeassistant-area-card-custom/dist/homeassistant-area-card-custom.js
 ```
 
 HACS should automatically register this as a Lovelace resource. If you need to add it manually:
@@ -56,14 +56,14 @@ HACS should automatically register this as a Lovelace resource. If you need to a
 
 1. Go to _Settings_ → _Dashboards_ → _⋮ Menu_ → _Resources_
 2. Click _Add Resource_
-3. Set URL: `/hacsfiles/homeassistant-area-card-custom/dist/area-card-custom.js`
+3. Set URL: `/hacsfiles/homeassistant-area-card-custom/dist/homeassistant-area-card-custom.js`
 4. Set Resource type: `JavaScript Module`
 
 **Using YAML:**
 
 ```yaml
 resources:
-  - url: /hacsfiles/homeassistant-area-card-custom/dist/area-card-custom.js
+  - url: /hacsfiles/homeassistant-area-card-custom/dist/homeassistant-area-card-custom.js
     type: module
 ```
 
@@ -75,21 +75,21 @@ resources:
 
 If you prefer not to use HACS:
 
-1. **Download** the `area-card-custom.js` file from the [latest release][release-url]
+1. **Download** the `homeassistant-area-card-custom.js` file from the [latest release][release-url]
 2. **Copy** the file to your Home Assistant `config/www/` folder (create the folder if it doesn't exist)
 3. **Add the resource** to your Lovelace configuration:
 
    **Using UI:**
    - Go to _Settings_ → _Dashboards_ → _⋮ Menu_ → _Resources_
    - Click _Add Resource_
-   - Set URL: `/local/area-card-custom.js`
+   - Set URL: `/local/homeassistant-area-card-custom.js`
    - Set Resource type: `JavaScript Module`
 
    **Using YAML:**
 
    ```yaml
    resources:
-     - url: /local/area-card-custom.js
+     - url: /local/homeassistant-area-card-custom.js
        type: module
    ```
 
@@ -108,7 +108,7 @@ If you're upgrading from a previous version of this card:
 **Important:** The resource URL has changed. After updating via HACS, update your resource configuration:
 
 - **Old URL:** `/hacsfiles/homeassistant-area-card-custom/dist/better-minimalistic-area-card.js`
-- **New URL:** `/hacsfiles/homeassistant-area-card-custom/homeassistant-area-card-custom.js`
+- **New URL:** `/hacsfiles/homeassistant-area-card-custom/dist/homeassistant-area-card-custom.js`
 
 Go to _Settings_ → _Dashboards_ → _⋮ Menu_ → _Resources_ and update the URL for this card.
 
@@ -420,7 +420,7 @@ The build process:
 
 - Compiles TypeScript source files from `src/`
 - Bundles all dependencies
-- Outputs the final JavaScript file to `dist/better-minimalistic-area-card.js`
+- Outputs the final JavaScript file to `dist/homeassistant-area-card-custom.js`
 
 ### Testing
 
@@ -447,11 +447,11 @@ npm run lint
 
 ### Development Server
 
-When running `yarn start`, the card is served at `http://localhost:6000/better-minimalistic-area-card.js`. You can configure Home Assistant to load the card from this URL during development:
+When running `yarn start`, the card is served at `http://localhost:6001/homeassistant-area-card-custom.js`. You can configure Home Assistant to load the card from this URL during development:
 
 ```yaml
 resources:
-  - url: http://localhost:6000/better-minimalistic-area-card.js
+  - url: http://localhost:6001/homeassistant-area-card-custom.js
     type: module
 ```
 
@@ -464,13 +464,13 @@ This repository is configured for HACS distribution with the following settings 
   "name": "Area Overview Card",
   "category": "plugin",
   "render_readme": true,
-  "filename": "dist/better-minimalistic-area-card.js"
+  "filename": "dist/homeassistant-area-card-custom.js"
 }
 ```
 
 - **name**: "Area Overview Card" - The display name shown in HACS
 - **category**: `"plugin"` - Indicates this is a Lovelace custom card (frontend plugin)
-- **filename**: Points to the built JavaScript bundle in the `dist/` directory (kept as `better-minimalistic-area-card.js` for backwards compatibility)
+- **filename**: Points to the built JavaScript bundle in the `dist/` directory
 - **render_readme**: Displays this README in HACS
 
 ## License
