@@ -17,11 +17,10 @@ A **Home Assistant Lovelace custom card** that displays area information with se
 
 ## Installation
 
-After installation via HACS, add the following to your Lovelace resources:
+After installation via HACS, add the card as a resource in your Lovelace configuration. This happens automatically when you install via HACS, but if needed manually, the resource path is:
 
-```yaml
-url: /hacsfiles/homeassistant-area-card-custom/dist/homeassistant-area-card-custom.js
-type: module
+```
+/hacsfiles/homeassistant-area-card-custom/dist/homeassistant-area-card-custom.js
 ```
 
 Or add it through the UI:
@@ -31,7 +30,7 @@ Or add it through the UI:
 
 ## Configuration
 
-The card can be configured through the visual editor or via YAML. See the [full documentation](https://github.com/phdindota/homeassistant-area-card-custom#readme) for detailed configuration options.
+The card can be configured through the visual editor or via YAML. See the [full documentation](https://github.com/phdindota/homeassistant-area-card-custom) for detailed configuration options.
 
 ### Basic Example
 
