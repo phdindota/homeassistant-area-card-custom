@@ -18,6 +18,8 @@ jobs:
         with:
           node-version: '25'
           cache: 'yarn'
+      - name: Install Yarn v1
+        run: npm install -g yarn@1
       - name: Install
         run: yarn install --frozen-lockfile
       - name: Build and test
