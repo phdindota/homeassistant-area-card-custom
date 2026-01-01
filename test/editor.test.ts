@@ -13,12 +13,15 @@ describe('AreaOverviewCardEditor - Color Change Fix', () => {
       // within ha-selector, not the ha-selector element itself where
       // the configValue property was set.
 
-      const mockCurrentTarget = {
+      const mockCurrentTarget: {
+        configValue: string;
+        value: { r: number; g: number; b: number };
+      } = {
         configValue: 'style.color',
         value: { r: 255, g: 0, b: 0 },
       };
 
-      const mockTarget = {
+      const mockTarget: Record<string, never> = {
         // target is the internal element - does NOT have configValue
       };
 
@@ -35,7 +38,7 @@ describe('AreaOverviewCardEditor - Color Change Fix', () => {
       expect(configValue).toBe('style.color');
 
       // target would NOT have the property
-      const wrongConfigValue = (mockEvent.target as any).configValue;
+      const wrongConfigValue = (mockTarget as Record<string, unknown>).configValue;
       expect(wrongConfigValue).toBeUndefined();
     });
 
