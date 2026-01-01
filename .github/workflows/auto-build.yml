@@ -37,6 +37,6 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add dist/better-minimalistic-area-card.js
+          git add dist/homeassistant-area-card-custom.js
           git diff --staged --quiet || git commit -m "chore: auto-build dist file [skip ci]"
           git push
