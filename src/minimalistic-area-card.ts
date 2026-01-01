@@ -293,8 +293,8 @@ export class MinimalisticAreaCard extends LitElement implements LovelaceCard {
     }
 
     // Apply mushroom-style class to host element when enabled
-    const mushroomStyle = this.config.mushroom_style || false;
-    if (mushroomStyle) {
+    const isMushroomStyle = this.config.mushroom_style || false;
+    if (isMushroomStyle) {
       this.classList.add('mushroom-style');
     } else {
       this.classList.remove('mushroom-style');
@@ -302,7 +302,7 @@ export class MinimalisticAreaCard extends LitElement implements LovelaceCard {
 
     let style = {};
     if (this.config.style) {
-      style = buildCssVariables(this.config.style, null, this.hass, mushroomStyle);
+      style = buildCssVariables(this.config.style, null, this.hass, isMushroomStyle);
     }
 
     let imageUrl: string | undefined = undefined;

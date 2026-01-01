@@ -191,7 +191,7 @@ export function buildCssVariables(
   cfg: StyleOptions,
   entityId: string | null | undefined,
   hass: HomeAssistantExt,
-  mushroomStyle = false,
+  isMushroomStyle = false,
 ): object {
   const mapping = [
     { key: 'color', ccs: `${cssCardVariablesPrefix}color` },
@@ -215,10 +215,14 @@ export function buildCssVariables(
   });
 
   // Apply Mushroom-style defaults when enabled and values are not explicitly set
-  if (mushroomStyle) {
+  if (isMushroomStyle) {
+    // Default dark theme background color (fallback when CSS variable is not available)
+    const MUSHROOM_DARK_THEME_FALLBACK = '18, 22, 28';
+
     // Apply soft, theme-aware background when background_color is not explicitly set
     if (!cfg.background_color) {
-      result[`${cssCardVariablesPrefix}background-color`] = 'rgba(var(--rgb-card-background-color, 18, 22, 28), 0.96)';
+      result[`${cssCardVariablesPrefix}background-color`] =
+        `rgba(var(--rgb-card-background-color, ${MUSHROOM_DARK_THEME_FALLBACK}), 0.96)`;
     }
 
     // Apply Mushroom-style icon/button sizes when not explicitly set
