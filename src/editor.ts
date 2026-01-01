@@ -198,6 +198,14 @@ export class AreaOverviewCardEditor extends LitElement implements LovelaceCardEd
               @change=${this._toggleChanged}
             ></ha-switch>
           </ha-formfield>
+
+          <ha-formfield label="Mushroom-style visuals">
+            <ha-switch
+              .checked=${this.config.mushroom_style || false}
+              .configValue=${'mushroom_style'}
+              @change=${this._toggleChanged}
+            ></ha-switch>
+          </ha-formfield>
         </div>
       </ha-expansion-panel>
     `;

@@ -292,9 +292,17 @@ export class MinimalisticAreaCard extends LitElement implements LovelaceCard {
       return nothing;
     }
 
+    // Apply mushroom-style class to host element when enabled
+    const mushroomStyle = this.config.mushroom_style || false;
+    if (mushroomStyle) {
+      this.classList.add('mushroom-style');
+    } else {
+      this.classList.remove('mushroom-style');
+    }
+
     let style = {};
     if (this.config.style) {
-      style = buildCssVariables(this.config.style, null, this.hass);
+      style = buildCssVariables(this.config.style, null, this.hass, mushroomStyle);
     }
 
     let imageUrl: string | undefined = undefined;
@@ -916,6 +924,21 @@ export class MinimalisticAreaCard extends LitElement implements LovelaceCard {
 
       .box .wrapper hui-warning-element {
         display: block;
+      }
+
+      /* Mushroom-style mode */
+      :host(.mushroom-style) ha-card {
+        border-radius: 16px;
+      }
+
+      :host(.mushroom-style) .box {
+        border-radius: 16px;
+        border: 1px solid rgba(var(--rgb-primary-text-color, 255, 255, 255), 0.06);
+      }
+
+      :host(.mushroom-style) img,
+      :host(.mushroom-style) div.camera {
+        border-radius: 16px;
       }
     `;
   }

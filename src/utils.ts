@@ -191,6 +191,7 @@ export function buildCssVariables(
   cfg: StyleOptions,
   entityId: string | null | undefined,
   hass: HomeAssistantExt,
+  mushroomStyle = false,
 ): object {
   const mapping = [
     { key: 'color', ccs: `${cssCardVariablesPrefix}color` },
@@ -212,6 +213,28 @@ export function buildCssVariables(
       }
     }
   });
+
+  // Apply Mushroom-style defaults when enabled and values are not explicitly set
+  if (mushroomStyle) {
+    // Apply soft, theme-aware background when background_color is not explicitly set
+    if (!cfg.background_color) {
+      result[`${cssCardVariablesPrefix}background-color`] = 'rgba(var(--rgb-card-background-color, 18, 22, 28), 0.96)';
+    }
+
+    // Apply Mushroom-style icon/button sizes when not explicitly set
+    if (!cfg.sensors_icon_size) {
+      result[`${cssCardVariablesPrefix}sensors-icon-size`] = '20px';
+    }
+    if (!cfg.sensors_button_size) {
+      result[`${cssCardVariablesPrefix}sensors-button-size`] = '36px';
+    }
+    if (!cfg.buttons_icon_size) {
+      result[`${cssCardVariablesPrefix}buttons-icon-size`] = '22px';
+    }
+    if (!cfg.buttons_button_size) {
+      result[`${cssCardVariablesPrefix}buttons-button-size`] = '44px';
+    }
+  }
 
   return result;
 }
