@@ -337,3 +337,67 @@ describe('Vefify computeStateValue', () => {
     expect(value).toBe(params.expected);
   });
 });
+
+describe('Mushroom-style CSS class application', () => {
+  test('mushroom-style class is added when mushroom_style is true', () => {
+    const card: MinimalisticAreaCard = new MinimalisticAreaCard();
+    const config: MinimalisticAreaCardConfig = {
+      type: 'custom:area-overview-card',
+      title: 'Test Room',
+      mushroom_style: true,
+    } as MinimalisticAreaCardConfig;
+
+    const hass: HomeAssistantExt = {
+      connected: true,
+      areas: {},
+    } as unknown as HomeAssistantExt;
+
+    card.hass = hass;
+    card.setConfig(config);
+    card['performUpdate']();
+
+    // Verify mushroom-style class is in classList
+    expect(card.classList.contains('mushroom-style')).toBe(true);
+  });
+
+  test('mushroom-style class is not added when mushroom_style is false', () => {
+    const card: MinimalisticAreaCard = new MinimalisticAreaCard();
+    const config: MinimalisticAreaCardConfig = {
+      type: 'custom:area-overview-card',
+      title: 'Test Room',
+      mushroom_style: false,
+    } as MinimalisticAreaCardConfig;
+
+    const hass: HomeAssistantExt = {
+      connected: true,
+      areas: {},
+    } as unknown as HomeAssistantExt;
+
+    card.hass = hass;
+    card.setConfig(config);
+    card['performUpdate']();
+
+    // Verify mushroom-style class is not in classList
+    expect(card.classList.contains('mushroom-style')).toBe(false);
+  });
+
+  test('mushroom-style class is not added when mushroom_style is not set', () => {
+    const card: MinimalisticAreaCard = new MinimalisticAreaCard();
+    const config: MinimalisticAreaCardConfig = {
+      type: 'custom:area-overview-card',
+      title: 'Test Room',
+    } as MinimalisticAreaCardConfig;
+
+    const hass: HomeAssistantExt = {
+      connected: true,
+      areas: {},
+    } as unknown as HomeAssistantExt;
+
+    card.hass = hass;
+    card.setConfig(config);
+    card['performUpdate']();
+
+    // Verify mushroom-style class is not in classList
+    expect(card.classList.contains('mushroom-style')).toBe(false);
+  });
+});
