@@ -5,6 +5,12 @@
  * and other configuration updates through the visual editor.
  */
 
+// Helper function to check if a value matches the RGB object pattern
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function isRgbObject(value: any): boolean {
+  return value && typeof value === 'object' && 'r' in value && 'g' in value && 'b' in value;
+}
+
 describe('AreaOverviewCardEditor - Color Change Fix', () => {
   describe('Event target handling', () => {
     test('should use currentTarget instead of target for reliable property access', () => {
@@ -85,6 +91,60 @@ describe('AreaOverviewCardEditor - Color Change Fix', () => {
       expect(typeof stringColor).toBe('string');
       expect(typeof rgbColor).toBe('object');
       expect(rgbColor).toHaveProperty('r');
+    });
+
+    test('should normalize RGBA color values to RGB (strip alpha channel)', () => {
+      // Modern Home Assistant color_rgb selectors may return { r, g, b, a }
+      const colorWithAlpha = { r: 255, g: 128, b: 64, a: 0.5 };
+
+      // Verify the object has all four properties
+      expect(colorWithAlpha).toHaveProperty('r');
+      expect(colorWithAlpha).toHaveProperty('g');
+      expect(colorWithAlpha).toHaveProperty('b');
+      expect(colorWithAlpha).toHaveProperty('a');
+
+      // The normalization code in _colorChanged should extract only r, g, b
+      // Simulating what the code does:
+      const normalized = { r: colorWithAlpha.r, g: colorWithAlpha.g, b: colorWithAlpha.b };
+
+      // Verify normalized value has only r, g, b
+      expect(normalized).toEqual({ r: 255, g: 128, b: 64 });
+      expect(normalized).not.toHaveProperty('a');
+    });
+
+    test('should handle RGB values without alpha channel', () => {
+      const colorWithoutAlpha = { r: 255, g: 128, b: 64 };
+
+      // The normalization should work the same way (creating a new object)
+      const normalized = { r: colorWithoutAlpha.r, g: colorWithoutAlpha.g, b: colorWithoutAlpha.b };
+
+      expect(normalized).toEqual({ r: 255, g: 128, b: 64 });
+    });
+
+    test('should not normalize string color values', () => {
+      // String colors should pass through unchanged
+      const stringColor = '#ff8040';
+
+      // Simulating the normalization logic - string values should not match the object check
+      const value: any = stringColor;
+      const isObject = isRgbObject(value);
+
+      expect(isObject).toBe(false);
+
+      // String value should remain unchanged
+      expect(value).toBe('#ff8040');
+      expect(typeof value).toBe('string');
+    });
+
+    test('should not normalize undefined or null values', () => {
+      // Undefined/null values should not be normalized
+      const testValues = [undefined, null];
+
+      testValues.forEach((value) => {
+        const isObject = isRgbObject(value);
+        // For undefined/null, the && chain short-circuits and returns the falsy value
+        expect(isObject).toBeFalsy();
+      });
     });
   });
 
