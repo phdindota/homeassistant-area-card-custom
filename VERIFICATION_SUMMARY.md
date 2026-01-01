@@ -28,18 +28,20 @@ The implementation **already handles nested paths correctly**. When users change
 ### Core Method: `_updateConfigValue`
 
 Located in `src/editor.ts` (lines 695-747), this method:
+
 - Splits dot-separated paths (e.g., `"style.color"` → `["style", "color"]`)
 - Creates intermediate objects as needed
 - Guards against prototype pollution
 - Fires `config-changed` events
 
 **Example:**
+
 ```typescript
 // User sets background color to black in GUI
-_updateConfigValue("style.background_color", { r: 0, g: 0, b: 0 })
+_updateConfigValue('style.background_color', { r: 0, g: 0, b: 0 });
 
 // Result in config:
-config.style.background_color = { r: 0, g: 0, b: 0 }
+config.style.background_color = { r: 0, g: 0, b: 0 };
 ```
 
 ### Event Flow
@@ -47,7 +49,7 @@ config.style.background_color = { r: 0, g: 0, b: 0 }
 ```
 User picks color in GUI
   ↓
-ha-selector fires "value-changed" event  
+ha-selector fires "value-changed" event
   ↓
 _colorChanged handler called
   ↓
@@ -72,22 +74,23 @@ Card re-renders with new styles
 
 **25 comprehensive tests** verifying:
 
-| Test Category | Count | What It Tests |
-|--------------|-------|---------------|
-| GUI color changes | 5 | Each color option creates nested style object |
-| Multiple changes | 2 | Changes accumulate without data loss |
-| YAML/GUI consistency | 2 | Manual YAML preserved with GUI changes |
-| Text fields | 4 | Size options work correctly |
-| Alignment | 3 | Alignment creates nested paths |
-| Entity arrays | 3 | Array index notation works |
-| Clearing values | 2 | Undefined/empty deletes property |
-| Security | 4 | Prototype pollution prevented |
+| Test Category        | Count | What It Tests                                 |
+| -------------------- | ----- | --------------------------------------------- |
+| GUI color changes    | 5     | Each color option creates nested style object |
+| Multiple changes     | 2     | Changes accumulate without data loss          |
+| YAML/GUI consistency | 2     | Manual YAML preserved with GUI changes        |
+| Text fields          | 4     | Size options work correctly                   |
+| Alignment            | 3     | Alignment creates nested paths                |
+| Entity arrays        | 3     | Array index notation works                    |
+| Clearing values      | 2     | Undefined/empty deletes property              |
+| Security             | 4     | Prototype pollution prevented                 |
 
 **All tests pass:** 189/189 ✅
 
 ### 2. Documentation (`docs/GUI_EDITOR_VERIFICATION.md`)
 
 **Comprehensive 300+ line guide** covering:
+
 - ✅ How to use the GUI editor
 - ✅ Complete style options reference
 - ✅ Example workflows
@@ -99,21 +102,22 @@ Card re-renders with new styles
 
 Users can set these via GUI editor:
 
-| Option | Path | Type | Example |
-|--------|------|------|---------|
-| Color (text/icons) | `style.color` | RGB | `{ r: 255, g: 0, b: 0 }` |
-| Background Color | `style.background_color` | RGB | `{ r: 0, g: 0, b: 0 }` |
-| Shadow Color | `style.shadow_color` | RGB | `{ r: 128, g: 128, b: 128 }` |
-| Sensors Color | `style.sensors_color` | RGB | `{ r: 0, g: 255, b: 0 }` |
-| Sensors Icon Size | `style.sensors_icon_size` | String | `"20px"` |
-| Sensors Button Size | `style.sensors_button_size` | String | `"36px"` |
-| Buttons Color | `style.buttons_color` | RGB | `{ r: 0, g: 0, b: 255 }` |
-| Buttons Icon Size | `style.buttons_icon_size` | String | `"22px"` |
-| Buttons Button Size | `style.buttons_button_size` | String | `"44px"` |
+| Option              | Path                        | Type   | Example                      |
+| ------------------- | --------------------------- | ------ | ---------------------------- |
+| Color (text/icons)  | `style.color`               | RGB    | `{ r: 255, g: 0, b: 0 }`     |
+| Background Color    | `style.background_color`    | RGB    | `{ r: 0, g: 0, b: 0 }`       |
+| Shadow Color        | `style.shadow_color`        | RGB    | `{ r: 128, g: 128, b: 128 }` |
+| Sensors Color       | `style.sensors_color`       | RGB    | `{ r: 0, g: 255, b: 0 }`     |
+| Sensors Icon Size   | `style.sensors_icon_size`   | String | `"20px"`                     |
+| Sensors Button Size | `style.sensors_button_size` | String | `"36px"`                     |
+| Buttons Color       | `style.buttons_color`       | RGB    | `{ r: 0, g: 0, b: 255 }`     |
+| Buttons Icon Size   | `style.buttons_icon_size`   | String | `"22px"`                     |
+| Buttons Button Size | `style.buttons_button_size` | String | `"44px"`                     |
 
 ## Example Usage
 
 **Using GUI Editor:**
+
 1. Open card in edit mode
 2. Click "Show Visual Editor"
 3. Expand "Style" section
@@ -122,6 +126,7 @@ Users can set these via GUI editor:
 6. Save
 
 **Resulting YAML:**
+
 ```yaml
 type: custom:area-overview-card
 title: Living Room
@@ -132,6 +137,7 @@ style:
 ```
 
 **Visual Result:**
+
 - Black background
 - Red text and icons
 - Changes persist when reopening editor
@@ -162,7 +168,7 @@ const dangerousKeys = ['__proto__', 'constructor', 'prototype'];
 
 // Rejects paths like:
 // "__proto__.polluted"
-// "style.__proto__.color"  
+// "style.__proto__.color"
 // "constructor.prototype"
 ```
 
@@ -197,11 +203,13 @@ npm run coverage
 ### If Users Report "GUI Changes Don't Save"
 
 **Common Causes:**
+
 1. **Browser cache** - Clear cache and hard reload (Ctrl+Shift+R)
 2. **Old version** - Update card via HACS
 3. **Wrong bundle** - Verify correct file loaded
 
 **Debugging Steps:**
+
 1. Open browser console (F12)
 2. Check Network tab for JavaScript errors
 3. Verify `homeassistant-area-card-custom.js` loads
@@ -209,22 +217,25 @@ npm run coverage
 5. Look for console errors when changing colors
 
 **Expected Console Output:**
+
 ```
-%c  Area Overview Card  %c 1.2.39 
+%c  Area Overview Card  %c 1.2.39
   (Orange text on black) (White text on gray)
 ```
 
 If error appears:
+
 ```
 Attempted to set dangerous property: __proto__.polluted
 ```
+
 This is the security guard working correctly.
 
 ## Files Changed
 
-| File | Purpose | Status |
-|------|---------|--------|
-| `test/editor-integration.test.ts` | Integration tests | ✅ Added (+353 lines) |
+| File                              | Purpose                | Status                |
+| --------------------------------- | ---------------------- | --------------------- |
+| `test/editor-integration.test.ts` | Integration tests      | ✅ Added (+353 lines) |
 | `docs/GUI_EDITOR_VERIFICATION.md` | User/dev documentation | ✅ Added (+316 lines) |
 
 **Total new code:** ~670 lines of tests and documentation
@@ -247,6 +258,7 @@ This is the security guard working correctly.
 ### For Users
 
 The GUI editor **is working correctly**. If you're experiencing issues:
+
 1. Clear your browser cache
 2. Update to the latest version via HACS
 3. Check browser console for errors
@@ -255,6 +267,7 @@ The GUI editor **is working correctly**. If you're experiencing issues:
 ### For Developers
 
 The implementation is solid:
+
 - ✅ Proper nested path handling
 - ✅ Security guards in place
 - ✅ Comprehensive test coverage
@@ -267,6 +280,7 @@ No code changes were necessary - the implementation was already correct. This PR
 ### Next Steps
 
 If users continue to report issues after updating:
+
 1. Collect specific reproduction steps
 2. Check browser/HA versions
 3. Verify HACS installation
