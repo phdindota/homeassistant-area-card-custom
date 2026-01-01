@@ -566,14 +566,15 @@ export class AreaOverviewCardEditor extends LitElement implements LovelaceCardEd
     if (!this.config || !this.hass) {
       return;
     }
-    const target = ev.target;
-    const configValue = target.configValue;
+    // Use currentTarget to get the element where configValue was set
+    const target = ev.currentTarget;
+    const configValue = target.configValue as string | undefined;
 
     if (!configValue) {
       return;
     }
 
-    const value = ev.detail.value;
+    const value = ev.detail?.value;
     this._updateConfigValue(configValue, value);
   }
 
@@ -583,14 +584,16 @@ export class AreaOverviewCardEditor extends LitElement implements LovelaceCardEd
     if (!this.config || !this.hass) {
       return;
     }
-    const target = ev.target;
-    const configValue = target.configValue;
+    // Use currentTarget instead of target to get the ha-selector element
+    // where we set the configValue property
+    const target = ev.currentTarget;
+    const configValue = target.configValue as string | undefined;
 
     if (!configValue) {
       return;
     }
 
-    const value = ev.detail.value;
+    const value = ev.detail?.value;
     // Store as RGB object for visual editor, will be converted to CSS when used
     this._updateConfigValue(configValue, value);
   }
@@ -601,8 +604,9 @@ export class AreaOverviewCardEditor extends LitElement implements LovelaceCardEd
     if (!this.config || !this.hass) {
       return;
     }
-    const target = ev.target;
-    const configValue = target.configValue;
+    // Use currentTarget to get the element where configValue was set
+    const target = ev.currentTarget;
+    const configValue = target.configValue as string | undefined;
 
     if (!configValue) {
       return;
@@ -633,14 +637,16 @@ export class AreaOverviewCardEditor extends LitElement implements LovelaceCardEd
     if (!this.config || !this.hass) {
       return;
     }
-    const target = ev.target;
-    const configValue = target.configValue;
+    // Use currentTarget instead of target to get the ha-selector element
+    // where we set the configValue property
+    const target = ev.currentTarget;
+    const configValue = target.configValue as string | undefined;
 
     if (!configValue) {
       return;
     }
 
-    const value = ev.detail.value;
+    const value = ev.detail?.value;
     this._updateConfigValue(configValue, value);
   }
 
