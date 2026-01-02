@@ -125,8 +125,8 @@ describe('Card test', () => {
   beforeAll(() => {
     card.hass = hass;
     card.setConfig(config);
-    // Hack to call protected method
-    card['performUpdate']();
+    card['setArea']();
+    card['setEntities']();
   });
 
   test('verify card size', () => {
@@ -354,7 +354,9 @@ describe('Mushroom-style CSS class application', () => {
 
     card.hass = hass;
     card.setConfig(config);
-    card['performUpdate']();
+    card['setArea']();
+    card['setEntities']();
+    card['render']();
 
     // Verify mushroom-style class is in classList
     expect(card.classList.contains('mushroom-style')).toBe(true);
@@ -375,7 +377,9 @@ describe('Mushroom-style CSS class application', () => {
 
     card.hass = hass;
     card.setConfig(config);
-    card['performUpdate']();
+    card['setArea']();
+    card['setEntities']();
+    card['render']();
 
     // Verify mushroom-style class is not in classList
     expect(card.classList.contains('mushroom-style')).toBe(false);
@@ -395,7 +399,9 @@ describe('Mushroom-style CSS class application', () => {
 
     card.hass = hass;
     card.setConfig(config);
-    card['performUpdate']();
+    card['setArea']();
+    card['setEntities']();
+    card['render']();
 
     // Verify mushroom-style class is not in classList
     expect(card.classList.contains('mushroom-style')).toBe(false);
