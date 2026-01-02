@@ -196,6 +196,54 @@ mushroom_style: true
 
 > **Backwards Compatibility Note:** The card tags `custom:homeassistant-area-card-custom`, `custom:better-minimalistic-area-card`, and `custom:minimalistic-area-card` are all supported for existing configurations, though `custom:area-overview-card` is recommended for new setups.
 
+## Room Presets
+
+Looking for ready-to-use configurations? We've created **mobile-optimized presets** for common room types including Living Room, Bedroom, Kitchen, Bathroom, Home Office, Garage, Garden, and Entrance/Hallway.
+
+These presets follow mobile dashboard best practices:
+- ✅ **Touch-friendly button sizes** (48px minimum for controls)
+- ✅ **Modern Mushroom styling** for clean aesthetics
+- ✅ **Strategic alignment** (sensors left, buttons right for thumb access)
+- ✅ **State-based coloring** for quick visual feedback
+- ✅ **Optimized for mobile screens** with proper spacing and contrast
+
+### Quick Example: Living Room
+
+```yaml
+type: custom:area-overview-card
+title: Living Room
+area: living_room
+icon: mdi:sofa
+show_area_icon: true
+mushroom_style: true
+shadow: true
+state_color: true
+
+align:
+  title: left
+  sensors: left
+  buttons: right
+
+style:
+  buttons_icon_size: 24px
+  buttons_button_size: 48px
+  sensors_icon_size: 18px
+  sensors_button_size: 32px
+
+entities:
+  - entity: sensor.living_room_temperature
+    show_state: true
+    section: sensors
+  - entity: light.living_room_main
+    state_color: true
+    section: buttons
+  - entity: media_player.living_room_tv
+    state_color: true
+    section: buttons
+```
+
+📖 **[View all room presets and mobile optimization guidelines →](docs/ROOM_PRESETS.md)**
+
 ## Configuration Options
 
 ### Card Options
