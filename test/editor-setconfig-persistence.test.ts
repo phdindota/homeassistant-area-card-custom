@@ -9,15 +9,18 @@
 import { MinimalisticAreaCardConfig } from '../src/types';
 
 /**
- * Simulates the setConfig behavior we're testing.
- * The current implementation just assigns the config directly (shallow copy).
- * The fix will use JSON.parse(JSON.stringify(config)) for a deep copy.
+ * Simulates the old setConfig behavior (before the fix) for testing purposes.
+ * This demonstrates the buggy behavior where config was directly assigned (shallow copy).
  */
 function simulateSetConfigShallow(config: MinimalisticAreaCardConfig): MinimalisticAreaCardConfig {
-  // Current behavior - direct assignment (shallow copy)
+  // Old buggy behavior - direct assignment (shallow copy)
   return config;
 }
 
+/**
+ * Simulates the fixed setConfig behavior for testing purposes.
+ * The fix uses JSON.parse(JSON.stringify(config)) for a deep copy.
+ */
 function simulateSetConfigDeep(config: MinimalisticAreaCardConfig): MinimalisticAreaCardConfig {
   // Fixed behavior - deep clone
   return JSON.parse(JSON.stringify(config));
@@ -104,15 +107,9 @@ describe('Editor setConfig() - Color Persistence', () => {
   });
 
   test('deep clone preserves entities with color configurations', () => {
-    // Using a partial type to represent the config with extended entity properties
-    interface ConfigWithExtendedEntities extends MinimalisticAreaCardConfig {
-      entities?: Array<{
-        entity: string;
-        color?: { r: number; g: number; b: number };
-      }>;
-    }
-
-    const savedConfig: ConfigWithExtendedEntities = {
+    // Note: ExtendedEntityConfig in types.ts supports color property
+    // Using JSON parsing to simulate configs that may have this structure
+    const savedConfigJSON = JSON.stringify({
       type: 'custom:area-overview-card',
       entities: [
         {
@@ -124,22 +121,23 @@ describe('Editor setConfig() - Color Persistence', () => {
           color: { r: 0, g: 0, b: 255 }, // Blue
         },
       ],
-    };
+    });
 
-    const internalConfig = simulateSetConfigDeep(savedConfig as MinimalisticAreaCardConfig);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const savedConfig: any = JSON.parse(savedConfigJSON);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const internalConfig: any = simulateSetConfigDeep(savedConfig);
 
-    // Verify entities are preserved
-    expect((internalConfig as ConfigWithExtendedEntities).entities).toHaveLength(2);
-    expect((internalConfig as ConfigWithExtendedEntities).entities?.[0].color).toEqual({ r: 255, g: 0, b: 0 });
-    expect((internalConfig as ConfigWithExtendedEntities).entities?.[1].color).toEqual({ r: 0, g: 0, b: 255 });
+    // Verify entities are preserved after deep clone
+    expect(internalConfig.entities).toHaveLength(2);
+    expect(internalConfig.entities[0].color).toEqual({ r: 255, g: 0, b: 0 });
+    expect(internalConfig.entities[1].color).toEqual({ r: 0, g: 0, b: 255 });
 
-    // Modify original
-    if (savedConfig.entities?.[0].color) {
-      savedConfig.entities[0].color.r = 100;
-    }
+    // Modify original - should not affect cloned config due to deep copy
+    savedConfig.entities[0].color.r = 100;
 
     // Internal config should be unchanged
-    expect((internalConfig as ConfigWithExtendedEntities).entities?.[0].color).toEqual({ r: 255, g: 0, b: 0 });
+    expect(internalConfig.entities[0].color).toEqual({ r: 255, g: 0, b: 0 });
   });
 
   test('deep clone handles undefined style gracefully', () => {
