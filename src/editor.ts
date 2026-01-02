@@ -503,25 +503,46 @@ export class AreaOverviewCardEditor extends LitElement implements LovelaceCardEd
       return undefined;
     }
 
+    // Handle array format [r, g, b] (from existing configs)
+    if (Array.isArray(color) && color.length >= 3) {
+      return { r: color[0], g: color[1], b: color[2] };
+    }
+
+    // Handle CSS string format
     if (typeof color === 'string') {
       return cssToRGB(color);
     }
 
+    // Already in object format
     return color;
   }
 
   /**
    * Normalize color value from ha-selector to match ColorValue type.
-   * Modern HA color_rgb selectors may return { r, g, b, a } with alpha channel.
-   * We extract only r, g, b to match our ColorValue type.
+   * Home Assistant's color_rgb selector can return colors in two formats:
+   * - Array format: [r, g, b] or [r, g, b, a]
+   * - Object format: { r, g, b } or { r, g, b, a }
+   * We normalize both to the standard { r, g, b } object format.
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _normalizeColorValue(value: any): ColorValue | undefined {
-    if (value && typeof value === 'object' && 'r' in value && 'g' in value && 'b' in value) {
+    if (!value) {
+      return undefined;
+    }
+
+    // Handle array format [r, g, b]
+    if (Array.isArray(value) && value.length >= 3) {
+      return { r: value[0], g: value[1], b: value[2] };
+    }
+
+    // Handle object format { r, g, b } or { r, g, b, a }
+    if (typeof value === 'object' && 'r' in value && 'g' in value && 'b' in value) {
       // Extract only r, g, b - discard alpha if present
       return { r: value.r, g: value.g, b: value.b };
     }
-    return value;
+
+    // Handle unexpected formats
+    return undefined;
   }
 
   private _toggleEditorMode(ev: CustomEvent): void {
