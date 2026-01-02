@@ -109,7 +109,10 @@ describe('Editor Color Normalization', () => {
   });
 
   describe('_getColorValue behavior', () => {
-    // Mock cssToRGB function
+    // Mock cssToRGB function for testing purposes
+    // This is a simplified version that only handles 6-digit hex colors (#RRGGBB)
+    // The actual implementation in utils.ts supports additional formats like
+    // short hex (#RGB), rgb(), rgba(), and named colors
     function cssToRGB(color: string): { r: number; g: number; b: number } | undefined {
       if (color.startsWith('#')) {
         // Simple hex parsing for testing
