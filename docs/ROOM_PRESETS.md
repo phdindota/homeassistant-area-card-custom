@@ -106,7 +106,7 @@ align:
 # Touch-friendly sizes for mobile
 style:
   buttons_icon_size: 24px
-  buttons_button_size: 48px  # Minimum touch target for primary controls
+  buttons_button_size: 48px # Minimum touch target for primary controls
   sensors_icon_size: 18px
   sensors_button_size: 32px
 
@@ -120,36 +120,37 @@ entities:
   - entity: sensor.living_room_temperature
     show_state: true
     section: sensors
-  
+
   - entity: sensor.living_room_humidity
     show_state: true
     section: sensors
-  
+
   - entity: binary_sensor.living_room_motion
     state_color: true
     section: sensors
-  
+
   # Controls - right side for thumb access
   - entity: light.living_room_main
     state_color: true
     section: buttons
-  
+
   - entity: light.living_room_lamp
     state_color: true
     section: buttons
-  
+
   - entity: media_player.living_room_tv
     state_color: true
     section: buttons
     tap_action:
-      action: more-info  # Show full media controls
-  
+      action: more-info # Show full media controls
+
   - entity: climate.living_room_thermostat
     state_color: true
     section: buttons
 ```
 
 **Why these choices?**
+
 - **Mushroom style**: Provides clean, modern look that adapts to themes
 - **Shadow on image**: Ensures text remains readable over photos
 - **Left/right alignment**: Sensors on left for scanning, buttons on right for thumb reach
@@ -197,15 +198,15 @@ entities:
   - entity: sensor.bedroom_temperature
     show_state: true
     section: sensors
-  
+
   - entity: sensor.bedroom_humidity
     show_state: true
     section: sensors
-  
+
   - entity: binary_sensor.bedroom_motion
     state_color: true
     section: sensors
-  
+
   - entity: binary_sensor.bedroom_window
     state_color: true
     section: sensors
@@ -217,26 +218,27 @@ entities:
       - value: 'off'
         icon: mdi:window-closed
         color: green
-  
+
   # Lighting and climate controls
   - entity: light.bedroom_main
     state_color: true
     section: buttons
-  
+
   - entity: light.bedroom_nightstand
     state_color: true
     section: buttons
-  
+
   - entity: climate.bedroom_thermostat
     state_color: true
     section: buttons
-  
+
   - entity: switch.bedroom_fan
     state_color: true
     section: buttons
 ```
 
 **Why these choices?**
+
 - **Window sensor with state icons**: Visual indicator shows open vs. closed at a glance
 - **Multiple lighting options**: Main light and nightstand for different scenarios
 - **Temperature + humidity**: Both important for sleep quality
@@ -283,11 +285,11 @@ entities:
   - entity: sensor.kitchen_temperature
     show_state: true
     section: sensors
-  
+
   - entity: binary_sensor.kitchen_motion
     state_color: true
     section: sensors
-  
+
   - entity: binary_sensor.kitchen_water_leak
     state_color: true
     section: sensors
@@ -299,26 +301,26 @@ entities:
       - value: 'off'
         icon: mdi:water-off
         color: green
-  
+
   - entity: sensor.dishwasher_status
     show_state: true
     section: sensors
     icon: mdi:dishwasher
-  
+
   - entity: sensor.refrigerator_temperature
     show_state: true
     section: sensors
     icon: mdi:fridge
-  
+
   # Controls
   - entity: light.kitchen_main
     state_color: true
     section: buttons
-  
+
   - entity: light.kitchen_under_cabinet
     state_color: true
     section: buttons
-  
+
   - entity: switch.kitchen_hood_fan
     state_color: true
     section: buttons
@@ -326,6 +328,7 @@ entities:
 ```
 
 **Why these choices?**
+
 - **Water leak sensor**: Critical safety feature with alert coloring
 - **Appliance monitoring**: Track dishwasher and refrigerator status
 - **Multiple light zones**: Main and task lighting for different activities
@@ -372,7 +375,7 @@ entities:
   - entity: sensor.bathroom_temperature
     show_state: true
     section: sensors
-  
+
   - entity: sensor.bathroom_humidity
     show_state: true
     section: sensors
@@ -385,11 +388,11 @@ entities:
       - operator: 'default'
         color: blue
         icon: mdi:water-percent
-  
+
   - entity: binary_sensor.bathroom_motion
     state_color: true
     section: sensors
-  
+
   - entity: binary_sensor.bathroom_water_leak
     state_color: true
     section: sensors
@@ -401,21 +404,21 @@ entities:
       - value: 'off'
         icon: mdi:water-off
         color: green
-  
+
   # Controls
   - entity: light.bathroom_main
     state_color: true
     section: buttons
-  
+
   - entity: light.bathroom_mirror
     state_color: true
     section: buttons
-  
+
   - entity: switch.bathroom_exhaust_fan
     state_color: true
     section: buttons
     icon: mdi:fan
-  
+
   - entity: switch.bathroom_heated_floor
     state_color: true
     section: buttons
@@ -423,6 +426,7 @@ entities:
 ```
 
 **Why these choices?**
+
 - **Humidity sensor with threshold**: Alerts when humidity is too high (>70%)
 - **Exhaust fan**: Essential for moisture control
 - **Water leak detection**: Important safety feature
@@ -470,16 +474,16 @@ entities:
   - entity: sensor.office_temperature
     show_state: true
     section: sensors
-  
+
   - entity: sensor.office_humidity
     show_state: true
     section: sensors
-  
+
   - entity: binary_sensor.office_occupancy
     state_color: true
     section: sensors
     icon: mdi:account
-  
+
   - entity: sensor.office_co2
     show_state: true
     section: sensors
@@ -492,7 +496,7 @@ entities:
       - operator: 'default'
         color: green
         icon: mdi:molecule-co2
-  
+
   - entity: binary_sensor.office_window
     state_color: true
     section: sensors
@@ -502,20 +506,20 @@ entities:
         icon: mdi:window-open
       - value: 'off'
         icon: mdi:window-closed
-  
+
   # Controls
   - entity: light.office_main
     state_color: true
     section: buttons
-  
+
   - entity: light.office_desk_lamp
     state_color: true
     section: buttons
-  
+
   - entity: climate.office_thermostat
     state_color: true
     section: buttons
-  
+
   - entity: switch.office_standing_desk
     state_color: true
     section: buttons
@@ -523,6 +527,7 @@ entities:
 ```
 
 **Why these choices?**
+
 - **CO2 monitoring**: Important for air quality and alertness (threshold at 1000ppm)
 - **Occupancy sensor**: Automate lighting and climate
 - **Task lighting**: Separate desk lamp for focused work
@@ -578,7 +583,7 @@ entities:
       - value: 'closed'
         icon: mdi:garage
         color: green
-  
+
   - entity: binary_sensor.garage_door_sensor
     state_color: true
     section: sensors
@@ -590,15 +595,15 @@ entities:
       - value: 'off'
         icon: mdi:door-closed
         color: green
-  
+
   - entity: binary_sensor.garage_motion
     state_color: true
     section: sensors
-  
+
   - entity: sensor.garage_temperature
     show_state: true
     section: sensors
-  
+
   - entity: binary_sensor.car_presence
     state_color: true
     section: sensors
@@ -610,7 +615,7 @@ entities:
       - value: 'off'
         icon: mdi:car-off
         color: grey
-  
+
   # Controls
   - entity: cover.garage_door
     state_color: true
@@ -618,11 +623,11 @@ entities:
     icon: mdi:garage
     tap_action:
       action: toggle
-  
+
   - entity: light.garage_main
     state_color: true
     section: buttons
-  
+
   - entity: switch.garage_workbench_light
     state_color: true
     section: buttons
@@ -630,6 +635,7 @@ entities:
 ```
 
 **Why these choices?**
+
 - **Garage door sensor + cover**: Monitor status and provide control
 - **Vehicle presence**: Know if car is parked (useful for automation)
 - **Motion sensor**: Security and automation trigger
@@ -678,17 +684,17 @@ entities:
     show_state: true
     section: sensors
     icon: mdi:thermometer
-  
+
   - entity: sensor.outdoor_humidity
     show_state: true
     section: sensors
     icon: mdi:water-percent
-  
+
   - entity: sensor.rainfall_today
     show_state: true
     section: sensors
     icon: mdi:weather-rainy
-  
+
   - entity: sensor.soil_moisture
     show_state: true
     section: sensors
@@ -701,7 +707,7 @@ entities:
       - operator: 'default'
         color: green
         icon: mdi:water
-  
+
   - entity: sensor.uv_index
     show_state: true
     section: sensors
@@ -715,23 +721,23 @@ entities:
         color: orange
       - operator: 'default'
         color: green
-  
+
   # Controls
   - entity: switch.garden_lights
     state_color: true
     section: buttons
     icon: mdi:lightbulb-outline
-  
+
   - entity: switch.irrigation_zone_1
     state_color: true
     section: buttons
     icon: mdi:sprinkler
-  
+
   - entity: switch.irrigation_zone_2
     state_color: true
     section: buttons
     icon: mdi:sprinkler-variant
-  
+
   - entity: switch.garden_fountain
     state_color: true
     section: buttons
@@ -739,6 +745,7 @@ entities:
 ```
 
 **Why these choices?**
+
 - **Weather sensors**: Temperature, humidity, and rainfall for irrigation decisions
 - **Soil moisture**: Critical for plant health with low threshold alert
 - **UV index**: Safety information with color-coded severity levels
@@ -795,7 +802,7 @@ entities:
       - value: 'off'
         icon: mdi:door-closed
         color: green
-  
+
   - entity: lock.front_door
     state_color: true
     section: sensors
@@ -807,35 +814,35 @@ entities:
       - value: 'locked'
         icon: mdi:lock
         color: green
-  
+
   - entity: binary_sensor.entrance_motion
     state_color: true
     section: sensors
-  
+
   - entity: binary_sensor.doorbell
     state_color: true
     section: sensors
     icon: mdi:doorbell
-  
+
   - entity: sensor.entrance_temperature
     show_state: true
     section: sensors
-  
+
   # Controls
   - entity: lock.front_door
     state_color: true
     section: buttons
     tap_action:
-      action: more-info  # Show lock controls for security
-  
+      action: more-info # Show lock controls for security
+
   - entity: light.entrance_main
     state_color: true
     section: buttons
-  
+
   - entity: light.porch_light
     state_color: true
     section: buttons
-  
+
   - entity: switch.entrance_camera
     state_color: true
     section: buttons
@@ -843,6 +850,7 @@ entities:
 ```
 
 **Why these choices?**
+
 - **Door + lock sensors**: Critical security monitoring with state-based colors
 - **Doorbell sensor**: Know when someone's at the door
 - **Motion sensor**: Security and automation trigger
@@ -860,33 +868,33 @@ These settings ensure the best mobile experience across all room types:
 
 ```yaml
 # Essential mobile optimizations
-mushroom_style: true      # Modern, theme-aware appearance
-shadow: true              # Text readability over images
-state_color: true         # Quick visual status feedback
-darken_image: true        # Better contrast for text
+mushroom_style: true # Modern, theme-aware appearance
+shadow: true # Text readability over images
+state_color: true # Quick visual status feedback
+darken_image: true # Better contrast for text
 
 # Ergonomic alignment for mobile
 align:
-  title: left             # Easy to read
-  sensors: left           # Scanning from left to right
-  buttons: right          # Thumb-friendly position
+  title: left # Easy to read
+  sensors: left # Scanning from left to right
+  buttons: right # Thumb-friendly position
 
 # Touch-optimized sizes
 style:
-  buttons_icon_size: 24px        # Clear, tappable icons
-  buttons_button_size: 48px      # Meets minimum touch target
-  sensors_icon_size: 18px        # Efficient use of space
-  sensors_button_size: 32px      # Adequate for read-only items
+  buttons_icon_size: 24px # Clear, tappable icons
+  buttons_button_size: 48px # Meets minimum touch target
+  sensors_icon_size: 18px # Efficient use of space
+  sensors_button_size: 32px # Adequate for read-only items
 ```
 
 ### Button Size Recommendations
 
-| Element Type       | Purpose         | Recommended Size | Minimum Size | Why                                    |
-| ------------------ | --------------- | ---------------- | ------------ | -------------------------------------- |
-| Control buttons    | Toggle, switch  | 48px             | 44px         | Primary touch targets need to be large |
-| Sensor indicators  | Read-only info  | 32px             | 28px         | Less precision needed for reading      |
-| Button icons       | Visual clarity  | 24px             | 20px         | Balance between size and space         |
-| Sensor icons       | Information     | 18px             | 16px         | Efficient while remaining readable     |
+| Element Type      | Purpose        | Recommended Size | Minimum Size | Why                                    |
+| ----------------- | -------------- | ---------------- | ------------ | -------------------------------------- |
+| Control buttons   | Toggle, switch | 48px             | 44px         | Primary touch targets need to be large |
+| Sensor indicators | Read-only info | 32px             | 28px         | Less precision needed for reading      |
+| Button icons      | Visual clarity | 24px             | 20px         | Balance between size and space         |
+| Sensor icons      | Information    | 18px             | 16px         | Efficient while remaining readable     |
 
 ### Icon Size Recommendations
 
@@ -900,14 +908,15 @@ When using background images on mobile:
 
 ```yaml
 # Enable image optimizations
-darken_image: true    # Reduces brightness by ~40% for better text contrast
-shadow: true          # Adds text shadow for readability
+darken_image: true # Reduces brightness by ~40% for better text contrast
+shadow: true # Adds text shadow for readability
 
 # Optional: Use lower resolution images for mobile
-image: /local/img/room-mobile.jpg  # Optimized for mobile screens
+image: /local/img/room-mobile.jpg # Optimized for mobile screens
 ```
 
 **Image optimization tips:**
+
 - Compress images to 200-400KB for faster loading
 - Use WebP format when possible for better compression
 - Recommended resolution: 800×600px for mobile dashboards
@@ -933,16 +942,17 @@ state_color: true
 # Per-entity override
 entities:
   - entity: light.bedroom_main
-    state_color: true    # Uses Home Assistant state colors
-  
+    state_color: true # Uses Home Assistant state colors
+
   - entity: binary_sensor.front_door
     state_color: true
     state:
       - value: 'on'
-        color: red       # Custom color for specific state
+        color: red # Custom color for specific state
 ```
 
 **Color guidelines:**
+
 - **Green**: Good/safe states (closed, locked, normal)
 - **Red**: Alert states (open doors, leaks, high thresholds)
 - **Orange**: Warning states (high humidity, moderate alerts)
@@ -955,12 +965,13 @@ Left-handed and right-handed users benefit from this alignment strategy:
 
 ```yaml
 align:
-  title: left      # Title on left for natural reading flow
-  sensors: left    # Sensor values on left for easy scanning
-  buttons: right   # Controls on right for thumb reach
+  title: left # Title on left for natural reading flow
+  sensors: left # Sensor values on left for easy scanning
+  buttons: right # Controls on right for thumb reach
 ```
 
 **Why this works:**
+
 - Most users hold phones in their right hand
 - Thumb naturally reaches the right side of the screen
 - Reading flows left to right, so info on left is scanned first
@@ -1002,7 +1013,7 @@ The card automatically adapts to different screen sizes:
 ```yaml
 entities:
   - entity: sensor.custom_device
-    icon: mdi:custom-icon      # Override default icon
+    icon: mdi:custom-icon # Override default icon
     state_color: true
     section: sensors
 ```
@@ -1046,7 +1057,7 @@ entities:
   # Living room elements
   - entity: light.living_room_main
   - entity: media_player.tv
-  
+
   # Dining room elements
   - entity: light.dining_chandelier
   - entity: sensor.dining_temperature
@@ -1062,8 +1073,8 @@ Increase button size:
 
 ```yaml
 style:
-  buttons_button_size: 56px  # Larger touch target
-  buttons_icon_size: 28px    # Larger icon for visibility
+  buttons_button_size: 56px # Larger touch target
+  buttons_icon_size: 28px # Larger icon for visibility
 ```
 
 ### Text Hard to Read Over Image?
@@ -1071,15 +1082,15 @@ style:
 Enable contrast enhancements:
 
 ```yaml
-darken_image: true  # Reduce image brightness
-shadow: true        # Add text shadow
+darken_image: true # Reduce image brightness
+shadow: true # Add text shadow
 ```
 
 Or use a semi-transparent background:
 
 ```yaml
 style:
-  background_color: rgba(0, 0, 0, 0.3)  # Dark overlay
+  background_color: rgba(0, 0, 0, 0.3) # Dark overlay
 ```
 
 ### Too Many Entities on Card?
@@ -1105,7 +1116,7 @@ This is expected - optimize for your primary use case:
 ```yaml
 # Mobile-first approach
 style:
-  buttons_button_size: 48px  # Perfect for mobile, slightly large on desktop
+  buttons_button_size: 48px # Perfect for mobile, slightly large on desktop
 ```
 
 Consider creating separate dashboards for mobile and desktop if needed.

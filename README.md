@@ -201,6 +201,7 @@ mushroom_style: true
 Looking for ready-to-use configurations? We've created **mobile-optimized presets** for common room types including Living Room, Bedroom, Kitchen, Bathroom, Home Office, Garage, Garden, and Entrance/Hallway.
 
 These presets follow mobile dashboard best practices:
+
 - ✅ **Touch-friendly button sizes** (48px minimum for controls)
 - ✅ **Modern Mushroom styling** for clean aesthetics
 - ✅ **Strategic alignment** (sensors left, buttons right for thumb access)
