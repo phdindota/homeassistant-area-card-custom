@@ -15,12 +15,18 @@ export class AreaOverviewCardEditor extends LitElement implements LovelaceCardEd
   private yamlChange = false; // true if the change came through the yaml editor
 
   setConfig(config: LovelaceCardConfig): void {
-    this.config = config;
+    // Deep clone to ensure reactivity for nested objects like style
+    // This prevents shared references and ensures Lit properly detects changes
+    this.config = JSON.parse(JSON.stringify(config));
+
     if (!this.yamlChange) {
       // YAML was changed externally, so update the editor
-      this._yamlEditor?.setValue(config);
+      this._yamlEditor?.setValue(this.config);
     }
     this.yamlChange = false;
+
+    // Force update to ensure visual editor reflects the new config
+    this.requestUpdate('config');
   }
 
   protected render(): TemplateResult | void {
