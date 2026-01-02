@@ -104,7 +104,15 @@ describe('Editor setConfig() - Color Persistence', () => {
   });
 
   test('deep clone preserves entities with color configurations', () => {
-    const savedConfig: any = {
+    // Using a partial type to represent the config with extended entity properties
+    interface ConfigWithExtendedEntities extends MinimalisticAreaCardConfig {
+      entities?: Array<{
+        entity: string;
+        color?: { r: number; g: number; b: number };
+      }>;
+    }
+
+    const savedConfig: ConfigWithExtendedEntities = {
       type: 'custom:area-overview-card',
       entities: [
         {
@@ -118,18 +126,20 @@ describe('Editor setConfig() - Color Persistence', () => {
       ],
     };
 
-    const internalConfig: any = simulateSetConfigDeep(savedConfig);
+    const internalConfig = simulateSetConfigDeep(savedConfig as MinimalisticAreaCardConfig);
 
     // Verify entities are preserved
-    expect(internalConfig.entities).toHaveLength(2);
-    expect(internalConfig.entities[0].color).toEqual({ r: 255, g: 0, b: 0 });
-    expect(internalConfig.entities[1].color).toEqual({ r: 0, g: 0, b: 255 });
+    expect((internalConfig as ConfigWithExtendedEntities).entities).toHaveLength(2);
+    expect((internalConfig as ConfigWithExtendedEntities).entities?.[0].color).toEqual({ r: 255, g: 0, b: 0 });
+    expect((internalConfig as ConfigWithExtendedEntities).entities?.[1].color).toEqual({ r: 0, g: 0, b: 255 });
 
     // Modify original
-    savedConfig.entities[0].color.r = 100;
+    if (savedConfig.entities?.[0].color) {
+      savedConfig.entities[0].color.r = 100;
+    }
 
     // Internal config should be unchanged
-    expect(internalConfig.entities[0].color).toEqual({ r: 255, g: 0, b: 0 });
+    expect((internalConfig as ConfigWithExtendedEntities).entities?.[0].color).toEqual({ r: 255, g: 0, b: 0 });
   });
 
   test('deep clone handles undefined style gracefully', () => {
