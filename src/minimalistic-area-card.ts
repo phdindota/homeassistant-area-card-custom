@@ -866,6 +866,18 @@ export class MinimalisticAreaCard extends LitElement implements LovelaceCard {
         --md-icon-button-icon-size: var(--ha-better-minimalistic-area-card-sensors-icon-size, 18px);
         --md-icon-button-state-layer-height: var(--ha-better-minimalistic-area-card-sensors-button-size, 32px);
         --md-icon-button-state-layer-width: var(--ha-better-minimalistic-area-card-sensors-button-size, 32px);
+        width: var(--ha-better-minimalistic-area-card-sensors-button-size, 32px);
+        height: var(--ha-better-minimalistic-area-card-sensors-button-size, 32px);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+
+      .box .sensors ha-icon-button::part(button) {
+        width: var(--ha-better-minimalistic-area-card-sensors-button-size, 32px);
+        height: var(--ha-better-minimalistic-area-card-sensors-button-size, 32px);
+        padding: 0;
       }
 
       .box .buttons ha-icon-button {
@@ -874,12 +886,25 @@ export class MinimalisticAreaCard extends LitElement implements LovelaceCard {
         --md-icon-button-icon-size: var(--ha-better-minimalistic-area-card-buttons-icon-size, 24px);
         --md-icon-button-state-layer-height: var(--ha-better-minimalistic-area-card-buttons-button-size, 48px);
         --md-icon-button-state-layer-width: var(--ha-better-minimalistic-area-card-buttons-button-size, 48px);
-        margin-left: -8px;
-        margin-right: -6px;
+        width: var(--ha-better-minimalistic-area-card-buttons-button-size, 48px);
+        height: var(--ha-better-minimalistic-area-card-buttons-button-size, 48px);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        margin-left: -10px;
+        margin-right: -8px;
+      }
+
+      .box .buttons ha-icon-button::part(button) {
+        width: var(--ha-better-minimalistic-area-card-buttons-button-size, 48px);
+        height: var(--ha-better-minimalistic-area-card-buttons-button-size, 48px);
+        padding: 0;
       }
 
       .box .wrapper {
-        display: inline-block;
+        display: inline-flex;
+        align-items: center;
         vertical-align: middle;
         margin-bottom: -8px;
       }
