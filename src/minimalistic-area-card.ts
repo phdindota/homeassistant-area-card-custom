@@ -465,16 +465,17 @@ export class MinimalisticAreaCard extends LitElement implements LovelaceCard {
 
     return html`
       <div class="wrapper ${entityConf.entity.replace('.', '_')}">
-        <ha-icon-button
+        <div
+          class="entity-icon ${classMap({ 'state-on': active })}"
           @action=${this._handleEntityAction}
           .actionHandler=${actionHandler({
             hasHold: hasAction(entityConf.hold_action),
             hasDoubleClick: hasAction(entityConf.double_tap_action),
           })}
           .config=${entityConf}
-          class=${classMap({
-            'state-on': active,
-          })}
+          role="button"
+          tabindex="0"
+          title=${title}
         >
           <state-badge
             .hass=${this.hass}
@@ -488,7 +489,7 @@ export class MinimalisticAreaCard extends LitElement implements LovelaceCard {
                 : true}
             .color=${colorValueToCSS(color) || color}
           ></state-badge>
-        </ha-icon-button>
+        </div>
         ${isSensor && entityConf.show_state
           ? html`
               <div class="state">
@@ -860,46 +861,52 @@ export class MinimalisticAreaCard extends LitElement implements LovelaceCard {
         text-align: center;
       }
 
-      .box .sensors ha-icon-button {
+      .box .sensors .entity-icon {
+        width: var(--ha-better-minimalistic-area-card-sensors-button-size, 32px);
+        height: var(--ha-better-minimalistic-area-card-sensors-button-size, 32px);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        border-radius: 50%;
+        overflow: hidden;
+        vertical-align: middle;
+        position: relative;
+      }
+
+      .box .sensors .entity-icon state-badge {
         --mdc-icon-size: var(--ha-better-minimalistic-area-card-sensors-icon-size, 18px);
-        --mdc-icon-button-size: var(--ha-better-minimalistic-area-card-sensors-button-size, 32px);
-        --md-icon-button-icon-size: var(--ha-better-minimalistic-area-card-sensors-icon-size, 18px);
-        --md-icon-button-state-layer-height: var(--ha-better-minimalistic-area-card-sensors-button-size, 32px);
-        --md-icon-button-state-layer-width: var(--ha-better-minimalistic-area-card-sensors-button-size, 32px);
-        width: var(--ha-better-minimalistic-area-card-sensors-button-size, 32px);
-        height: var(--ha-better-minimalistic-area-card-sensors-button-size, 32px);
+        width: var(--ha-better-minimalistic-area-card-sensors-icon-size, 18px);
+        height: var(--ha-better-minimalistic-area-card-sensors-icon-size, 18px);
+        line-height: 0;
+      }
+
+      .box .buttons .entity-icon {
+        width: var(--ha-better-minimalistic-area-card-buttons-button-size, 48px);
+        height: var(--ha-better-minimalistic-area-card-buttons-button-size, 48px);
         display: inline-flex;
         align-items: center;
         justify-content: center;
+        cursor: pointer;
+        border-radius: 50%;
         overflow: hidden;
+        vertical-align: middle;
+        position: relative;
+        margin-left: -8px;
+        margin-right: -6px;
       }
 
-      .box .sensors ha-icon-button::part(button) {
-        width: var(--ha-better-minimalistic-area-card-sensors-button-size, 32px);
-        height: var(--ha-better-minimalistic-area-card-sensors-button-size, 32px);
-        padding: 0;
-      }
-
-      .box .buttons ha-icon-button {
+      .box .buttons .entity-icon state-badge {
         --mdc-icon-size: var(--ha-better-minimalistic-area-card-buttons-icon-size, 24px);
-        --mdc-icon-button-size: var(--ha-better-minimalistic-area-card-buttons-button-size, 48px);
-        --md-icon-button-icon-size: var(--ha-better-minimalistic-area-card-buttons-icon-size, 24px);
-        --md-icon-button-state-layer-height: var(--ha-better-minimalistic-area-card-buttons-button-size, 48px);
-        --md-icon-button-state-layer-width: var(--ha-better-minimalistic-area-card-buttons-button-size, 48px);
-        width: var(--ha-better-minimalistic-area-card-buttons-button-size, 48px);
-        height: var(--ha-better-minimalistic-area-card-buttons-button-size, 48px);
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-        margin-left: -10px;
-        margin-right: -8px;
+        width: var(--ha-better-minimalistic-area-card-buttons-icon-size, 24px);
+        height: var(--ha-better-minimalistic-area-card-buttons-icon-size, 24px);
       }
 
-      .box .buttons ha-icon-button::part(button) {
-        width: var(--ha-better-minimalistic-area-card-buttons-button-size, 48px);
-        height: var(--ha-better-minimalistic-area-card-buttons-button-size, 48px);
-        padding: 0;
+      .entity-icon:hover {
+        background: var(--secondary-background-color, rgba(0, 0, 0, 0.1));
+      }
+      .entity-icon:active {
+        background: var(--secondary-background-color, rgba(0, 0, 0, 0.2));
       }
 
       .box .wrapper {
@@ -908,7 +915,7 @@ export class MinimalisticAreaCard extends LitElement implements LovelaceCard {
         vertical-align: middle;
         margin-bottom: -8px;
       }
-      .box .sensors ha-icon-button,
+      .box .sensors .entity-icon,
       .box .sensors state-badge {
         color: var(
           --ha-better-minimalistic-area-card-sensors-color,
@@ -916,14 +923,14 @@ export class MinimalisticAreaCard extends LitElement implements LovelaceCard {
         );
         line-height: 0px;
       }
-      .box .buttons ha-icon-button,
+      .box .buttons .entity-icon,
       .box .buttons state-badge {
         color: var(
           --ha-better-minimalistic-area-card-buttons-color,
           var(--ha-better-minimalistic-area-card-color, var(--secondary-text-color, #a9a9a9))
         );
       }
-      .box .title-entities ha-icon-button,
+      .box .title-entities .entity-icon,
       .box .title-entities state-badge {
         color: var(
           --ha-better-minimalistic-area-card-buttons-color,
@@ -939,7 +946,7 @@ export class MinimalisticAreaCard extends LitElement implements LovelaceCard {
         cursor: default;
       }
 
-      .shadow ha-icon-button,
+      .shadow .entity-icon,
       .shadow state-badge,
       .shadow ha-icon {
         filter: drop-shadow(1px 1px 2px var(--ha-better-minimalistic-area-card-shadow-color, gray));
