@@ -863,11 +863,17 @@ export class MinimalisticAreaCard extends LitElement implements LovelaceCard {
       .box .sensors ha-icon-button {
         --mdc-icon-size: var(--ha-better-minimalistic-area-card-sensors-icon-size, 18px);
         --mdc-icon-button-size: var(--ha-better-minimalistic-area-card-sensors-button-size, 32px);
+        --md-icon-button-icon-size: var(--ha-better-minimalistic-area-card-sensors-icon-size, 18px);
+        --md-icon-button-state-layer-height: var(--ha-better-minimalistic-area-card-sensors-button-size, 32px);
+        --md-icon-button-state-layer-width: var(--ha-better-minimalistic-area-card-sensors-button-size, 32px);
       }
 
       .box .buttons ha-icon-button {
         --mdc-icon-size: var(--ha-better-minimalistic-area-card-buttons-icon-size, 24px);
         --mdc-icon-button-size: var(--ha-better-minimalistic-area-card-buttons-button-size, 48px);
+        --md-icon-button-icon-size: var(--ha-better-minimalistic-area-card-buttons-icon-size, 24px);
+        --md-icon-button-state-layer-height: var(--ha-better-minimalistic-area-card-buttons-button-size, 48px);
+        --md-icon-button-state-layer-width: var(--ha-better-minimalistic-area-card-buttons-button-size, 48px);
         margin-left: -8px;
         margin-right: -6px;
       }
