@@ -4,12 +4,12 @@ function t(t,e,i,s){var n,a=arguments.length,o=a<3?e:null===s?s=Object.getOwnPro
  * Copyright 2019 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-const y=globalThis,w=y.ShadowRoot&&(void 0===y.ShadyCSS||y.ShadyCSS.nativeShadow)&&"adoptedStyleSheets"in Document.prototype&&"replace"in CSSStyleSheet.prototype,x=Symbol(),A=new WeakMap;let E=class{constructor(t,e,i){if(this._$cssResult$=!0,i!==x)throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");this.cssText=t,this.t=e}get styleSheet(){let t=this.o;const e=this.t;if(w&&void 0===t){const i=void 0!==e&&1===e.length;i&&(t=A.get(e)),void 0===t&&((this.o=t=new CSSStyleSheet).replaceSync(this.cssText),i&&A.set(e,t))}return t}toString(){return this.cssText}};const C=(t,...e)=>{const i=1===t.length?t[0]:e.reduce((e,i,s)=>e+(t=>{if(!0===t._$cssResult$)return t.cssText;if("number"==typeof t)return t;throw Error("Value passed to 'css' function must be a 'css' function result: "+t+". Use 'unsafeCSS' to pass non-literal values, but take care to ensure page security.")})(i)+t[s+1],t[0]);return new E(i,t,x)},S=w?t=>t:t=>t instanceof CSSStyleSheet?(t=>{let e="";for(const i of t.cssRules)e+=i.cssText;return(t=>new E("string"==typeof t?t:t+"",void 0,x))(e)})(t):t,{is:k,defineProperty:O,getOwnPropertyDescriptor:T,getOwnPropertyNames:V,getOwnPropertySymbols:N,getPrototypeOf:z}=Object,P=globalThis,D=P.trustedTypes,L=D?D.emptyScript:"",U=P.reactiveElementPolyfillSupport,j=(t,e)=>t,M={toAttribute(t,e){switch(e){case Boolean:t=t?L:null;break;case Object:case Array:t=null==t?t:JSON.stringify(t)}return t},fromAttribute(t,e){let i=t;switch(e){case Boolean:i=null!==t;break;case Number:i=null===t?null:Number(t);break;case Object:case Array:try{i=JSON.parse(t)}catch(t){i=null}}return i}},I=(t,e)=>!k(t,e),R={attribute:!0,type:String,converter:M,reflect:!1,useDefault:!1,hasChanged:I};
+const y=globalThis,w=y.ShadowRoot&&(void 0===y.ShadyCSS||y.ShadyCSS.nativeShadow)&&"adoptedStyleSheets"in Document.prototype&&"replace"in CSSStyleSheet.prototype,x=Symbol(),A=new WeakMap;let E=class{constructor(t,e,i){if(this._$cssResult$=!0,i!==x)throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");this.cssText=t,this.t=e}get styleSheet(){let t=this.o;const e=this.t;if(w&&void 0===t){const i=void 0!==e&&1===e.length;i&&(t=A.get(e)),void 0===t&&((this.o=t=new CSSStyleSheet).replaceSync(this.cssText),i&&A.set(e,t))}return t}toString(){return this.cssText}};const C=(t,...e)=>{const i=1===t.length?t[0]:e.reduce((e,i,s)=>e+(t=>{if(!0===t._$cssResult$)return t.cssText;if("number"==typeof t)return t;throw Error("Value passed to 'css' function must be a 'css' function result: "+t+". Use 'unsafeCSS' to pass non-literal values, but take care to ensure page security.")})(i)+t[s+1],t[0]);return new E(i,t,x)},S=w?t=>t:t=>t instanceof CSSStyleSheet?(t=>{let e="";for(const i of t.cssRules)e+=i.cssText;return(t=>new E("string"==typeof t?t:t+"",void 0,x))(e)})(t):t,{is:k,defineProperty:O,getOwnPropertyDescriptor:T,getOwnPropertyNames:V,getOwnPropertySymbols:N,getPrototypeOf:P}=Object,D=globalThis,z=D.trustedTypes,L=z?z.emptyScript:"",U=D.reactiveElementPolyfillSupport,j=(t,e)=>t,M={toAttribute(t,e){switch(e){case Boolean:t=t?L:null;break;case Object:case Array:t=null==t?t:JSON.stringify(t)}return t},fromAttribute(t,e){let i=t;switch(e){case Boolean:i=null!==t;break;case Number:i=null===t?null:Number(t);break;case Object:case Array:try{i=JSON.parse(t)}catch(t){i=null}}return i}},I=(t,e)=>!k(t,e),R={attribute:!0,type:String,converter:M,reflect:!1,useDefault:!1,hasChanged:I};
 /**
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
- */Symbol.metadata??=Symbol("metadata"),P.litPropertyMetadata??=new WeakMap;let H=class extends HTMLElement{static addInitializer(t){this._$Ei(),(this.l??=[]).push(t)}static get observedAttributes(){return this.finalize(),this._$Eh&&[...this._$Eh.keys()]}static createProperty(t,e=R){if(e.state&&(e.attribute=!1),this._$Ei(),this.prototype.hasOwnProperty(t)&&((e=Object.create(e)).wrapped=!0),this.elementProperties.set(t,e),!e.noAccessor){const i=Symbol(),s=this.getPropertyDescriptor(t,i,e);void 0!==s&&O(this.prototype,t,s)}}static getPropertyDescriptor(t,e,i){const{get:s,set:n}=T(this.prototype,t)??{get(){return this[e]},set(t){this[e]=t}};return{get:s,set(e){const a=s?.call(this);n?.call(this,e),this.requestUpdate(t,a,i)},configurable:!0,enumerable:!0}}static getPropertyOptions(t){return this.elementProperties.get(t)??R}static _$Ei(){if(this.hasOwnProperty(j("elementProperties")))return;const t=z(this);t.finalize(),void 0!==t.l&&(this.l=[...t.l]),this.elementProperties=new Map(t.elementProperties)}static finalize(){if(this.hasOwnProperty(j("finalized")))return;if(this.finalized=!0,this._$Ei(),this.hasOwnProperty(j("properties"))){const t=this.properties,e=[...V(t),...N(t)];for(const i of e)this.createProperty(i,t[i])}const t=this[Symbol.metadata];if(null!==t){const e=litPropertyMetadata.get(t);if(void 0!==e)for(const[t,i]of e)this.elementProperties.set(t,i)}this._$Eh=new Map;for(const[t,e]of this.elementProperties){const i=this._$Eu(t,e);void 0!==i&&this._$Eh.set(i,t)}this.elementStyles=this.finalizeStyles(this.styles)}static finalizeStyles(t){const e=[];if(Array.isArray(t)){const i=new Set(t.flat(1/0).reverse());for(const t of i)e.unshift(S(t))}else void 0!==t&&e.push(S(t));return e}static _$Eu(t,e){const i=e.attribute;return!1===i?void 0:"string"==typeof i?i:"string"==typeof t?t.toLowerCase():void 0}constructor(){super(),this._$Ep=void 0,this.isUpdatePending=!1,this.hasUpdated=!1,this._$Em=null,this._$Ev()}_$Ev(){this._$ES=new Promise(t=>this.enableUpdating=t),this._$AL=new Map,this._$E_(),this.requestUpdate(),this.constructor.l?.forEach(t=>t(this))}addController(t){(this._$EO??=new Set).add(t),void 0!==this.renderRoot&&this.isConnected&&t.hostConnected?.()}removeController(t){this._$EO?.delete(t)}_$E_(){const t=new Map,e=this.constructor.elementProperties;for(const i of e.keys())this.hasOwnProperty(i)&&(t.set(i,this[i]),delete this[i]);t.size>0&&(this._$Ep=t)}createRenderRoot(){const t=this.shadowRoot??this.attachShadow(this.constructor.shadowRootOptions);return((t,e)=>{if(w)t.adoptedStyleSheets=e.map(t=>t instanceof CSSStyleSheet?t:t.styleSheet);else for(const i of e){const e=document.createElement("style"),s=y.litNonce;void 0!==s&&e.setAttribute("nonce",s),e.textContent=i.cssText,t.appendChild(e)}})(t,this.constructor.elementStyles),t}connectedCallback(){this.renderRoot??=this.createRenderRoot(),this.enableUpdating(!0),this._$EO?.forEach(t=>t.hostConnected?.())}enableUpdating(t){}disconnectedCallback(){this._$EO?.forEach(t=>t.hostDisconnected?.())}attributeChangedCallback(t,e,i){this._$AK(t,i)}_$ET(t,e){const i=this.constructor.elementProperties.get(t),s=this.constructor._$Eu(t,i);if(void 0!==s&&!0===i.reflect){const n=(void 0!==i.converter?.toAttribute?i.converter:M).toAttribute(e,i.type);this._$Em=t,null==n?this.removeAttribute(s):this.setAttribute(s,n),this._$Em=null}}_$AK(t,e){const i=this.constructor,s=i._$Eh.get(t);if(void 0!==s&&this._$Em!==s){const t=i.getPropertyOptions(s),n="function"==typeof t.converter?{fromAttribute:t.converter}:void 0!==t.converter?.fromAttribute?t.converter:M;this._$Em=s;const a=n.fromAttribute(e,t.type);this[s]=a??this._$Ej?.get(s)??a,this._$Em=null}}requestUpdate(t,e,i,s=!1,n){if(void 0!==t){const a=this.constructor;if(!1===s&&(n=this[t]),i??=a.getPropertyOptions(t),!((i.hasChanged??I)(n,e)||i.useDefault&&i.reflect&&n===this._$Ej?.get(t)&&!this.hasAttribute(a._$Eu(t,i))))return;this.C(t,e,i)}!1===this.isUpdatePending&&(this._$ES=this._$EP())}C(t,e,{useDefault:i,reflect:s,wrapped:n},a){i&&!(this._$Ej??=new Map).has(t)&&(this._$Ej.set(t,a??e??this[t]),!0!==n||void 0!==a)||(this._$AL.has(t)||(this.hasUpdated||i||(e=void 0),this._$AL.set(t,e)),!0===s&&this._$Em!==t&&(this._$Eq??=new Set).add(t))}async _$EP(){this.isUpdatePending=!0;try{await this._$ES}catch(t){Promise.reject(t)}const t=this.scheduleUpdate();return null!=t&&await t,!this.isUpdatePending}scheduleUpdate(){return this.performUpdate()}performUpdate(){if(!this.isUpdatePending)return;if(!this.hasUpdated){if(this.renderRoot??=this.createRenderRoot(),this._$Ep){for(const[t,e]of this._$Ep)this[t]=e;this._$Ep=void 0}const t=this.constructor.elementProperties;if(t.size>0)for(const[e,i]of t){const{wrapped:t}=i,s=this[e];!0!==t||this._$AL.has(e)||void 0===s||this.C(e,void 0,i,s)}}let t=!1;const e=this._$AL;try{t=this.shouldUpdate(e),t?(this.willUpdate(e),this._$EO?.forEach(t=>t.hostUpdate?.()),this.update(e)):this._$EM()}catch(e){throw t=!1,this._$EM(),e}t&&this._$AE(e)}willUpdate(t){}_$AE(t){this._$EO?.forEach(t=>t.hostUpdated?.()),this.hasUpdated||(this.hasUpdated=!0,this.firstUpdated(t)),this.updated(t)}_$EM(){this._$AL=new Map,this.isUpdatePending=!1}get updateComplete(){return this.getUpdateComplete()}getUpdateComplete(){return this._$ES}shouldUpdate(t){return!0}update(t){this._$Eq&&=this._$Eq.forEach(t=>this._$ET(t,this[t])),this._$EM()}updated(t){}firstUpdated(t){}};H.elementStyles=[],H.shadowRootOptions={mode:"open"},H[j("elementProperties")]=new Map,H[j("finalized")]=new Map,U?.({ReactiveElement:H}),(P.reactiveElementVersions??=[]).push("2.1.2");
+ */Symbol.metadata??=Symbol("metadata"),D.litPropertyMetadata??=new WeakMap;let H=class extends HTMLElement{static addInitializer(t){this._$Ei(),(this.l??=[]).push(t)}static get observedAttributes(){return this.finalize(),this._$Eh&&[...this._$Eh.keys()]}static createProperty(t,e=R){if(e.state&&(e.attribute=!1),this._$Ei(),this.prototype.hasOwnProperty(t)&&((e=Object.create(e)).wrapped=!0),this.elementProperties.set(t,e),!e.noAccessor){const i=Symbol(),s=this.getPropertyDescriptor(t,i,e);void 0!==s&&O(this.prototype,t,s)}}static getPropertyDescriptor(t,e,i){const{get:s,set:n}=T(this.prototype,t)??{get(){return this[e]},set(t){this[e]=t}};return{get:s,set(e){const a=s?.call(this);n?.call(this,e),this.requestUpdate(t,a,i)},configurable:!0,enumerable:!0}}static getPropertyOptions(t){return this.elementProperties.get(t)??R}static _$Ei(){if(this.hasOwnProperty(j("elementProperties")))return;const t=P(this);t.finalize(),void 0!==t.l&&(this.l=[...t.l]),this.elementProperties=new Map(t.elementProperties)}static finalize(){if(this.hasOwnProperty(j("finalized")))return;if(this.finalized=!0,this._$Ei(),this.hasOwnProperty(j("properties"))){const t=this.properties,e=[...V(t),...N(t)];for(const i of e)this.createProperty(i,t[i])}const t=this[Symbol.metadata];if(null!==t){const e=litPropertyMetadata.get(t);if(void 0!==e)for(const[t,i]of e)this.elementProperties.set(t,i)}this._$Eh=new Map;for(const[t,e]of this.elementProperties){const i=this._$Eu(t,e);void 0!==i&&this._$Eh.set(i,t)}this.elementStyles=this.finalizeStyles(this.styles)}static finalizeStyles(t){const e=[];if(Array.isArray(t)){const i=new Set(t.flat(1/0).reverse());for(const t of i)e.unshift(S(t))}else void 0!==t&&e.push(S(t));return e}static _$Eu(t,e){const i=e.attribute;return!1===i?void 0:"string"==typeof i?i:"string"==typeof t?t.toLowerCase():void 0}constructor(){super(),this._$Ep=void 0,this.isUpdatePending=!1,this.hasUpdated=!1,this._$Em=null,this._$Ev()}_$Ev(){this._$ES=new Promise(t=>this.enableUpdating=t),this._$AL=new Map,this._$E_(),this.requestUpdate(),this.constructor.l?.forEach(t=>t(this))}addController(t){(this._$EO??=new Set).add(t),void 0!==this.renderRoot&&this.isConnected&&t.hostConnected?.()}removeController(t){this._$EO?.delete(t)}_$E_(){const t=new Map,e=this.constructor.elementProperties;for(const i of e.keys())this.hasOwnProperty(i)&&(t.set(i,this[i]),delete this[i]);t.size>0&&(this._$Ep=t)}createRenderRoot(){const t=this.shadowRoot??this.attachShadow(this.constructor.shadowRootOptions);return((t,e)=>{if(w)t.adoptedStyleSheets=e.map(t=>t instanceof CSSStyleSheet?t:t.styleSheet);else for(const i of e){const e=document.createElement("style"),s=y.litNonce;void 0!==s&&e.setAttribute("nonce",s),e.textContent=i.cssText,t.appendChild(e)}})(t,this.constructor.elementStyles),t}connectedCallback(){this.renderRoot??=this.createRenderRoot(),this.enableUpdating(!0),this._$EO?.forEach(t=>t.hostConnected?.())}enableUpdating(t){}disconnectedCallback(){this._$EO?.forEach(t=>t.hostDisconnected?.())}attributeChangedCallback(t,e,i){this._$AK(t,i)}_$ET(t,e){const i=this.constructor.elementProperties.get(t),s=this.constructor._$Eu(t,i);if(void 0!==s&&!0===i.reflect){const n=(void 0!==i.converter?.toAttribute?i.converter:M).toAttribute(e,i.type);this._$Em=t,null==n?this.removeAttribute(s):this.setAttribute(s,n),this._$Em=null}}_$AK(t,e){const i=this.constructor,s=i._$Eh.get(t);if(void 0!==s&&this._$Em!==s){const t=i.getPropertyOptions(s),n="function"==typeof t.converter?{fromAttribute:t.converter}:void 0!==t.converter?.fromAttribute?t.converter:M;this._$Em=s;const a=n.fromAttribute(e,t.type);this[s]=a??this._$Ej?.get(s)??a,this._$Em=null}}requestUpdate(t,e,i,s=!1,n){if(void 0!==t){const a=this.constructor;if(!1===s&&(n=this[t]),i??=a.getPropertyOptions(t),!((i.hasChanged??I)(n,e)||i.useDefault&&i.reflect&&n===this._$Ej?.get(t)&&!this.hasAttribute(a._$Eu(t,i))))return;this.C(t,e,i)}!1===this.isUpdatePending&&(this._$ES=this._$EP())}C(t,e,{useDefault:i,reflect:s,wrapped:n},a){i&&!(this._$Ej??=new Map).has(t)&&(this._$Ej.set(t,a??e??this[t]),!0!==n||void 0!==a)||(this._$AL.has(t)||(this.hasUpdated||i||(e=void 0),this._$AL.set(t,e)),!0===s&&this._$Em!==t&&(this._$Eq??=new Set).add(t))}async _$EP(){this.isUpdatePending=!0;try{await this._$ES}catch(t){Promise.reject(t)}const t=this.scheduleUpdate();return null!=t&&await t,!this.isUpdatePending}scheduleUpdate(){return this.performUpdate()}performUpdate(){if(!this.isUpdatePending)return;if(!this.hasUpdated){if(this.renderRoot??=this.createRenderRoot(),this._$Ep){for(const[t,e]of this._$Ep)this[t]=e;this._$Ep=void 0}const t=this.constructor.elementProperties;if(t.size>0)for(const[e,i]of t){const{wrapped:t}=i,s=this[e];!0!==t||this._$AL.has(e)||void 0===s||this.C(e,void 0,i,s)}}let t=!1;const e=this._$AL;try{t=this.shouldUpdate(e),t?(this.willUpdate(e),this._$EO?.forEach(t=>t.hostUpdate?.()),this.update(e)):this._$EM()}catch(e){throw t=!1,this._$EM(),e}t&&this._$AE(e)}willUpdate(t){}_$AE(t){this._$EO?.forEach(t=>t.hostUpdated?.()),this.hasUpdated||(this.hasUpdated=!0,this.firstUpdated(t)),this.updated(t)}_$EM(){this._$AL=new Map,this.isUpdatePending=!1}get updateComplete(){return this.getUpdateComplete()}getUpdateComplete(){return this._$ES}shouldUpdate(t){return!0}update(t){this._$Eq&&=this._$Eq.forEach(t=>this._$ET(t,this[t])),this._$EM()}updated(t){}firstUpdated(t){}};H.elementStyles=[],H.shadowRootOptions={mode:"open"},H[j("elementProperties")]=new Map,H[j("finalized")]=new Map,U?.({ReactiveElement:H}),(D.reactiveElementVersions??=[]).push("2.1.2");
 /**
  * @license
  * Copyright 2017 Google LLC
@@ -31,7 +31,7 @@ const Ot=1,Tt=t=>(...e)=>({_$litDirective$:t,values:e});let Vt=class{constructor
  * @license
  * Copyright 2018 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
- */const Nt=Tt(class extends Vt{constructor(t){if(super(t),t.type!==Ot||"class"!==t.name||t.strings?.length>2)throw Error("`classMap()` can only be used in the `class` attribute and must be the only part in the attribute.")}render(t){return" "+Object.keys(t).filter(e=>t[e]).join(" ")+" "}update(t,[e]){if(void 0===this.st){this.st=new Set,void 0!==t.strings&&(this.nt=new Set(t.strings.join(" ").split(/\s/).filter(t=>""!==t)));for(const t in e)e[t]&&!this.nt?.has(t)&&this.st.add(t);return this.render(e)}const i=t.element.classList;for(const t of this.st)t in e||(i.remove(t),this.st.delete(t));for(const t in e){const s=!!e[t];s===this.st.has(t)||this.nt?.has(t)||(s?(i.add(t),this.st.add(t)):(i.remove(t),this.st.delete(t)))}return ht}}),zt=t=>t??ut,Pt="important",Dt=" !"+Pt,Lt=Tt(class extends Vt{constructor(t){if(super(t),t.type!==Ot||"style"!==t.name||t.strings?.length>2)throw Error("The `styleMap` directive must be used in the `style` attribute and must be the only part in the attribute.")}render(t){return Object.keys(t).reduce((e,i)=>{const s=t[i];return null==s?e:e+`${i=i.includes("-")?i:i.replace(/(?:^(webkit|moz|ms|o)|)(?=[A-Z])/g,"-$&").toLowerCase()}:${s};`},"")}update(t,[e]){const{style:i}=t.element;if(void 0===this.ft)return this.ft=new Set(Object.keys(e)),this.render(e);for(const t of this.ft)null==e[t]&&(this.ft.delete(t),t.includes("-")?i.removeProperty(t):i[t]=null);for(const t in e){const s=e[t];if(null!=s){this.ft.add(t);const e="string"==typeof s&&s.endsWith(Dt);t.includes("-")||e?i.setProperty(t,e?s.slice(0,-11):s,e?Pt:""):i[t]=s}}return ht}});
+ */const Nt=Tt(class extends Vt{constructor(t){if(super(t),t.type!==Ot||"class"!==t.name||t.strings?.length>2)throw Error("`classMap()` can only be used in the `class` attribute and must be the only part in the attribute.")}render(t){return" "+Object.keys(t).filter(e=>t[e]).join(" ")+" "}update(t,[e]){if(void 0===this.st){this.st=new Set,void 0!==t.strings&&(this.nt=new Set(t.strings.join(" ").split(/\s/).filter(t=>""!==t)));for(const t in e)e[t]&&!this.nt?.has(t)&&this.st.add(t);return this.render(e)}const i=t.element.classList;for(const t of this.st)t in e||(i.remove(t),this.st.delete(t));for(const t in e){const s=!!e[t];s===this.st.has(t)||this.nt?.has(t)||(s?(i.add(t),this.st.add(t)):(i.remove(t),this.st.delete(t)))}return ht}}),Pt=t=>t??ut,Dt="important",zt=" !"+Dt,Lt=Tt(class extends Vt{constructor(t){if(super(t),t.type!==Ot||"style"!==t.name||t.strings?.length>2)throw Error("The `styleMap` directive must be used in the `style` attribute and must be the only part in the attribute.")}render(t){return Object.keys(t).reduce((e,i)=>{const s=t[i];return null==s?e:e+`${i=i.includes("-")?i:i.replace(/(?:^(webkit|moz|ms|o)|)(?=[A-Z])/g,"-$&").toLowerCase()}:${s};`},"")}update(t,[e]){const{style:i}=t.element;if(void 0===this.ft)return this.ft=new Set(Object.keys(e)),this.render(e);for(const t of this.ft)null==e[t]&&(this.ft.delete(t),t.includes("-")?i.removeProperty(t):i[t]=null);for(const t in e){const s=e[t];if(null!=s){this.ft.add(t);const e="string"==typeof s&&s.endsWith(zt);t.includes("-")||e?i.setProperty(t,e?s.slice(0,-11):s,e?Dt:""):i[t]=s}}return ht}});
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -51,7 +51,7 @@ const Ot=1,Tt=t=>(...e)=>({_$litDirective$:t,values:e});let Vt=class{constructor
         @action=${this._handleThisAction}
         style=${Lt(l)}
         .actionHandler=${qt({hasHold:$(this.config.hold_action),hasDoubleClick:$(this.config.double_tap_action)})}
-        tabindex=${zt($(this.config.tap_action)?"0":void 0)}
+        tabindex=${Pt($(this.config.tap_action)?"0":void 0)}
       >
         ${r?ct`<img
               src=${r}
@@ -91,17 +91,20 @@ const Ot=1,Tt=t=>(...e)=>({_$litDirective$:t,values:e});let Vt=class{constructor
         <span class="title">${this.config.title}</span>
         ${(null===(a=this.config.align)||void 0===a?void 0:a.title_entities)!=jt.left?o:""}
       </div>
-    `}renderAreaIcon(t){return 0!=this._getOrDefault(null,t.icon,"").trim().length&&this._getOrDefault(null,t.show_area_icon,!1)?ct` <ha-icon icon=${zt(t.icon)}></ha-icon> `:ct``}renderEntity(t){var e,i,s;const n=this.hass.states[t.entity];if(null==n)return ut;const a=this.hass.entities[t.entity],o=t.entity.trim(),r=l(o),c=this._getOrDefault(o,t.force_dialog,this._getOrDefault(o,this.config.force_dialog,!1))||-1===ae.indexOf(r);let h=!0;h=void 0===t.show_state?"binary_sensor"!==r:!!t.show_state,t=Object.assign({tap_action:{action:c?"more-info":"toggle"},hold_action:{action:"more-info"},show_state:h},t);let u=this._getOrDefault(o,t.icon,""),d=this._getOrDefault(o,t.color,""),m=this._getOrDefault(o,t.hide,!1),p=this._getOrDefault(o,t.hide_unavailable,this._getOrDefault(o,this.config.hide_unavailable,!1));const f=this.computeStateValue(n,t,a);if(void 0!==t.state&&t.state.length>0){const e=function(t,e,i,s){let n;const a=null==e?void 0:e.filter(e=>{var a;switch((null===(a=e.operator)||void 0===a?void 0:a.trim().toLocaleLowerCase())||"=="){case"<":return i<e.value;case"<=":return i<=e.value;case"==":return i==e.value;case">=":return i>=e.value;case">":return i>e.value;case"!=":return i!=e.value;case"regex":return!!String(i).match(e.value);case"template":return 1==ee(t,e.value,s,!1);case"default":return n=e,!1;default:return!1}});return(null==a?void 0:a.length)>0?a[0]:n}(o,t.state,n.state,this.hass);e&&(u=this._getOrDefault(o,e.icon,t.icon),d=this._getOrDefault(o,e.color,d),m=this._getOrDefault(o,e.hide,m),p=this._getOrDefault(o,e.hide_unavailable,p))}const v=!n||n.state===It;if(m||v&&p)return ut;if(v&&!p)return ct`
+    `}renderAreaIcon(t){return 0!=this._getOrDefault(null,t.icon,"").trim().length&&this._getOrDefault(null,t.show_area_icon,!1)?ct` <ha-icon icon=${Pt(t.icon)}></ha-icon> `:ct``}renderEntity(t){var e,i,s;const n=this.hass.states[t.entity];if(null==n)return ut;const a=this.hass.entities[t.entity],o=t.entity.trim(),r=l(o),c=this._getOrDefault(o,t.force_dialog,this._getOrDefault(o,this.config.force_dialog,!1))||-1===ae.indexOf(r);let h=!0;h=void 0===t.show_state?"binary_sensor"!==r:!!t.show_state,t=Object.assign({tap_action:{action:c?"more-info":"toggle"},hold_action:{action:"more-info"},show_state:h},t);let u=this._getOrDefault(o,t.icon,""),d=this._getOrDefault(o,t.color,""),m=this._getOrDefault(o,t.hide,!1),p=this._getOrDefault(o,t.hide_unavailable,this._getOrDefault(o,this.config.hide_unavailable,!1));const f=this.computeStateValue(n,t,a);if(void 0!==t.state&&t.state.length>0){const e=function(t,e,i,s){let n;const a=null==e?void 0:e.filter(e=>{var a;switch((null===(a=e.operator)||void 0===a?void 0:a.trim().toLocaleLowerCase())||"=="){case"<":return i<e.value;case"<=":return i<=e.value;case"==":return i==e.value;case">=":return i>=e.value;case">":return i>e.value;case"!=":return i!=e.value;case"regex":return!!String(i).match(e.value);case"template":return 1==ee(t,e.value,s,!1);case"default":return n=e,!1;default:return!1}});return(null==a?void 0:a.length)>0?a[0]:n}(o,t.state,n.state,this.hass);e&&(u=this._getOrDefault(o,e.icon,t.icon),d=this._getOrDefault(o,e.color,d),m=this._getOrDefault(o,e.hide,m),p=this._getOrDefault(o,e.hide_unavailable,p))}const v=!n||n.state===It;if(m||v&&p)return ut;if(v&&!p)return ct`
         <div class="wrapper">
           <hui-warning-element .label=${((t,e)=>"NOT_RUNNING"!==t.config.state?t.localize("ui.panel.lovelace.warning.entity_not_found","entity",e||"[empty]"):t.localize("ui.panel.lovelace.warning.starting"))(this.hass,o)}></hui-warning-element>
         </div>
       `;const _=n&&n.state&&-1===Rt.indexOf(n.state.toString().toLowerCase()),b=this._getOrDefault(o,t.title,`${(null===(e=n.attributes)||void 0===e?void 0:e.friendly_name)||o}: ${g(null===(i=this.hass)||void 0===i?void 0:i.localize,n,null===(s=this.hass)||void 0===s?void 0:s.locale)}`),y=t.section==Mt.sensors||-1!==ne.indexOf(r);return ct`
       <div class="wrapper ${t.entity.replace(".","_")}">
-        <ha-icon-button
+        <div
+          class="entity-icon ${Nt({"state-on":_})}"
           @action=${this._handleEntityAction}
           .actionHandler=${qt({hasHold:$(t.hold_action),hasDoubleClick:$(t.double_tap_action)})}
           .config=${t}
-          class=${Nt({"state-on":_})}
+          role="button"
+          tabindex="0"
+          title=${b}
         >
           <state-badge
             .hass=${this.hass}
@@ -111,7 +114,7 @@ const Ot=1,Tt=t=>(...e)=>({_$litDirective$:t,values:e});let Vt=class{constructor
             .stateColor=${void 0!==t.state_color?t.state_color:void 0===this.config.state_color||this.config.state_color}
             .color=${ie(d)||d}
           ></state-badge>
-        </ha-icon-button>
+        </div>
         ${y&&t.show_state?ct`
               <div class="state">
                 ${t.attribute?ct` ${t.prefix} ${n.attributes[t.attribute]} ${t.suffix} `:f}
@@ -247,46 +250,52 @@ const Ot=1,Tt=t=>(...e)=>({_$litDirective$:t,values:e});let Vt=class{constructor
         text-align: center;
       }
 
-      .box .sensors ha-icon-button {
+      .box .sensors .entity-icon {
+        width: var(--ha-better-minimalistic-area-card-sensors-button-size, 32px);
+        height: var(--ha-better-minimalistic-area-card-sensors-button-size, 32px);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        border-radius: 50%;
+        overflow: hidden;
+        vertical-align: middle;
+        position: relative;
+      }
+
+      .box .sensors .entity-icon state-badge {
         --mdc-icon-size: var(--ha-better-minimalistic-area-card-sensors-icon-size, 18px);
-        --mdc-icon-button-size: var(--ha-better-minimalistic-area-card-sensors-button-size, 32px);
-        --md-icon-button-icon-size: var(--ha-better-minimalistic-area-card-sensors-icon-size, 18px);
-        --md-icon-button-state-layer-height: var(--ha-better-minimalistic-area-card-sensors-button-size, 32px);
-        --md-icon-button-state-layer-width: var(--ha-better-minimalistic-area-card-sensors-button-size, 32px);
-        width: var(--ha-better-minimalistic-area-card-sensors-button-size, 32px);
-        height: var(--ha-better-minimalistic-area-card-sensors-button-size, 32px);
+        width: var(--ha-better-minimalistic-area-card-sensors-icon-size, 18px);
+        height: var(--ha-better-minimalistic-area-card-sensors-icon-size, 18px);
+        line-height: 0;
+      }
+
+      .box .buttons .entity-icon {
+        width: var(--ha-better-minimalistic-area-card-buttons-button-size, 48px);
+        height: var(--ha-better-minimalistic-area-card-buttons-button-size, 48px);
         display: inline-flex;
         align-items: center;
         justify-content: center;
+        cursor: pointer;
+        border-radius: 50%;
         overflow: hidden;
+        vertical-align: middle;
+        position: relative;
+        margin-left: -8px;
+        margin-right: -6px;
       }
 
-      .box .sensors ha-icon-button::part(button) {
-        width: var(--ha-better-minimalistic-area-card-sensors-button-size, 32px);
-        height: var(--ha-better-minimalistic-area-card-sensors-button-size, 32px);
-        padding: 0;
-      }
-
-      .box .buttons ha-icon-button {
+      .box .buttons .entity-icon state-badge {
         --mdc-icon-size: var(--ha-better-minimalistic-area-card-buttons-icon-size, 24px);
-        --mdc-icon-button-size: var(--ha-better-minimalistic-area-card-buttons-button-size, 48px);
-        --md-icon-button-icon-size: var(--ha-better-minimalistic-area-card-buttons-icon-size, 24px);
-        --md-icon-button-state-layer-height: var(--ha-better-minimalistic-area-card-buttons-button-size, 48px);
-        --md-icon-button-state-layer-width: var(--ha-better-minimalistic-area-card-buttons-button-size, 48px);
-        width: var(--ha-better-minimalistic-area-card-buttons-button-size, 48px);
-        height: var(--ha-better-minimalistic-area-card-buttons-button-size, 48px);
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-        margin-left: -10px;
-        margin-right: -8px;
+        width: var(--ha-better-minimalistic-area-card-buttons-icon-size, 24px);
+        height: var(--ha-better-minimalistic-area-card-buttons-icon-size, 24px);
       }
 
-      .box .buttons ha-icon-button::part(button) {
-        width: var(--ha-better-minimalistic-area-card-buttons-button-size, 48px);
-        height: var(--ha-better-minimalistic-area-card-buttons-button-size, 48px);
-        padding: 0;
+      .entity-icon:hover {
+        background: var(--secondary-background-color, rgba(0, 0, 0, 0.1));
+      }
+      .entity-icon:active {
+        background: var(--secondary-background-color, rgba(0, 0, 0, 0.2));
       }
 
       .box .wrapper {
@@ -295,7 +304,7 @@ const Ot=1,Tt=t=>(...e)=>({_$litDirective$:t,values:e});let Vt=class{constructor
         vertical-align: middle;
         margin-bottom: -8px;
       }
-      .box .sensors ha-icon-button,
+      .box .sensors .entity-icon,
       .box .sensors state-badge {
         color: var(
           --ha-better-minimalistic-area-card-sensors-color,
@@ -303,14 +312,14 @@ const Ot=1,Tt=t=>(...e)=>({_$litDirective$:t,values:e});let Vt=class{constructor
         );
         line-height: 0px;
       }
-      .box .buttons ha-icon-button,
+      .box .buttons .entity-icon,
       .box .buttons state-badge {
         color: var(
           --ha-better-minimalistic-area-card-buttons-color,
           var(--ha-better-minimalistic-area-card-color, var(--secondary-text-color, #a9a9a9))
         );
       }
-      .box .title-entities ha-icon-button,
+      .box .title-entities .entity-icon,
       .box .title-entities state-badge {
         color: var(
           --ha-better-minimalistic-area-card-buttons-color,
@@ -326,7 +335,7 @@ const Ot=1,Tt=t=>(...e)=>({_$litDirective$:t,values:e});let Vt=class{constructor
         cursor: default;
       }
 
-      .shadow ha-icon-button,
+      .shadow .entity-icon,
       .shadow state-badge,
       .shadow ha-icon {
         filter: drop-shadow(1px 1px 2px var(--ha-better-minimalistic-area-card-shadow-color, gray));
