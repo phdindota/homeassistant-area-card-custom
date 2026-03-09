@@ -304,6 +304,10 @@ const Ot=1,Tt=t=>(...e)=>({_$litDirective$:t,values:e});let Vt=class{constructor
         vertical-align: middle;
         margin-bottom: -8px;
       }
+      .box .sensors .wrapper {
+        margin: -8px;
+      }
+
       .box .sensors .entity-icon,
       .box .sensors state-badge {
         color: var(
@@ -311,6 +315,7 @@ const Ot=1,Tt=t=>(...e)=>({_$litDirective$:t,values:e});let Vt=class{constructor
           var(--ha-better-minimalistic-area-card-color, var(--secondary-text-color, #a9a9a9))
         );
         line-height: 0px;
+        margin-right: -5px;
       }
       .box .buttons .entity-icon,
       .box .buttons state-badge {
